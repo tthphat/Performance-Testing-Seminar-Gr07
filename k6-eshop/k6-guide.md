@@ -126,3 +126,93 @@ Khi k6 hoàn tất, bảng tổng kết sẽ hiển thị các khối thông tin
     const currentUser = users[(__VU - 1) % users.length];
     ```
     *(VU 1 dùng user 1, VU 2 dùng user 2,... đảm bảo mỗi phiên người dùng là hoàn toàn độc lập).*
+
+---
+
+## 4. Kịch bản 2: Baseline Load Test (`baseline_load.js`)
+
+### 4.1. Tại sao lại phân bổ tải theo tỷ lệ $70\% - 25\% - 5\%$?
+
+Mô hình phân bổ này được gọi là **Mô hình phụ tải thực tế (Realistic Workload Model)**, dựa trên nguyên lý **Phễu chuyển đổi Thương mại Điện tử (E-Commerce Conversion Funnel)**:
+
+```text
+               [ 70% ] Tìm kiếm & Duyệt danh mục (Browse & Search)
+                       \                                  /
+                        \ [ 25% ] Xem chi tiết sản phẩm  /
+                         \        (Product Detail)      /
+                          \                            /
+                           \ [ 5% ] Đặt hàng & Mua sắm/
+                            \      (Checkout Flow)   /
+```
+
+1. **Thực tế hành vi người dùng ngoài đời thực:**
+   * Trong thực tế, không có một trang thương mại điện tử nào mà $100\%$ người truy cập đều mua hàng. Nếu thiết kế kịch bản mà cả 50 VUs chỉ cắm đầu bấm Checkout liên tục thì đó là bài test **phi thực tế (Unrealistic Benchmark)**, không phản ánh đúng áp lực vận hành của hệ thống.
+   * **Tầng đỉnh phễu ($70\%$ Tìm kiếm & xem danh sách):** Đa số người dùng vào web với tâm lý lướt xem hàng (window shopping), gõ từ khóa, lọc danh mục. Đây là các tác vụ **ĐỌC (Read-heavy operations)**, tần suất cực kỳ dày đặc nhưng chi phí tính toán nhẹ.
+   * **Tầng giữa phễu ($25\%$ Xem chi tiết sản phẩm):** Khi thấy món đồ ưa thích trong danh sách, một phần khách hàng sẽ bấm vào xem chi tiết cấu hình, hình ảnh, giá tiền. Số lượng này luôn thấp hơn số lượt tìm kiếm.
+   * **Tầng đáy phễu ($5\%$ Giỏ hàng, Mã giảm giá & Thanh toán):** Tỷ lệ chuyển đổi mua hàng (Conversion Rate - CVR) trung bình của các sàn thương mại điện tử hàng đầu thế giới (Amazon, Shopee, Tiki) chỉ dao động từ **$2\% \text{ đến } 5\%$**.
+2. **Ý nghĩa kỹ thuật đối với hệ thống EShop:**
+   * Các thao tác Tìm kiếm và Xem chi tiết chỉ là câu lệnh `SELECT` (đọc dữ liệu).
+   * Thao tác **Checkout** là câu lệnh `INSERT` và `UPDATE` vào các bảng `orders`, `coupon_usage`. Do backend EShop sử dụng cơ sở dữ liệu **SQLite (cơ chế khóa tệp đơn tiến trình - single file lock)**, nếu tỷ lệ checkout quá cao một cách bất thường, SQLite sẽ bị nghẽn khóa ghi ngay lập tức. Tỷ lệ $5\%$ là con số chuẩn xác để vừa kiểm tra khả năng ghi của DB, vừa giữ cho hệ thống hoạt động đúng bản chất tải thông thường.
+
+---
+
+### 4.2. Các chỉ số $P50$, $P95$, $P99$ (Percentiles - Bách phân vị) là gì?
+
+Trong kiểm thử hiệu năng chuyên nghiệp, người ta **không bao giờ dùng con số Trung bình (Average / Mean)** để đánh giá chất lượng dịch vụ, mà bắt buộc phải dùng **Percentiles (Bách phân vị)**.
+
+#### **Vì sao con số Trung bình (Average) là "kẻ nói dối"?**
+* **Ví dụ thực tế:** Giả sử bạn gửi 100 requests lên EShop:
+  * 99 requests phản hồi siêu nhanh trong **$10\text{ ms}$**.
+  * Đúng 1 request duy nhất bị đơ mất **$10.000\text{ ms}$** (10 giây).
+* Nếu tính thời gian trung bình (Average):
+  $$\text{Average} = \frac{99 \times 10 + 10.000}{100} = 109.9\text{ ms}$$
+* Nhìn vào con số **$109.9\text{ ms}$**, bạn sẽ lầm tưởng hệ thống chạy rất mượt ($< 500\text{ ms}$). Nhưng sự thật là đã có **1 vị khách hàng bị đứng máy suốt 10 giây và có thể đã bỏ sang trang web khác mua hàng!** Số trung bình đã che giấu hoàn toàn trải nghiệm tồi tệ của khách hàng đó (hiện tượng Outlier / Long-tail latency).
+
+---
+
+#### **Percentile (Bách phân vị) giải quyết bài toán này như thế nào?**
+Công cụ k6 sẽ gom toàn bộ thời gian phản hồi của mọi request trong suốt 5 phút chạy test, sau đó **sắp xếp theo thứ tự từ nhanh nhất đến chậm nhất** trên một thước đo từ $0\%$ đến $100\%$:
+
+```text
+[ Nhanh nhất ] -------------------- [ P50 ] ------------ [ P95 ] --- [ P99 ] - [ Chậm nhất ]
+     1ms                             5ms                  25ms        150ms        2000ms
+                                      ^                    ^            ^
+                               50% người dùng        95% người dùng   1% khách hàng
+                               thấy nhanh hơn        thấy nhanh hơn   chịu chậm nhất
+```
+
+1. **$P50$ (50th Percentile / Median - Trung vị):**
+   * Là mốc thời gian của request nằm chính giữa danh sách (vị trí $50\%$).
+   * **Ý nghĩa:** Đại diện cho **trải nghiệm của đại đa số người dùng phổ thông**. $50\%$ số lượt truy cập có tốc độ nhanh hơn hoặc bằng con số này.
+2. **$P95$ (95th Percentile - Chuẩn vàng đo cam kết dịch vụ SLO/SLA):**
+   * Là mốc thời gian của request nằm ở vị trí $95\%$.
+   * **Ý nghĩa:** **$95\%$ tổng số request của người dùng có tốc độ phản hồi nhanh hơn con số này**, chỉ có duy nhất $5\%$ các request chậm nhất vượt qua mốc này.
+   * **Tại sao ngành phần mềm chọn $P95$ làm tiêu chuẩn SLO?** Vì các tập đoàn công nghệ lớn (Google, Amazon, Microsoft) quy định rằng một hệ thống đạt chuẩn phải đảm bảo $95\%$ khách hàng luôn có trải nghiệm mượt mà. Trong đề tài môn học của bạn, yêu cầu SLO bắt buộc là:
+     $$\mathbf{P95 < 500\text{ ms}}$$
+3. **$P99$ (99th Percentile - Trải nghiệm cận biên xấu nhất / Worst-case):**
+   * Là mốc thời gian của request nằm ở vị trí $99\%$.
+   * **Ý nghĩa:** Đại diện cho **$1\%$ khách hàng chịu trải nghiệm chậm chạp nhất** trên hệ thống.
+   * **Kỹ sư hiệu năng xem $P99$ để làm gì?** Con số $P99$ là chiếc kính lúp giúp phát hiện sớm các vấn đề nghiêm trọng:
+     * Tiến trình dọn rác bộ nhớ (Garbage Collection) của Node.js bị khựng lại.
+     * Hiện tượng nghẽn hàng đợi (Queue backlog) hoặc tranh chấp khóa ghi SQLite khi nhiều người cùng checkout một lúc.
+
+---
+
+### 4.3. Cách chạy Baseline Load Test và Xuất dữ liệu làm Báo cáo SLO
+
+Để phục vụ cho việc lập **Báo cáo SLO 1 trang (Milestone M5)**, bạn chạy lệnh xuất dữ liệu ra file JSON:
+
+```bash
+k6 run --out json=baseline_results.json baseline_load.js
+```
+
+Trong lúc k6 đang chạy, bạn có thể mở một cửa sổ PowerShell thứ hai để giám sát mức độ chiếm dụng CPU & RAM của tiến trình Node.js:
+```powershell
+Get-Process node | Select-Object Id, ProcessName, CPU, @{Name="RAM_MB";Expression={[math]::Round($_.WorkingSet64 / 1MB, 2)}}
+```
+Tiêu chuẩn đạt SLO:
+* $P95 < 500\text{ ms}$
+* Tỷ lệ lỗi $< 1\%$
+* Thông lượng (Throughput) $\ge 20\text{ req/s}$
+* CPU Backend $< 80\%$
+* RAM Backend $< 300\text{ MB}$
