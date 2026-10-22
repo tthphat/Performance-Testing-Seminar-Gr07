@@ -11,7 +11,7 @@ CS423 / CSC13003 - Kiểm chứng Phần mềm (AI-augmented · 2026) - Biểu m
 | Lớp / Khoá | Seminar Nhom 07 |
 | Mã bài tập | Seminar-T05 Performance Testing |
 | Ngày làm bài | 22/10/2026 |
-| Công cụ AI đã dùng | Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit |
+| Công cụ AI đã dùng | Antigravity Assistant + Node.js Seeder, Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit |
 | Có dùng AI | [x] Có [ ] Không |
 
 ## 2. Hướng dẫn
@@ -23,6 +23,7 @@ Mỗi artifact do AI sinh có một mục bên dưới, gồm: (1) prompt + côn
 |---|---|---|---|
 | A01 | Performance Testing / k6 Baseline Script / Milestone M4 | Claude 3.7 Sonnet | INCOMPLETE |
 | A02 | Performance Testing / k6 Refined Script / Milestone M4 | Claude 3.7 Sonnet + Human Audit | VALID |
+| A03 | Performance Testing / Data-Driven Testing / Milestone M2 | Antigravity Assistant + Node.js Seeder | VALID |
 
 ### Artifact A01 - Performance Testing / k6 Baseline Script / Milestone M4
 
@@ -512,14 +513,139 @@ export default function (data) {
 Bản hoàn chỉnh đã được lưu tại k6-eshop/ai_audited_refined.js và sẵn sàng thực thi.
 ````
 
+### Artifact A03 - Performance Testing / Data-Driven Testing / Milestone M2
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant + Node.js Seeder - Thời gian: 22:06 22/10/2026
+
+````text
+Chuẩn bị dữ liệu Data-Driven (users.csv) bạn thực hiện đi
+````
+
+**(2) Output AI**
+
+````text
+email,password,id
+test@eshop.com,Test1234!,2
+user1@eshop.com,Test1234!,3
+user2@eshop.com,Test1234!,4
+user3@eshop.com,Test1234!,5
+user4@eshop.com,Test1234!,6
+user5@eshop.com,Test1234!,7
+user6@eshop.com,Test1234!,8
+user7@eshop.com,Test1234!,9
+user8@eshop.com,Test1234!,10
+user9@eshop.com,Test1234!,11
+user10@eshop.com,Test1234!,12
+user11@eshop.com,Test1234!,13
+user12@eshop.com,Test1234!,14
+user13@eshop.com,Test1234!,15
+user14@eshop.com,Test1234!,16
+user15@eshop.com,Test1234!,17
+user16@eshop.com,Test1234!,18
+user17@eshop.com,Test1234!,19
+user18@eshop.com,Test1234!,20
+user19@eshop.com,Test1234!,21
+user20@eshop.com,Test1234!,22
+user21@eshop.com,Test1234!,23
+user22@eshop.com,Test1234!,24
+user23@eshop.com,Test1234!,25
+user24@eshop.com,Test1234!,26
+user25@eshop.com,Test1234!,27
+user26@eshop.com,Test1234!,28
+user27@eshop.com,Test1234!,29
+user28@eshop.com,Test1234!,30
+user29@eshop.com,Test1234!,31
+user30@eshop.com,Test1234!,32
+user31@eshop.com,Test1234!,33
+user32@eshop.com,Test1234!,34
+user33@eshop.com,Test1234!,35
+user34@eshop.com,Test1234!,36
+user35@eshop.com,Test1234!,37
+user36@eshop.com,Test1234!,38
+user37@eshop.com,Test1234!,39
+user38@eshop.com,Test1234!,40
+user39@eshop.com,Test1234!,41
+user40@eshop.com,Test1234!,42
+user41@eshop.com,Test1234!,43
+user42@eshop.com,Test1234!,44
+user43@eshop.com,Test1234!,45
+user44@eshop.com,Test1234!,46
+user45@eshop.com,Test1234!,47
+user46@eshop.com,Test1234!,48
+user47@eshop.com,Test1234!,49
+user48@eshop.com,Test1234!,50
+user49@eshop.com,Test1234!,51
+user50@eshop.com,Test1234!,52
+user51@eshop.com,Test1234!,53
+user52@eshop.com,Test1234!,54
+user53@eshop.com,Test1234!,55
+user54@eshop.com,Test1234!,56
+user55@eshop.com,Test1234!,57
+user56@eshop.com,Test1234!,58
+user57@eshop.com,Test1234!,59
+user58@eshop.com,Test1234!,60
+user59@eshop.com,Test1234!,61
+user60@eshop.com,Test1234!,62
+user61@eshop.com,Test1234!,63
+user62@eshop.com,Test1234!,64
+user63@eshop.com,Test1234!,65
+user64@eshop.com,Test1234!,66
+user65@eshop.com,Test1234!,67
+user66@eshop.com,Test1234!,68
+user67@eshop.com,Test1234!,69
+user68@eshop.com,Test1234!,70
+user69@eshop.com,Test1234!,71
+user70@eshop.com,Test1234!,72
+user71@eshop.com,Test1234!,73
+user72@eshop.com,Test1234!,74
+user73@eshop.com,Test1234!,75
+user74@eshop.com,Test1234!,76
+user75@eshop.com,Test1234!,77
+user76@eshop.com,Test1234!,78
+user77@eshop.com,Test1234!,79
+user78@eshop.com,Test1234!,80
+user79@eshop.com,Test1234!,81
+user80@eshop.com,Test1234!,82
+user81@eshop.com,Test1234!,83
+user82@eshop.com,Test1234!,84
+user83@eshop.com,Test1234!,85
+user84@eshop.com,Test1234!,86
+user85@eshop.com,Test1234!,87
+user86@eshop.com,Test1234!,88
+user87@eshop.com,Test1234!,89
+user88@eshop.com,Test1234!,90
+user89@eshop.com,Test1234!,91
+user90@eshop.com,Test1234!,92
+user91@eshop.com,Test1234!,93
+user92@eshop.com,Test1234!,94
+user93@eshop.com,Test1234!,95
+user94@eshop.com,Test1234!,96
+user95@eshop.com,Test1234!,97
+user96@eshop.com,Test1234!,98
+user97@eshop.com,Test1234!,99
+user98@eshop.com,Test1234!,100
+user99@eshop.com,Test1234!,101
+user100@eshop.com,Test1234!,102
+````
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Đã tạo và seed thành công 101 tài khoản người dùng vào database.sqlite và xuất file k6-eshop/users.csv đồng bộ. Đáp ứng đầy đủ yêu cầu Data-Driven Testing (Milestone M2) theo Seminar Guide, giúp cấp phát tài khoản độc lập cho từng Virtual User (VU) để tránh tranh chấp lock SQLite và vượt giới hạn mã giảm giá.
+
+**(5) Bản sinh viên sửa:**
+
+````text
+File users.csv đã sẵn sàng tại k6-eshop/users.csv với đầy đủ các cột email, password, id.
+````
+
 ## 4. Tổng kết độ chính xác AI
 
 | Chỉ số | Số lượng | Tỉ lệ |
 |---|---|---|
-| Tổng artifact AI sinh đã audit | 2 | 100% |
-| VALID (đúng, dùng nguyên) | 1 | 50% |
+| Tổng artifact AI sinh đã audit | 3 | 100% |
+| VALID (đúng, dùng nguyên) | 2 | 67% |
 | INVALID (sai; loại bỏ) | 0 | 0% |
-| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 50% |
+| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 33% |
 
 ## 5. Kết luận - Khi nào nên / không nên dùng AI?
 
@@ -527,7 +653,7 @@ Bản hoàn chỉnh đã được lưu tại k6-eshop/ai_audited_refined.js và 
 
 ## 6. Mandatory Disclosure
 
-> Test case / script / báo cáo này được sinh phiên bản đầu bởi Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit; tôi đã rà soát và chỉnh sửa [phần X], bổ sung [edge case Y, Z]; [phần W] do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
+> Test case / script / báo cáo này được sinh phiên bản đầu bởi Antigravity Assistant + Node.js Seeder, Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit; tôi đã rà soát và chỉnh sửa [phần X], bổ sung [edge case Y, Z]; [phần W] do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
 
 <!-- SINH VIÊN điền [phần X], [Y, Z], [phần W] bằng nội dung thật; ký tên: -->
 
