@@ -10,7 +10,7 @@ CS423 / CSC13003 - Kiểm chứng Phần mềm (AI-augmented · 2026) - Biểu m
 | MSSV | 23120319 |
 | Lớp / Khoá | Seminar Nhom 07 |
 | Mã bài tập | Seminar-T05 Performance Testing |
-| Ngày làm bài | 22/10/2026 |
+| Ngày làm bài | 23/10/2026 |
 | Công cụ AI đã dùng | Antigravity Assistant, Antigravity Assistant + Node.js Seeder, Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit |
 | Có dùng AI | [x] Có [ ] Không |
 
@@ -27,6 +27,8 @@ Mỗi artifact do AI sinh có một mục bên dưới, gồm: (1) prompt + côn
 | A04 | Performance Testing / Smoke Test Script / Milestone M3 | Antigravity Assistant | VALID |
 | A05 | Documentation / k6 Execution Guide / Milestone M2 | Antigravity Assistant | VALID |
 | A06 | Performance Testing / Baseline Load Script / Milestone M3 | Antigravity Assistant | VALID |
+| A07 | Performance Testing / Spike Test Script / Milestone M3 | Antigravity Assistant | VALID |
+| A08 | Performance Testing / 1-Page SLO Report / Milestone M5 | Antigravity Assistant | VALID |
 
 ### Artifact A01 - Performance Testing / k6 Baseline Script / Milestone M4
 
@@ -1332,14 +1334,364 @@ export default function (data) {
 File k6-eshop/baseline_load.js đã được tạo hoàn chỉnh và sẵn sàng thực thi.
 ````
 
+### Artifact A07 - Performance Testing / Spike Test Script / Milestone M3
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 23:48 22/10/2026
+
+````text
+ok tạo spike test đi (Kịch bản 3: spike_test.js)
+````
+
+**(2) Output AI**
+
+````text
+﻿// ============================================================================
+// Kịch bản 3: Spike Test (spike_test.js) - EShop Performance Testing
+// Student: Truong Thanh Phat (23120319) - Nhóm 07
+// ============================================================================
+// Mục tiêu kỹ thuật:
+// - Kiểm tra khả năng chịu sốc tải đột ngột (tăng gấp 10 lần từ 50 lên 500 VUs trong 30s)
+// - Kích hoạt và đo lường hiện tượng thắt cổ chai cơ sở dữ liệu:
+//   "SQLite Lock Contention / SQLITE_BUSY: database is locked" khi có nhiều VU cùng ghi đơn hàng
+// - Quan sát khả năng tự phục hồi (Recovery Time) của hệ thống khi giảm tải về bình thường
+//
+// Mô hình tải (Stages - Tổng thời gian: 5 phút):
+// 1. Stage 1 (1m00s): Giữ 50 VUs (Mức tải nền bình thường)
+// 2. Stage 2 (0m30s): Tăng vọt đột biến từ 50 lên 500 VUs (Spike Ramp-up)
+// 3. Stage 3 (2m00s): Duy trì mức sốc tải đỉnh 500 VUs (Peak Spike)
+// 4. Stage 4 (1m30s): Giảm tải dần về 0 và quan sát phục hồi (Recovery Phase)
+// ============================================================================
+
+import http from 'k6/http';
+import { check, sleep } from 'k6';
+import { SharedArray } from 'k6/data';
+import { Counter, Rate, Trend } from 'k6/metrics';
+
+// ---------------------------------------------------------------- CONFIG ---
+const BASE_URL = __ENV.BASE_URL || 'http://localhost:3000';
+const COUPON_CODE = __ENV.COUPON_CODE || 'SAVE10';
+
+const WORKLOAD_MIX = {
+  browse: 0.70, // 70% Search
+  detail: 0.25, // 25% Detail
+  // Còn lại 5% là Checkout
+};
+
+const KEYWORDS = ['iphone', 'samsung', 'macbook', 'airpods', 'keychron', 'pro'];
+const FALLBACK_PRODUCTS = [
+  { id: 1, name: 'iPhone 15 Pro Max', price: 30000000 },
+  { id: 2, name: 'Samsung Galaxy S24 Ultra', price: 28000000 },
+  { id: 3, name: 'MacBook Pro M3', price: 45000000 },
+];
+
+// Nạp danh sách 101 tài khoản từ users.csv
+const users = new SharedArray('eshop_users', function () {
+  const content = open('./users.csv');
+  const lines = content.split('\n').slice(1).filter((l) => l.trim().length > 0);
+  return lines.map((line) => {
+    const [email, password, id] = line.trim().split(',');
+    return { email, password, id: parseInt(id) };
+  });
+});
+
+// Custom Metrics để bắt lỗi nghẽn SQLite và đo thời gian phục hồi
+const sqliteLockErrors = new Counter('sqlite_lock_errors_total');
+const checkoutFailureRate = new Rate('checkout_failure_rate');
+const spikeCheckoutLatency = new Trend('spike_checkout_latency_ms');
+const successfulCheckouts = new Counter('successful_checkouts_total');
+
+// --------------------------------------------------------------- OPTIONS ---
+export const options = {
+  scenarios: {
+    spike_test: {
+      executor: 'ramping-vus',
+      startVUs: 0,
+      stages: [
+        { duration: '1m', target: 50 },   // 1 phút đầu: Tải bình thường 50 VUs
+        { duration: '30s', target: 500 }, // Sốc tải đột ngột lên 500 VUs trong 30 giây
+        { duration: '2m', target: 500 },  // Duy trì đỉnh sốc tải 500 VUs trong 2 phút
+        { duration: '1m30s', target: 0 }, // Giảm tải về 0 và đo thời gian phục hồi
+      ],
+      gracefulStop: '30s',
+    },
+  },
+  thresholds: {
+    // Trong Spike Test, tỷ lệ lỗi và độ trễ toàn cục cho phép tăng trong giai đoạn đỉnh
+    // Nhưng tỷ lệ lỗi tổng thể không được vượt quá 10%
+    http_req_failed: ['rate<0.10'],
+    checks: ['rate>0.90'],
+
+    // Giám sát riêng độ trễ endpoint checkout (nơi chịu ảnh hưởng trực tiếp của khóa SQLite)
+    'http_req_duration{endpoint:checkout}': ['p(95)<3000'], // Cho phép trần 3s khi nghẽn ghi
+  },
+  summaryTrendStats: ['avg', 'min', 'med', 'p(90)', 'p(95)', 'p(99)', 'max'],
+};
+
+// ----------------------------------------------------------------- SETUP ---
+export function setup() {
+  console.log(`[Spike Setup] Đang kiểm tra kết nối tới EShop tại ${BASE_URL}...`);
+  const res = http.get(`${BASE_URL}/api/products?search=`, { tags: { endpoint: 'setup' } });
+  let products = FALLBACK_PRODUCTS;
+  try {
+    const list = res.json();
+    if (Array.isArray(list) && list.length > 0) products = list;
+  } catch (_) {}
+  console.log(`[Spike Setup] Chuẩn bị sốc tải 500 VUs với ${products.length} sản phẩm và ${users.length} tài khoản.`);
+  return { products };
+}
+
+// ------------------------------------------------------------- VU STATE ---
+let token = null;
+let currentUserId = null;
+let isFirstRun = true;
+
+function authHeaders() {
+  return {
+    'Content-Type': 'application/json',
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
+}
+
+function loginVU(email, password) {
+  const payload = JSON.stringify({ email, password });
+  const res = http.post(`${BASE_URL}/api/login`, payload, {
+    headers: { 'Content-Type': 'application/json' },
+    tags: { endpoint: 'login' },
+  });
+
+  const ok = check(res, {
+    '[Login] status 200': (r) => r.status === 200,
+  });
+
+  if (ok && res.json('token')) {
+    token = res.json('token');
+    const user = res.json('user');
+    currentUserId = user ? user.id : 2;
+  }
+}
+
+const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+// ----------------------------------------------------- WORKLOAD ACTIONS ---
+function actionSearch() {
+  const q = Math.random() < 0.3 ? '' : pick(KEYWORDS);
+  const res = http.get(`${BASE_URL}/api/products?search=${encodeURIComponent(q)}`, {
+    headers: authHeaders(),
+    tags: { endpoint: 'search' },
+  });
+  check(res, { '[Search] status 200': (r) => r.status === 200 });
+}
+
+function actionProductDetail(products) {
+  const item = pick(products);
+  const res = http.get(`${BASE_URL}/api/products/${item.id}`, {
+    headers: authHeaders(),
+    tags: { endpoint: 'product_detail' },
+  });
+  check(res, { '[Detail] status 200': (r) => r.status === 200 });
+}
+
+function actionCheckoutFlow(products) {
+  const item = pick(products);
+  const price = item.price || 500000;
+
+  // 1. Add to cart
+  http.post(
+    `${BASE_URL}/api/cart`,
+    JSON.stringify({ id: item.id, name: item.name, price: price, quantity: 1 }),
+    { headers: authHeaders(), tags: { endpoint: 'add_to_cart' } }
+  );
+
+  sleep(0.3);
+
+  // 2. Apply Coupon
+  let finalAmount = price;
+  if (COUPON_CODE && price >= 300000) {
+    const couponRes = http.post(
+      `${BASE_URL}/api/apply-coupon`,
+      JSON.stringify({ code: COUPON_CODE, total_amount: price, user_id: currentUserId }),
+      { headers: authHeaders(), tags: { endpoint: 'apply_coupon' } }
+    );
+    if (couponRes.status === 200 && couponRes.json('final_amount')) {
+      finalAmount = couponRes.json('final_amount');
+    }
+  }
+
+  sleep(0.3);
+
+  // 3. Checkout - ĐIỂM NÓNG GÂY NGHẼN KHÓA GHI SQLITE
+  const startCheckout = Date.now();
+  const checkoutRes = http.post(
+    `${BASE_URL}/api/checkout`,
+    JSON.stringify({
+      total_amount: finalAmount,
+      shipping_address: '123 Cao Thang, Quan 3, TP.HCM',
+    }),
+    { headers: authHeaders(), tags: { endpoint: 'checkout' } }
+  );
+
+  const duration = Date.now() - startCheckout;
+  spikeCheckoutLatency.add(duration);
+
+  // Bắt lỗi khóa ghi SQLite: SQLITE_BUSY hoặc lỗi 500 từ server
+  const isLocked = checkoutRes.status === 500 || (checkoutRes.body && checkoutRes.body.includes('SQLITE_BUSY'));
+  if (isLocked) {
+    sqliteLockErrors.add(1);
+    checkoutFailureRate.add(1);
+    console.warn(`[SQLite Bottleneck Detected] Lỗi khóa ghi SQLite tại VU ${__VU}: HTTP ${checkoutRes.status}`);
+  } else {
+    const isOk = check(checkoutRes, {
+      '[Checkout] status 200': (r) => r.status === 200,
+    });
+    checkoutFailureRate.add(isOk ? 0 : 1);
+    if (isOk) successfulCheckouts.add(1);
+  }
+
+  // 4. My orders
+  http.get(`${BASE_URL}/api/orders/my-orders`, {
+    headers: authHeaders(),
+    tags: { endpoint: 'my_orders' },
+  });
+}
+
+// ------------------------------------------------------------- MAIN LOOP ---
+export default function (data) {
+  // Stagger startup ngẫu nhiên trong 3 giây
+  if (isFirstRun) {
+    sleep(Math.random() * 3);
+    isFirstRun = false;
+  }
+
+  // Mỗi VU lấy 1 tài khoản từ 101 user (vòng tròn modulo khi có 500 VUs)
+  if (!token) {
+    const user = users[(__VU - 1) % users.length];
+    loginVU(user.email, user.password);
+  }
+
+  const rand = Math.random();
+  if (rand < WORKLOAD_MIX.browse) {
+    actionSearch();
+  } else if (rand < WORKLOAD_MIX.browse + WORKLOAD_MIX.detail) {
+    actionProductDetail(data.products);
+  } else {
+    actionCheckoutFlow(data.products);
+  }
+
+  // Think time ngẫu nhiên 1 - 2.5 giây
+  sleep(Math.random() * 1.5 + 1);
+}
+````
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Kịch bản Spike Test được cấu hình theo 4 giai đoạn chuẩn (50 VUs 1m -> sốc 500 VUs 30s -> duy trì 500 VUs 2m -> phục hồi 1m30s). Thiết kế tích hợp bắt lỗi nghẽn khóa ghi SQLite (SQLITE_BUSY / HTTP 500) và custom metrics sqlite_lock_errors_total, spike_checkout_latency_ms để phục vụ phân tích Bottleneck.
+
+**(5) Bản sinh viên sửa:**
+
+````text
+File k6-eshop/spike_test.js đã được tạo hoàn chỉnh và sẵn sàng thực thi.
+````
+
+### Artifact A08 - Performance Testing / 1-Page SLO Report / Milestone M5
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 00:02 23/10/2026
+
+````text
+Lập Báo cáo SLO 1 trang (SLO_Report.md) tổng hợp số liệu thực nghiệm từ Baseline Load và Spike Test
+````
+
+**(2) Output AI**
+
+````text
+﻿# BÁO CÁO SLO 1 TRANG (1-PAGE SLO REPORT)
+## ĐỀ TÀI T05: PERFORMANCE TESTING – ESHOP SUT (NHÓM 07)
+
+* **Môn học:** Software Testing (CS423 / CSC15003) – Khoa CNTT, ĐHKHTN (FIT@HCMUS)
+* **Sinh viên phụ trách:** Trương Thành Phát (MSSV: 23120319) – Technical & AI Lead
+* **Công cụ thực nghiệm:** Grafana k6 v2.2.0 (Native Windows CLI)
+* **Hệ thống SUT:** EShop (Backend Node.js + SQLite tại `http://localhost:3000`)
+* **Ngày thực hiện:** 23/10/2026
+
+---
+
+## 1. Bảng Ma trận Thực thi Kiểm thử (Test Execution Matrix)
+
+| Kịch bản kiểm thử | Cấu hình Virtual Users (VUs) | Thời gian chạy | Tổng HTTP Requests | Tỷ lệ lỗi (Error Rate) | Tỷ lệ Checks đạt | Trạng thái |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **1. Smoke Test** | 1 VU | 1 phút | 8 reqs | **0.00%** | **100% (13/13)** | **PASS** |
+| **2. Baseline Load** | 50 VUs | 5 phút | 7,570 reqs | **0.00%** | **100% (14,807/14,807)** | **PASS** |
+| **3. Spike Test** | 50 $\rightarrow$ 500 VUs | 5 phút | 59,621 reqs | **0.00%** | **100% (52,090/52,090)** | **PASS** |
+
+---
+
+## 2. Bảng Đối chiếu Tiêu chuẩn SLO Cam kết (Đối chiếu bài Baseline 50 VUs)
+
+| Tiêu chuẩn SLO | Ngưỡng cam kết (Target SLO) | Kết quả đo thực tế (Actual) | Đánh giá | Ghi chú kỹ thuật |
+| :--- | :---: | :---: | :---: | :--- |
+| **Độ trễ phản hồi P95** | $\mathbf{< 500\text{ ms}}$ | **3.95 ms** | **PASS** | Vượt xa cam kết ($P95$ thực tế chỉ bằng $\approx 0.8\%$ mức trần cho phép). |
+| **Tỷ lệ lỗi HTTP** | $\mathbf{< 1.0\%}$ | **0.00%** (0 / 7,570 reqs) | **PASS** | 100% các request đều phản hồi HTTP 200 thành công. |
+| **Thông lượng (Throughput)** | $\mathbf{\ge 20\text{ req/s}}$ | **25.16 req/s** | **PASS** | Vượt mức thông lượng yêu cầu của bài toán EShop. |
+| **Tải vi xử lý (CPU Backend)** | $\mathbf{< 80\%}$ | **12% – 16%** | **PASS** | Tiến trình Node.js chạy êm ái trên máy chủ thử nghiệm. |
+| **Mức chiếm dụng RAM** | $\mathbf{< 300\text{ MB}}$ | **~87.4 MB** | **PASS** | Không phát hiện rò rỉ bộ nhớ (Memory Leak) trong suốt quá trình chạy. |
+
+---
+
+## 3. Bảng Chi tiết Hiệu năng theo từng API Endpoint (Baseline 50 VUs)
+
+*Tổng số đơn hàng đặt thành công:* **331 đơn hàng** (Tỷ lệ Checkout chuẩn: $5.1\%$).
+
+| Tên Endpoint | Phương thức | Số lượt gọi (Count) | P50 (ms) | P90 (ms) | P95 (ms) | P99 (ms) | Max (ms) | Tỷ lệ lỗi |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `POST /api/login` | `POST` | 50 | 1.9 ms | 3.2 ms | 3.2 ms | 17.8 ms | 18.2 ms | 0.00% |
+| `GET /api/products?search` | `GET` | 4,544 | 1.5 ms | 1.9 ms | 2.0 ms | 3.3 ms | 11.2 ms | 0.00% |
+| `GET /api/products/:id` | `GET` | 1,651 | 1.4 ms | 1.9 ms | 2.0 ms | 4.5 ms | 9.4 ms | 0.00% |
+| `POST /api/cart` | `POST` | 331 | 1.4 ms | 1.9 ms | 2.0 ms | 2.5 ms | 6.8 ms | 0.00% |
+| `POST /api/apply-coupon` | `POST` | 331 | 1.9 ms | 2.8 ms | 2.9 ms | 5.0 ms | 8.1 ms | 0.00% |
+| `POST /api/checkout` | `POST` | 331 | 5.0 ms | 10.4 ms | **13.6 ms** | **23.4 ms** | **30.5 ms** | 0.00% |
+| `GET /api/orders/my-orders` | `GET` | 331 | 1.6 ms | 2.5 ms | 2.7 ms | 4.1 ms | 7.9 ms | 0.00% |
+
+> **Nhận xét chuyên sâu:** Endpoint `POST /api/checkout` có độ trễ $P95 = 13.6\text{ ms}$ và $P99 = 23.4\text{ ms}$ (cao nhất trong toàn bộ 7 API). Điều này hoàn toàn khớp với dự đoán lý thuyết: Checkout là tác vụ **Ghi dữ liệu (Write operation)** xuống bảng `orders` của SQLite, đòi hỏi cơ chế đồng bộ ổ đĩa và khóa tệp, trong khi các API còn lại là tác vụ Đọc/Ghi bộ nhớ tạm (`SELECT` / In-memory cart).
+
+---
+
+## 4. Phân tích So sánh Năng lực Chịu tải: Baseline (50 VUs) vs Spike (500 VUs)
+
+| Chỉ số đo đạc | Baseline Load (50 VUs) | Spike Test (500 VUs) | Tỷ lệ tăng trưởng | Phân tích hành vi hệ thống |
+| :--- | :---: | :---: | :---: | :--- |
+| **Tổng số HTTP Requests** | 7,570 requests | **59,621 requests** | **$\times 7.9$ lần** | Hệ thống xử lý khối lượng request khổng lồ trong cùng 5 phút. |
+| **Thông lượng (Throughput)** | 25.16 req/s | **197.86 req/s** | **$\times 7.9$ lần** | Node.js Event-Driven thể hiện khả năng phục vụ non-blocking xuất sắc. |
+| **Độ trễ P95 toàn cục** | 3.95 ms | **4.12 ms** | $+4.3\%$ | Độ trễ hầu như không bị suy giảm đáng kể dù tải tăng gấp 10 lần. |
+| **Số đơn hàng tạo thành công** | 331 đơn hàng | **2,510 đơn hàng** | **$\times 7.6$ lần** | 2,510 đơn hàng được ghi thành công vào CSDL `database.sqlite`. |
+| **Tỷ lệ lỗi tổng thể** | 0.00% | **0.00%** | Giữ vững 0% | Hệ thống tự phục hồi hoàn toàn sau pha sốc tải đỉnh 500 VUs. |
+
+---
+
+## 5. Kết luận & Khuyến nghị Kiến trúc (Architectural Takeaways)
+
+1. **Kết luận Đánh giá SLO:** Hệ thống EShop **ĐẠT CHUẨN 100% (PASS)** đối với toàn bộ 5 tiêu chí SLO cam kết cho mốc Milestone M5.
+2. **Khuyến nghị cho môi trường Production:**
+   * Hiện tại, với SQLite trên ổ cứng SSD NVMe local, cơ chế hàng đợi bất đồng bộ của thư viện `sqlite3` trong Node.js đã xử lý tuần tự 2,510 lượt checkout mà không bị timeout.
+   * Tuy nhiên, trên môi trường Production thực tế với hàng nghìn người dùng phân tán và độ trễ mạng thực, **SQLite (single-file lock) sẽ trở thành điểm nghẽn nghiêm trọng (Single Point of Contention)**. Cần chuyển đổi sang hệ CSDL phân tán có hỗ trợ Connection Pooling như **PostgreSQL** kết hợp phân tách cơ chế Read Replica và Write Master.
+````
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Báo cáo SLO 1 trang được lập dựa trên số liệu thực nghiệm đo đạc từ file baseline_results.json (7,570 reqs, P95 3.95ms) và spike_results.json (59,621 reqs, 197.86 req/s). Đối chiếu đầy đủ 5 tiêu chuẩn SLO bắt buộc (P95 < 500ms, Error rate < 1%, Throughput >= 20, CPU < 80%, RAM < 300MB), phân tích chi tiết độ trễ 7 endpoint và đưa ra khuyến nghị kiến trúc SQLite vs PostgreSQL theo đúng chuẩn Milestone M5.
+
+**(5) Bản sinh viên sửa:**
+
+````text
+Báo cáo hoàn chỉnh đã được lưu tại k6-eshop/SLO_Report.md.
+````
+
 ## 4. Tổng kết độ chính xác AI
 
 | Chỉ số | Số lượng | Tỉ lệ |
 |---|---|---|
-| Tổng artifact AI sinh đã audit | 6 | 100% |
-| VALID (đúng, dùng nguyên) | 5 | 83% |
+| Tổng artifact AI sinh đã audit | 8 | 100% |
+| VALID (đúng, dùng nguyên) | 7 | 88% |
 | INVALID (sai; loại bỏ) | 0 | 0% |
-| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 17% |
+| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 12% |
 
 ## 5. Kết luận - Khi nào nên / không nên dùng AI?
 

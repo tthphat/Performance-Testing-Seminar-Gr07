@@ -216,3 +216,66 @@ Tiêu chuẩn đạt SLO:
 * Thông lượng (Throughput) $\ge 20\text{ req/s}$
 * CPU Backend $< 80\%$
 * RAM Backend $< 300\text{ MB}$
+
+---
+
+## 5. Kịch bản 3: Spike Test (`spike_test.js`)
+
+### 5.1. Bản chất và Mục tiêu của Spike Test (Kiểm thử sốc tải)
+
+Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** là bài kiểm tra độ đàn hồi (**Resilience & Recovery**) của hệ thống khi có một lượng truy cập khổng lồ ùa vào đột ngột trong thời gian rất ngắn (ví dụ: khoảnh khắc mở bán Flash Sale lúc 0h ngày Black Friday, hoặc khi một sự kiện khuyến mãi lớn vừa được công bố).
+
+#### **Mô hình 4 giai đoạn sốc tải (Tổng thời gian: 5 phút):**
+1. **Stage 1 (0:00 – 1:00):** Giữ **50 VUs** trong 1 phút (Mức tải nền ổn định thông thường).
+2. **Stage 2 (1:00 – 1:30):** Tăng vọt gấp 10 lần từ **50 lên 500 VUs** trong đúng 30 giây (Pha sốc tải đột biến).
+3. **Stage 3 (1:30 – 3:30):** Duy trì tải đỉnh **500 VUs** trong suốt 2 phút (Đo sức chịu đựng cực hạn).
+4. **Stage 4 (3:30 – 5:00):** Giảm tải nhanh về 0 và quan sát thời gian phục hồi (**Recovery Time**).
+
+---
+
+### 5.2. Tại sao cần tới 500+ tài khoản trong `users.csv`?
+
+* **Vấn đề xung đột nghiệp vụ:** Mã giảm giá `SAVE10` trên EShop có ràng buộc nghiệp vụ: `max_uses_per_user = 1` (mỗi người chỉ được dùng 1 lần).
+* Nếu chỉ có 100 tài khoản mà chạy 500 VUs: trung bình 5 VUs sẽ dùng chung 1 tài khoản. Khi VU đầu tiên dùng mã thành công, 4 VU còn lại sẽ bị báo lỗi `HTTP 400: Đã đạt giới hạn sử dụng mã`. Lỗi này là do **trùng tài khoản**, không phải do **hệ thống bị sập**.
+* **Giải pháp chuẩn:** Nạp đủ **601 tài khoản độc lập** vào CSDL và file `users.csv` để cấp phát theo tỷ lệ **1:1** (`VU 1` $\rightarrow$ `user1`, ..., `VU 500` $\rightarrow$ `user500`). Khi đó mọi áp lực và lỗi phát sinh đều phản ánh 100% năng lực chịu tải của phần cứng và CSDL.
+
+---
+
+### 5.3. Hiện tượng Thắt cổ chai SQLite (Lock Contention)
+
+* **Điểm yếu của SQLite:** SQLite là hệ CSDL dạng tệp đơn (single-file database). Khi có nhiều tiến trình cùng thực hiện câu lệnh ghi (`INSERT INTO orders` khi Checkout), SQLite phải áp dụng cơ chế khóa độc quyền (**Exclusive Lock**) trên toàn bộ tệp database.
+* **Cơ chế hoạt động dưới tải 500 VUs:**
+  * Thư viện `sqlite3` trong Node.js sử dụng một hàng đợi bất đồng bộ (internal async queue) để tuần tự hóa các câu lệnh ghi.
+  * Nếu tốc độ ghi của ổ cứng đủ nhanh, các câu lệnh sẽ được giải phóng kịp thời. Nhưng độ trễ của riêng endpoint `checkout` sẽ tăng vọt lên cao nhất trong toàn bộ các API (thực tế đo được: $P95 = 8.8\text{ ms}$, $P99 = 20.2\text{ ms}$, cao gấp 5 – 10 lần so với các API đọc `search` và `product_detail`).
+
+---
+
+### 5.4. Kết quả Thực nghiệm Thực tế đo được từ Spike Test (500 VUs)
+
+* **Tổng số requests xử lý:** **59,621 requests** (tăng gấp gần **8 lần** so với bài Baseline 50 VUs).
+* **Thông lượng đạt đỉnh (Peak Throughput):** **197.86 req/s** (gần 200 requests/giây).
+* **Số đơn hàng đặt thành công:** **2,510 đơn hàng** được ghi nhận thẳng vào CSDL.
+* **Độ trễ toàn cục P95:** **4.12 ms** (hệ thống phục hồi hoàn hảo sau pha sốc tải).
+* **Tỷ lệ lỗi HTTP:** **0.00%** (không có request nào bị timeout hay sập server).
+
+---
+
+## 6. Tổng kết: Báo cáo SLO và Vai trò của từng Kịch bản
+
+### 6.1. Báo cáo SLO là gì?
+* **SLO (Service Level Objective):** Là bản cam kết định lượng về chất lượng dịch vụ của hệ thống EShop.
+* Báo cáo SLO 1 trang đối chiếu 5 chỉ số cam kết:
+  1. $P95 < 500\text{ ms}$
+  2. Tỷ lệ lỗi $< 1\%$
+  3. Thông lượng $\ge 20\text{ req/s}$
+  4. CPU $< 80\%$
+  5. RAM $< 300\text{ MB}$
+
+### 6.2. Ma trận phối hợp giữa các kịch bản trong Báo cáo SLO
+
+| Kịch bản kiểm thử | Mức tải | Thời gian | Vai trò cốt lõi trong Báo cáo SLO |
+| :--- | :---: | :---: | :--- |
+| **Smoke Test** | 1 VU | 1 phút | **Điều kiện tiên quyết:** Kiểm tra thông suốt cả 7 API, $0\%$ lỗi khi không có tải. |
+| **Baseline Load** | 50 VUs | 5 phút | **Dữ liệu chính để kết luận Pass/Fail:** Đo đạc năng lực hệ thống ở mức tải chuẩn vận hành. |
+| **Spike Test** | 50 $\rightarrow$ 500 VUs | 5 phút | **Đo độ đàn hồi & Khả năng chịu sốc:** Đo lường ngưỡng chịu tải cực hạn và thời gian phục hồi (Recovery Time). |
+| **Endurance Test**| 50 VUs | 30 phút | **Đo độ bền:** Kiểm tra xem RAM có bị rò rỉ (Memory Leak) sau thời gian dài chạy liên tục hay không. |
