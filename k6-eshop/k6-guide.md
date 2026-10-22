@@ -300,3 +300,72 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
   ```bash
   k6 run -e ENDURANCE_DURATION=2m endurance_test.js
   ```
+
+---
+
+## 8. Bảng So sánh Tổng hợp Bộ 4 Kịch bản Kiểm thử Tải EShop
+
+| Tiêu chí | 1. Smoke Test | 2. Baseline Load Test | 3. Spike Test | 4. Endurance Test |
+| :--- | :--- | :--- | :--- | :--- |
+| **File script** | `smoke_test.js` | `baseline_load.js` | `spike_test.js` | `endurance_test.js` |
+| **Số lượng Virtual Users (VUs)** | 1 VU | 50 VUs | 50 $\rightarrow$ 500 VUs | 50 VUs |
+| **Tổng thời gian chạy** | 1 phút | 5 phút | 5 phút | 30 phút |
+| **Phân bổ tỷ lệ tải (Workload Mix)** | Chạy tuần tự 100% 7 bước | 70% Search, 25% Detail, 5% Checkout | 70% Search, 25% Detail, 5% Checkout | 90% Search, 10% Detail |
+| **Mục tiêu kỹ thuật cốt lõi** | Kiểm tra thông mạch 7 API, xác thực token | Đo đạc hiệu năng chuẩn để đối chiếu Pass/Fail SLO | Đo sức chịu sốc tải đỉnh và bắt lỗi khóa SQLite | Phát hiện rò rỉ bộ nhớ (Memory Leak) Node.js |
+| **Chỉ số trọng tâm** | Tỷ lệ Checks đạt 100%, 0% lỗi | Throughput $\ge 20$, $P95 < 500\text{ ms}$, Lỗi $< 1\%$ | Đỉnh Throughput (gần 200 req/s), Recovery Time | Xu hướng RAM ($< 300\text{ MB}$) và $P95$ ổn định |
+| **Lệnh chạy xuất dữ liệu** | `k6 run smoke_test.js` | `k6 run --out json=baseline_results.json baseline_load.js` | `k6 run --out json=spike_results.json spike_test.js` | `k6 run --out json=endurance_results.json endurance_test.js` |
+
+---
+
+## 9. Quy trình Kiểm thử Kết hợp AI (AI-Augmented Performance Testing Workflow)
+
+Đây là điểm nhấn quan trọng nhất trong vai trò **Technical & AI Lead** của Seminar Track. Quy trình kiểm thử kết hợp AI tuân thủ nghiêm ngặt 3 bước: **Prompting $\rightarrow$ Auditing $\rightarrow$ Refining**:
+
+```text
+[ File HAR / Log HTTP ] 
+       │
+       ▼ (1. Prompting)
+[ ChatGPT / Claude ] ──────► ai_generated_raw.js (Bản thô - Chứa lỗi ngầm định)
+                                  │
+                                  ▼ (2. Critical Auditing)
+[ Đối chiếu backend server.js ] ──► Phát hiện 4 lỗi ngầm định (Silent Assumptions)
+                                  │
+                                  ▼ (3. Human Refining)
+                             ai_audited_refined.js (Bản chuẩn hóa) ──► Tách thành 4 kịch bản test
+```
+
+### 9.1. Chi tiết 4 lỗi ngầm định (Silent Assumptions) phát hiện qua kiểm toán
+1. **Lỗi sai cấu trúc Payload (Payload Contract Mismatch):** AI sinh dữ liệu `POST /api/checkout` dạng camelCase (`shippingAddress`, thiếu `total_amount`), trong khi backend EShop đọc dạng snake_case (`total_amount`, `shipping_address`). Hậu quả: CSDL lưu giá trị `NULL`.
+2. **Lỗi logic gọi API dẫn đến 100% thất bại (Flawed Business Logic):** AI gọi `POST /api/apply-coupon` chỉ truyền `{ code: 'SAVE10' }` mà thiếu trường `total_amount`. Backend so sánh `undefined > min_order_amount` $\rightarrow$ luôn trả về HTTP 400.
+3. **Thiếu tính năng Data-Driven (Hardcoded Single User):** AI dùng chung 1 tài khoản `test@eshop.com` cho toàn bộ VUs, gây tranh chấp phiên và vi phạm ràng buộc mã giảm giá `max_uses_per_user = 1`.
+4. **Bỏ qua API nghiệp vụ quan trọng:** AI nhảy cóc từ xem chi tiết sản phẩm sang checkout mà bỏ qua API giỏ hàng `/api/cart`.
+
+---
+
+## 10. Các Chế độ Thất bại của Công cụ k6 (Failure Modes - Bắt buộc theo Rubric)
+
+Khi sử dụng k6, kỹ sư hiệu năng cần cảnh giác với **3 tình huống công cụ báo kết quả gây hiểu lầm hoặc sai lệch thực tế**:
+
+### Failure Mode 1: Hiện tượng VU Starvation / Coordinated Omission trong Closed Model (`ramping-vus`)
+* **Nguyên nhân (Trigger):** Backend EShop bị chậm do khóa ghi CSDL SQLite.
+* **Triệu chứng (Symptom):** Các Virtual Users bị kẹt chờ server phản hồi. Vì là mô hình vòng lặp đóng (Closed System), VU chưa nhận được phản hồi thì sẽ **không gửi tiếp request mới**.
+* **Hiểu lầm (Misleading):** k6 báo tỷ lệ lỗi HTTP rất thấp ($0\%$), người kiểm thử tưởng hệ thống vẫn ổn. Nhưng thực chất **thông lượng (Throughput) đã sụt giảm nghiêm trọng**, số lượng request phục vụ được giảm mạnh.
+* **Cách khắc phục (Mitigation):** Không chỉ nhìn vào Error Rate mà phải đối chiếu chặt chẽ với biểu đồ Throughput (`http_reqs`) và cân nhắc sử dụng executor dạng Open Model (`constant-arrival-rate`).
+
+### Failure Mode 2: Lỗi HTTP 200 giả tạo (Silent HTTP 200 / False Positives)
+* **Nguyên nhân (Trigger):** API backend trả về HTTP Status 200 nhưng nội dung bên trong body JSON lại là thông báo lỗi nghiệp vụ (ví dụ: `{"success": false, "message": "Sản phẩm đã hết hàng"}`).
+* **Triệu chứng (Symptom):** Script kiểm thử chỉ kiểm tra sơ sài `check(res, { 'status 200': (r) => r.status === 200 })`.
+* **Hiểu lầm (Misleading):** k6 báo Pass $100\%$, nhưng thực tế không có đơn hàng nào được tạo thành công trong cơ sở dữ liệu.
+* **Cách khắc phục (Mitigation):** Bắt buộc phải viết deep assertion kiểm tra nội dung JSON:
+  ```javascript
+  check(res, {
+    'status 200': (r) => r.status === 200,
+    'có orderId': (r) => r.json('orderId') !== undefined,
+  });
+  ```
+
+### Failure Mode 3: Nghẽn tài nguyên máy phát tải (Load Generator Resource / Port Exhaustion)
+* **Nguyên nhân (Trigger):** Chạy mức tải 500 VUs ngay trên cùng một máy tính cá nhân đang chạy Backend Node.js và SQLite.
+* **Triệu chứng (Symptom):** Hệ điều hành Windows bị quá tải CPU hoặc cạn kiệt cổng kết nối TCP tạm thời (Ephemeral Port Exhaustion / TIME_WAIT socket backlog).
+* **Hiểu lầm (Misleading):** Độ trễ $P95, P99$ tăng vọt lên hàng nghìn ms, người kiểm thử vội vàng kết luận do ứng dụng EShop bị chậm, nhưng thực tế là do **chính máy tính phát tải của bạn bị nghẽn phần cứng**.
+* **Cách khắc phục (Mitigation):** Bật Task Manager / Performance Monitor giám sát máy phát tải; cấu hình tăng giới hạn socket trên OS hoặc tách máy phát tải k6 sang một máy riêng biệt (Distributed Testing).
