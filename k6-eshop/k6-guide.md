@@ -279,3 +279,24 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 | **Baseline Load** | 50 VUs | 5 phút | **Dữ liệu chính để kết luận Pass/Fail:** Đo đạc năng lực hệ thống ở mức tải chuẩn vận hành. |
 | **Spike Test** | 50 $\rightarrow$ 500 VUs | 5 phút | **Đo độ đàn hồi & Khả năng chịu sốc:** Đo lường ngưỡng chịu tải cực hạn và thời gian phục hồi (Recovery Time). |
 | **Endurance Test**| 50 VUs | 30 phút | **Đo độ bền:** Kiểm tra xem RAM có bị rò rỉ (Memory Leak) sau thời gian dài chạy liên tục hay không. |
+
+---
+
+## 7. Kịch bản 4: Endurance Test (`endurance_test.js`)
+
+### 7.1. Bản chất và Mục tiêu của Endurance Test (Kiểm thử độ bền)
+* **Khái niệm:** Còn được gọi là **Soak Testing**, là bài kiểm tra hệ thống dưới mức tải trung bình cao (50 VUs) duy trì liên tục trong thời gian dài (30 phút).
+* **Mục tiêu chính:**
+  1. **Phát hiện rò rỉ bộ nhớ (Memory Leak):** Kiểm tra xem tiến trình Node.js và V8 Heap Engine có giải phóng bộ nhớ sau mỗi phiên làm việc hay không, hay RAM cứ phình to dần theo thời gian cho đến khi sập server (Out Of Memory - OOM).
+  2. **Đo độ thoái hóa hiệu năng (Performance Degradation):** Đảm bảo sau 30 phút chạy liên tục, độ trễ phản hồi ($P95$) không bị suy giảm (không bị chậm dần đều do nghẽn GC hoặc CSDL bị phình to).
+  3. **Phân bổ tải:** Tập trung vào các hành vi tra cứu dữ liệu liên tục ($90\%$ Tìm kiếm & $10\%$ Xem chi tiết) để kiểm tra độ bền vững của tầng truy vấn dữ liệu.
+
+### 7.2. Hướng dẫn thực thi:
+* **Chạy nghiệm thu đầy đủ 30 phút:**
+  ```bash
+  k6 run --out json=endurance_results.json endurance_test.js
+  ```
+* **Chạy thử nghiệm nhanh (ví dụ 2 phút):**
+  ```bash
+  k6 run -e ENDURANCE_DURATION=2m endurance_test.js
+  ```
