@@ -1,0 +1,8 @@
+<testsuite name="eshop.SmokeSimulation" tests="2" errors="0" failures="1" time="0">
+  <testcase name="Global: percentage of successful events is 100.0" status="false" time="0">
+  <failure type="Global: percentage of successful events is 100.0">Actual value: 85.71428571428571</failure>
+</testcase>
+<testcase name="Global: max of response time is less than 3000.0" status="true" time="0">
+  <system-out>Global: max of response time is less than 3000.0</system-out>
+</testcase>
+</testsuite>

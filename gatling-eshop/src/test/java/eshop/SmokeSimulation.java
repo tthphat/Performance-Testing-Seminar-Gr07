@@ -46,7 +46,7 @@ public class SmokeSimulation extends Simulation {
             http("2. GET /api/products?search=")
                 .get("/api/products?search=phone")
                 .check(status().is(200))
-                .check(jsonPath("$").isArray())
+                .check(jsonPath("$[*]").find().exists())
         )
         .pause(Duration.ofSeconds(1))
 
