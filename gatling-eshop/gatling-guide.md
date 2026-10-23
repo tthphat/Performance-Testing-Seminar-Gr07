@@ -233,12 +233,28 @@ Mô phỏng đợt mở bán chớp nhoáng (Flash Sale) để kiểm tra khả 
 
 ---
 
-## 5. Hướng dẫn Phân tích Báo cáo HTML của Gatling
+## 5. Hướng dẫn Xem và Phân tích Báo cáo Kết quả (Sau khi chạy test)
 
-Sau khi chạy xong, Gatling tự động xuất báo cáo HTML cực kỳ trực quan tại thư mục:
-`target/gatling/eshop-<simulation>-<timestamp>/index.html`
+### 5.1. Vị trí lưu trữ báo cáo
+Mỗi lần chạy kịch bản Gatling (qua file `.bat` hoặc lệnh `mvn gatling:test`), Gatling tự động thu thập metrics và biên dịch thành một thư mục báo cáo HTML tương tác độc lập tại:
+```text
+gatling-eshop/target/gatling/eshop-gatling-report-<timestamp>/index.html
+```
 
-### Các biểu đồ then chốt cần chú ý:
+### 5.2. Cách mở và xem báo cáo
+1. **Cách 1 - Mở bằng File Explorer (Trực quan nhất):**
+   - Vào thư mục `gatling-eshop/target/gatling/`.
+   - Chọn thư mục có mốc thời gian chạy mới nhất (ví dụ: `eshop-gatling-report-20261023...`).
+   - Nhấp đúp chuột vào file **`index.html`** để mở trên trình duyệt web (Chrome, Edge, Firefox).
+2. **Cách 2 - Mở nhanh bằng lệnh PowerShell:**
+   ```powershell
+   $latest = Get-ChildItem -Path "target\gatling" -Filter "index.html" -Recurse | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+   Start-Process $latest.FullName
+   ```
+
+---
+
+### 5.3. Các biểu đồ then chốt cần chú ý:
 1. **Response Time Distribution (Biểu đồ phân phối thời gian):**
    - Màu xanh lam: Các request có phản hồi nhanh (< 500ms - Đạt chuẩn SLO).
    - Màu vàng: Phản hồi chấp nhận được (500ms - 1000ms).
