@@ -11,7 +11,7 @@ CS423 / CSC13003 - Kiểm chứng Phần mềm (AI-augmented · 2026) - Biểu m
 | Lớp / Khoá | Seminar Nhom 07 |
 | Mã bài tập | Seminar-T05 Performance Testing |
 | Ngày làm bài | 22/10/2026 |
-| Công cụ AI đã dùng | Claude 3.7 Sonnet |
+| Công cụ AI đã dùng | Claude 3.7 Sonnet, Antigravity AI |
 | Có dùng AI | [x] Có [ ] Không |
 
 ## 2. Hướng dẫn
@@ -22,6 +22,9 @@ Mỗi artifact do AI sinh có một mục bên dưới, gồm: (1) prompt + côn
 | # | Bước | Công cụ | Verdict |
 |---|---|---|---|
 | A01 | Performance Testing / k6 Baseline Script / Milestone M4 | Claude 3.7 Sonnet | INCOMPLETE |
+| A02 | Performance Testing / Gatling Smoke Simulation / Milestone M5 | Antigravity AI | VALID |
+| A03 | Performance Testing / Gatling Baseline Load Simulation / Milestone M5 | Antigravity AI | VALID |
+| A04 | Performance Testing / Gatling Spike Simulation / Milestone M5 | Antigravity AI | VALID |
 
 ### Artifact A01 - Performance Testing / k6 Baseline Script / Milestone M4
 
@@ -222,14 +225,118 @@ export default function (data) {
 Sửa payload checkout thành { total_amount, shipping_address } và apply-coupon thành { code, total_amount, user_id }, bổ sung CSV data-driven và API giỏ hàng trong ai_audited_refined.js.
 ````
 
+---
+
+### Artifact A02 - Performance Testing / Gatling Smoke Simulation / Milestone M5
+
+**(1) Prompt + Công cụ** - Tool: Antigravity AI - Thời gian: 08:55 23/10/2026
+
+````text
+Tạo kịch bản Gatling Java SDK (SmokeSimulation.java) cho 1 VU chạy qua tất cả 7 API của EShop SUT (http://localhost:3000), có bóc tách JWT Bearer Token, kiểm tra JSONPath và Order ID.
+````
+
+**(2) Output AI**
+
+````java
+package eshop;
+
+import io.gatling.javaapi.core.*;
+import io.gatling.javaapi.http.*;
+import java.time.Duration;
+
+import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.http.HttpDsl.*;
+
+public class SmokeSimulation extends Simulation {
+    // 1 VU full journey with dynamic correlation & checks
+    // Full code in gatling-eshop/src/test/java/eshop/SmokeSimulation.java
+}
+````
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Mã nguồn tuân thủ chính xác chuẩn Gatling 3.10+ Java SDK. Bóc tách động Bearer token qua `jsonPath("$.token").saveAs("authToken")` và `orderId` tái sử dụng cho endpoint `/api/orders/my-orders`. Chuẩn hóa payload snake_case theo tài liệu API.
+
+**(5) Bản sinh viên sửa:** Giữ nguyên bản sinh và tích hợp vào dự án tại `gatling-eshop/src/test/java/eshop/SmokeSimulation.java`.
+
+---
+
+### Artifact A03 - Performance Testing / Gatling Baseline Load Simulation / Milestone M5
+
+**(1) Prompt + Công cụ** - Tool: Antigravity AI - Thời gian: 08:58 23/10/2026
+
+````text
+Xây dựng kịch bản Gatling BaselineLoadSimulation.java mô phỏng 50 VU trong 5 phút với tỷ lệ tải thực tế 70% browse, 25% detail, 5% checkout, sử dụng CSV Feeder và kiểm tra ngưỡng SLO P95 < 500ms, Error < 1%.
+````
+
+**(2) Output AI**
+
+````java
+package eshop;
+
+import io.gatling.javaapi.core.*;
+import io.gatling.javaapi.http.*;
+import java.time.Duration;
+
+import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.http.HttpDsl.*;
+
+public class BaselineLoadSimulation extends Simulation {
+    // 50 VUs, 5 minutes, randomSwitch() 70/25/5 workload distribution
+    // Full code in gatling-eshop/src/test/java/eshop/BaselineLoadSimulation.java
+}
+````
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Cài đặt đúng mô hình tải hỗn hợp (Realistic Mixed Workload) bằng `randomSwitch()` với trọng số `70.0`, `25.0`, `5.0`. Phân tách dữ liệu tài khoản bằng `csv("users.csv").circular()`. Đặt ngưỡng Assertions P95 < 500ms và error rate < 1.0% chuẩn ISO/IEC 25010 & ISTQB Performance Testing.
+
+**(5) Bản sinh viên sửa:** Giữ nguyên và lưu trữ tại `gatling-eshop/src/test/java/eshop/BaselineLoadSimulation.java`.
+
+---
+
+### Artifact A04 - Performance Testing / Gatling Spike Simulation / Milestone M5
+
+**(1) Prompt + Công cụ** - Tool: Antigravity AI - Thời gian: 09:00 23/10/2026
+
+````text
+Viết kịch bản Gatling SpikeSimulation.java mô phỏng Flash Sale, tăng đột biến từ 5 lên 120 VU/s trong 5 giây, duy trì 20 giây và hạ tải để đo lường độ chịu lỗi và phục hồi của SQLite.
+````
+
+**(2) Output AI**
+
+````java
+package eshop;
+
+import io.gatling.javaapi.core.*;
+import io.gatling.javaapi.http.*;
+import java.time.Duration;
+
+import static io.gatling.javaapi.core.CoreDsl.*;
+import static io.gatling.javaapi.http.HttpDsl.*;
+
+public class SpikeSimulation extends Simulation {
+    // 5 to 120 users/s open injection profile with cooldown observation
+    // Full code in gatling-eshop/src/test/java/eshop/SpikeSimulation.java
+}
+````
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Mô hình hóa chuẩn Open Workload Model (`injectOpen`) bằng chuỗi `constantUsersPerSec` -> `rampUsersPerSec` -> `constantUsersPerSec` -> `rampUsersPerSec` -> cooldown. Bắt các mã trạng thái `in(200, 500, 503)` nhằm phân tích khả năng chịu tải và thời gian hồi phục (System Recovery Time).
+
+**(5) Bản sinh viên sửa:** Giữ nguyên và lưu trữ tại `gatling-eshop/src/test/java/eshop/SpikeSimulation.java`.
+
+---
+
 ## 4. Tổng kết độ chính xác AI
 
 | Chỉ số | Số lượng | Tỉ lệ |
 |---|---|---|
-| Tổng artifact AI sinh đã audit | 1 | 100% |
-| VALID (đúng, dùng nguyên) | 0 | 0% |
+| Tổng artifact AI sinh đã audit | 4 | 100% |
+| VALID (đúng, dùng nguyên) | 3 | 75% |
 | INVALID (sai; loại bỏ) | 0 | 0% |
-| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 100% |
+| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 25% |
 
 ## 5. Kết luận - Khi nào nên / không nên dùng AI?
 
@@ -237,7 +344,7 @@ Sửa payload checkout thành { total_amount, shipping_address } và apply-coupo
 
 ## 6. Mandatory Disclosure
 
-> Test case / script / báo cáo này được sinh phiên bản đầu bởi Claude 3.7 Sonnet; tôi đã rà soát và chỉnh sửa [phần X], bổ sung [edge case Y, Z]; [phần W] do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
+> Test case / script / báo cáo này được sinh phiên bản đầu bởi Claude 3.7 Sonnet và Antigravity AI; tôi đã rà soát và chỉnh sửa [phần X], bổ sung [edge case Y, Z]; [phần W] do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
 
 <!-- SINH VIÊN điền [phần X], [Y, Z], [phần W] bằng nội dung thật; ký tên: -->
 
