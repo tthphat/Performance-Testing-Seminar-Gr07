@@ -369,3 +369,22 @@ Khi sử dụng k6, kỹ sư hiệu năng cần cảnh giác với **3 tình hu�
 * **Triệu chứng (Symptom):** Hệ điều hành Windows bị quá tải CPU hoặc cạn kiệt cổng kết nối TCP tạm thời (Ephemeral Port Exhaustion / TIME_WAIT socket backlog).
 * **Hiểu lầm (Misleading):** Độ trễ $P95, P99$ tăng vọt lên hàng nghìn ms, người kiểm thử vội vàng kết luận do ứng dụng EShop bị chậm, nhưng thực tế là do **chính máy tính phát tải của bạn bị nghẽn phần cứng**.
 * **Cách khắc phục (Mitigation):** Bật Task Manager / Performance Monitor giám sát máy phát tải; cấu hình tăng giới hạn socket trên OS hoặc tách máy phát tải k6 sang một máy riêng biệt (Distributed Testing).
+
+---
+
+## 11. Tại sao có 6 loại Performance Testing nhưng Đồ án lại chọn 4 dạng kịch bản?
+
+### 11.1. Bản chất 6 loại Performance Testing trong công nghiệp
+Mỗi loại kiểm thử hiệu năng nhằm giải quyết một **chiều kích Rủi ro (Specific Risk Dimension)** riêng biệt của doanh nghiệp:
+1. **Load Testing (Tải dự kiến):** Kiểm tra hệ thống vận hành ngày thường có đạt chuẩn cam kết SLO không ($P95 < 200\text{ms}$).
+2. **Stress Testing (Giới hạn chịu đựng):** Đẩy tải vượt ngưỡng để tìm điểm gãy (Breaking Point) và đánh giá cơ chế từ chối dịch vụ (Graceful Degradation vs Hard Crash).
+3. **Spike Testing (Biến động sốc tải):** Tải tăng vọt đột ngột trong thời gian ngắn (Flash Sale) rồi hạ xuống xem hệ thống có tự phục hồi không.
+4. **Endurance / Soak Testing (Độ bền thời gian):** Ngâm tải liên tục (30 phút - vài ngày) để phát hiện rò rỉ bộ nhớ (Memory Leak) hoặc cạn kiệt connection pool.
+5. **Volume Testing (Khối lượng dữ liệu):** Đo tốc độ truy vấn khi cơ sở dữ liệu phình to (hàng triệu bản ghi).
+6. **Scalability Testing (Khả năng mở rộng):** Đánh giá hiệu quả khi tăng CPU/RAM hoặc nhân bản Node/Cluster server.
+
+### 11.2. Lý do đồ án EShop chọn bộ 4 kịch bản (Smoke - Baseline - Spike - Endurance)
+1. **Spike Test 500 VUs kiêm nhiệm vai trò Stress Test:** Với EShop chạy SQLite, tải chuẩn ngày thường là 50 VUs. Khi tăng lên 500 VUs (gấp 10 lần tải chuẩn với 2,510 đơn hàng), đây đã chính là bài toán kiểm tra sức chịu đựng tối đa (Stress Test) của SQLite lock I/O và Node.js Event Loop.
+2. **Volume Testing thuộc phạm vi Database Benchmarking:** Kiểm thử Volume phụ thuộc vào kích thước dữ liệu bơm trong DB (hàng triệu records), trong khi đề tài Seminar tập trung chính vào công cụ k6 và mô phỏng hành vi truy cập người dùng (User Traffic Simulation).
+3. **Scalability Testing đòi hỏi hạ tầng đa Node (Cluster/Cloud):** Do SUT EShop đang chạy trên máy cục bộ (single node, SQLite file), không có Load Balancer (NGINX/K8s HPA) để kiểm chứng tỷ lệ scale tuyến tính.
+4. **Bộ khung vàng theo chuẩn Grafana k6 & Google SRE:** Bộ 4 kịch bản này là bộ khung khuyến nghị chuẩn mực vừa đủ bao quát kiểm thử logic, độ trễ, khả năng chịu sốc và rò rỉ bộ nhớ mà không bị loãng phạm vi.
