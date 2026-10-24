@@ -8,10 +8,11 @@ class EnduranceTestUser(EShopUser):
     tasks = {EShopUser.search: 9, EShopUser.detail: 1}
 
 
-# Replace inherited tasks, excluding checkout entirely.
+# Chỉ đọc dữ liệu với trọng số 90/10, loại checkout kế thừa.
 EnduranceTestUser.tasks = [EShopUser.search] * 9 + [EShopUser.detail]
 
 
 class EnduranceTestShape(LoadTestShape):
     def tick(self):
+        # Duy trì 50 VU trong 30 phút.
         return (50, 50) if self.get_run_time() < 1800 else None

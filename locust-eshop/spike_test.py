@@ -10,6 +10,7 @@ class SpikeTestUser(EShopUser):
 
 class SpikeTestShape(LoadTestShape):
     def tick(self):
+        # Giữ tải → tăng tải → tải đỉnh → giảm tải → quan sát phục hồi.
         t = self.get_run_time()
         if t < 60:
             return 50, 50
