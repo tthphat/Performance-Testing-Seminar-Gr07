@@ -388,3 +388,35 @@ Mỗi loại kiểm thử hiệu năng nhằm giải quyết một **chiều kí
 2. **Volume Testing thuộc phạm vi Database Benchmarking:** Kiểm thử Volume phụ thuộc vào kích thước dữ liệu bơm trong DB (hàng triệu records), trong khi đề tài Seminar tập trung chính vào công cụ k6 và mô phỏng hành vi truy cập người dùng (User Traffic Simulation).
 3. **Scalability Testing đòi hỏi hạ tầng đa Node (Cluster/Cloud):** Do SUT EShop đang chạy trên máy cục bộ (single node, SQLite file), không có Load Balancer (NGINX/K8s HPA) để kiểm chứng tỷ lệ scale tuyến tính.
 4. **Bộ khung vàng theo chuẩn Grafana k6 & Google SRE:** Bộ 4 kịch bản này là bộ khung khuyến nghị chuẩn mực vừa đủ bao quát kiểm thử logic, độ trễ, khả năng chịu sốc và rò rỉ bộ nhớ mà không bị loãng phạm vi.
+
+---
+
+## 12. Phân tích Chuyên sâu: Tại sao cả 4 Quá trình Kiểm thử đều đạt 0.00% Lỗi HTTP?
+
+Một câu hỏi mang tính phản biện cốt tử trong thực tế kiểm thử hiệu năng: *"Khi một hệ thống chịu áp lực tải lớn (hơn 110,000 requests với 500 VUs dồn dập trên SQLite), liệu con số 0.00% lỗi HTTP có phải là 'ảo' hoặc công cụ kiểm thử bỏ sót lỗi hay không?"*
+
+### 12.1. Thực tế: Hệ thống từng thất bại nặng nề (Hơn 108,000 lỗi HTTP 401/400)
+Con số 0.00% lỗi hoàn toàn không phải ngẫu nhiên hay do hệ thống "bất tử". Ở các vòng thử nghiệm ban đầu, hệ thống đã từng sụp đổ hàng loạt:
+* **Lần chạy với script AI thô:** 100% lỗi HTTP 400 ở `/api/apply-coupon` (thiếu `total_amount`), 100% lỗi HTTP 400 ở `/api/checkout` (sai chuẩn `camelCase`), 100% lỗi HTTP 401 (thiếu bóc tách JWT Token).
+* **Lần chạy dùng chung tài khoản:** Bị lỗi 400 từ chối mã giảm giá hàng loạt do vi phạm quy tắc `max_uses_per_user = 1`.
+* **Lần chạy khi chưa seed database:** Hơn 108,000 requests bị lỗi HTTP 401 trên cả 3 bài Baseline (52.86%), Spike (53.31%) và Endurance (49.49%) do tài khoản người dùng chưa được nạp vào SQLite.
+
+👉 **Kết luận:** Tỷ lệ lỗi 0.00% chỉ đạt được sau khi nhóm đã **kiểm toán toàn diện mã nguồn**, bóc tách token động và áp dụng **Data-driven cấp phát 601 tài khoản độc lập** qua `SharedArray`.
+
+### 12.2. Ba yếu tố kỹ thuật giúp Server không bị sập (Crash) ở mức tải 500 VUs
+1. **Mô hình Workload thực tế (95% Đọc - 5% Ghi):** Trong hơn 60,000 requests của bài Spike, hơn 57,000 requests là Tìm kiếm (`GET /api/products`) và Xem chi tiết. Thao tác Đọc trên SQLite sử dụng Shared Read Lock và được phục vụ tức thì từ bộ nhớ đệm RAM, không gây nghẽn máy chủ.
+2. **Lợi thế môi trường Localhost và ổ cứng SSD NVMe:** Toàn bộ quá trình test diễn ra nội bộ trên máy trạm với độ trễ mạng xấp xỉ 0ms (không có packet loss hay internet jitter). Ổ cứng SSD xử lý các câu lệnh INSERT chỉ trong vài mili-giây.
+3. **Cơ chế Hàng đợi Bất đồng bộ của Node.js:** Khi 500 VUs đồng loạt gửi yêu cầu đặt hàng, driver `sqlite3` trong Node.js tự động xếp các lệnh ghi vào hàng đợi trong bộ nhớ và tuần tự hóa xuống tệp `database.sqlite`. Thời gian chờ tối đa của đơn hàng lâu nhất chỉ là 70.5ms (còn rất xa ngưỡng timeout 5,000ms của SQLite), do đó không phát sinh lỗi khóa chết `SQLITE_BUSY`.
+
+### 12.3. Sự thật phía sau con số 0%: Điểm nghẽn tiềm ẩn bộc lộ ở phân vị P99 (Tail Latency)
+Mặc dù tỷ lệ lỗi HTTP là 0%, nhưng hệ thống đã **bộc lộ dấu hiệu suy giảm hiệu năng rõ rệt ở tầng cơ sở dữ liệu**:
+* **So sánh độ trễ API Đọc vs API Ghi:**
+  * Các API Đọc (`search`, `detail`): Giữ vững độ trễ siêu nhanh ($P95 \le 2.0\text{ms}$, $P99 \le 4.5\text{ms}$).
+  * API Ghi đơn hàng (`checkout`): Độ trễ ở bài Baseline là $P95 = 14.03\text{ms}$ ($P99 = 26.42\text{ms}$); khi sốc tải 500 VUs, độ trễ tăng vọt lên **$P95 = 34.78\text{ms}$**, **$P99 = 42.64\text{ms}$** và thời gian phản hồi tối đa chạm ngưỡng **$70.50\text{ms}$** (chậm gấp gần 10 lần các API đọc).
+* **Nguy cơ sụp đổ nếu tải tăng cao hơn (Breaking Point):**
+  * Con số 0% lỗi hiện tại đang nằm ngay sát mép giới hạn chịu đựng của SQLite.
+  * Nếu kịch bản được chuyển sang mô hình Flash Sale thực thụ (ví dụ 30% người mua hàng thay vì 5%), hoặc nâng quy mô tải lên 1,000 – 2,000 VUs, hàng đợi ghi của SQLite sẽ bị quá tải vượt mức 5 giây timeout, dẫn đến lỗi hàng loạt `SQLITE_BUSY: database is locked` và HTTP 500.
+
+### 12.4. Bài học cốt lõi cho Kỹ sư Hiệu năng (Performance Engineering Mindset)
+* Không được phép thỏa hiệp hay chủ quan khi thấy kết quả báo cáo "xanh mướt 0% lỗi".
+* Một kỹ sư hiệu năng giỏi phải biết nhìn vào **phân vị đuôi trễ ($P95, P99, Max$)** và **bản chất I/O của cơ sở dữ liệu** để nhận diện trước điểm gãy của hệ thống trước khi sự cố xảy ra trên môi trường Production.
