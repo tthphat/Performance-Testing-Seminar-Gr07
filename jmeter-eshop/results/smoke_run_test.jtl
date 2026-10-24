@@ -1,0 +1,8 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1792768978949,406,1. POST /api/login,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,635,285,1,1,http://localhost:3000/api/login,406,0,33
+1792768979403,4,2. GET /api/products?search=,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,453,352,1,1,http://localhost:3000/api/products?search=phone,4,0,0
+1792768979409,2,3. GET /api/products/:id,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,451,341,1,1,http://localhost:3000/api/products/1,2,0,0
+1792768979412,4,4. POST /api/cart,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,294,421,1,1,http://localhost:3000/api/cart,4,0,0
+1792768979417,5,5. POST /api/apply-coupon,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,400,417,1,1,http://localhost:3000/api/apply-coupon,5,0,0
+1792768979424,13,6. POST /api/checkout,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,312,435,1,1,http://localhost:3000/api/checkout,13,0,0
+1792768979438,4,7. GET /api/orders/my-orders,200,OK,Smoke Test Thread Group (1 VU) 1-1,text,true,,418,347,1,1,http://localhost:3000/api/orders/my-orders,4,0,0

@@ -1,0 +1,1310 @@
+2026-10-23 23:07:17,786 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-10-23 23:07:17,816 INFO o.a.j.JMeter: Loading user properties from: D:\JMeter\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\user.properties
+2026-10-23 23:07:17,817 INFO o.a.j.JMeter: Loading system properties from: D:\JMeter\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\system.properties
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: Version 5.6.3
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: java.version=23
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: os.name=Windows 11
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: os.arch=amd64
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: os.version=10.0
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-10-23 23:07:17,826 INFO o.a.j.JMeter: java.awt.headless=true
+2026-10-23 23:07:17,827 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-10-23 23:07:17,827 INFO o.a.j.JMeter: Available Processors =16
+2026-10-23 23:07:17,840 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-10-23 23:07:17,840 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-10-23 23:07:17,840 INFO o.a.j.JMeter: JMeterHome=D:\JMeter\apache-jmeter-5.6.3\apache-jmeter-5.6.3
+2026-10-23 23:07:17,841 INFO o.a.j.JMeter: user.dir  =D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop
+2026-10-23 23:07:17,841 INFO o.a.j.JMeter: PWD       =D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop
+2026-10-23 23:07:33,883 INFO o.a.j.JMeter: IP: 192.168.1.7 Name: DESKTOP-33CEPSM FullName: 192.168.1.7
+2026-10-23 23:07:33,924 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard'
+2026-10-23 23:07:33,928 INFO o.a.j.s.FileServer: Default base='D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop'
+2026-10-23 23:07:33,930 INFO o.a.j.s.FileServer: Set new base='D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop'
+2026-10-23 23:07:34,255 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-10-23 23:07:34,298 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-10-23 23:07:34,308 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-10-23 23:07:34,312 INFO o.a.j.s.SaveService: Loading file: spike_test.jmx
+2026-10-23 23:07:34,390 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-23 23:07:34,391 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-23 23:07:34,391 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-23 23:07:34,391 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-10-23 23:07:34,391 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-10-23 23:07:34,391 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-10-23 23:07:34,437 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-10-23 23:07:34,449 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2026-10-23 23:07:34,449 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: results/spike.jtl
+2026-10-23 23:07:34,449 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: D:\JMeter\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\reportgenerator.properties
+2026-10-23 23:07:34,453 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2026-10-23 23:07:34,453 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2026-10-23 23:07:34,460 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2026-10-23 23:07:34,461 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2026-10-23 23:07:34,461 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2026-10-23 23:07:34,461 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2026-10-23 23:07:34,461 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2026-10-23 23:07:34,462 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2026-10-23 23:07:34,462 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2026-10-23 23:07:34,462 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2026-10-23 23:07:34,466 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2026-10-23 23:07:34,491 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-10-23 23:07:34,491 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-10-23 23:07:34,491 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-10-23 23:07:34,498 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-10-23 23:07:34,498 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-10-23 23:07:34,607 INFO o.a.j.JMeter: Running test (1792771654607)
+2026-10-23 23:07:34,625 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : 1. Base Load (50 Threads - 240s)
+2026-10-23 23:07:34,625 INFO o.a.j.e.StandardJMeterEngine: Starting 50 threads for group 1. Base Load (50 Threads - 240s).
+2026-10-23 23:07:34,625 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-10-23 23:07:34,625 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=50 ramp-up=10 delayedStart=false
+2026-10-23 23:07:34,681 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-10-23 23:07:34,681 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : 2. Spike Surge (450 Threads - Peak at 500 VUs)
+2026-10-23 23:07:34,681 INFO o.a.j.e.StandardJMeterEngine: Starting 450 threads for group 2. Spike Surge (450 Threads - Peak at 500 VUs).
+2026-10-23 23:07:34,681 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-10-23 23:07:34,681 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=450 ramp-up=30 delayedStart=false
+2026-10-23 23:07:35,120 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-1
+2026-10-23 23:07:35,131 INFO o.a.j.s.FileServer: Stored: users.csv
+2026-10-23 23:07:35,164 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2026-10-23 23:07:35,164 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-10-23 23:07:35,318 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-2
+2026-10-23 23:07:35,518 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-3
+2026-10-23 23:07:35,616 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = DESKTOP-33CEPSM
+2026-10-23 23:07:35,641 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-10-23 23:07:35,644 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-10-23 23:07:35,645 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-10-23 23:07:35,645 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-10-23 23:07:35,645 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-10-23 23:07:35,715 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-4
+2026-10-23 23:07:35,914 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-5
+2026-10-23 23:07:36,112 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-6
+2026-10-23 23:07:36,313 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-7
+2026-10-23 23:07:36,478 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-8
+2026-10-23 23:07:36,711 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-9
+2026-10-23 23:07:36,906 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-10
+2026-10-23 23:07:37,105 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-11
+2026-10-23 23:07:37,300 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-12
+2026-10-23 23:07:37,500 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-13
+2026-10-23 23:07:37,699 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-14
+2026-10-23 23:07:37,874 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-15
+2026-10-23 23:07:38,098 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-16
+2026-10-23 23:07:38,294 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-17
+2026-10-23 23:07:38,493 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-18
+2026-10-23 23:07:38,692 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-19
+2026-10-23 23:07:38,891 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-20
+2026-10-23 23:07:39,094 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-21
+2026-10-23 23:07:39,293 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-22
+2026-10-23 23:07:39,489 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-23
+2026-10-23 23:07:39,691 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-24
+2026-10-23 23:07:39,865 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-25
+2026-10-23 23:07:40,091 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-26
+2026-10-23 23:07:40,287 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-27
+2026-10-23 23:07:40,490 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-28
+2026-10-23 23:07:40,685 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-29
+2026-10-23 23:07:40,886 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-30
+2026-10-23 23:07:41,083 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-31
+2026-10-23 23:07:41,283 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-32
+2026-10-23 23:07:41,480 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-33
+2026-10-23 23:07:41,682 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-34
+2026-10-23 23:07:41,855 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-35
+2026-10-23 23:07:42,088 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-36
+2026-10-23 23:07:42,277 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-37
+2026-10-23 23:07:42,480 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-38
+2026-10-23 23:07:42,679 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-39
+2026-10-23 23:07:42,874 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-40
+2026-10-23 23:07:43,072 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-41
+2026-10-23 23:07:43,275 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-42
+2026-10-23 23:07:43,476 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-43
+2026-10-23 23:07:43,671 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-44
+2026-10-23 23:07:43,870 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-45
+2026-10-23 23:07:44,072 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-46
+2026-10-23 23:07:44,268 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-47
+2026-10-23 23:07:44,471 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-48
+2026-10-23 23:07:44,667 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-49
+2026-10-23 23:07:44,869 INFO o.a.j.t.JMeterThread: Thread started: 1. Base Load (50 Threads - 240s) 1-50
+2026-10-23 23:08:00,138 INFO o.a.j.r.Summariser: summary +   3203 in 00:00:26 =  125.5/s Avg:     4 Min:     1 Max:   138 Err:   433 (13.52%) Active: 50 Started: 50 Finished: 0
+2026-10-23 23:08:30,010 INFO o.a.j.r.Summariser: summary +   4832 in 00:00:30 =  161.8/s Avg:     3 Min:     1 Max:    21 Err:   615 (12.73%) Active: 50 Started: 50 Finished: 0
+2026-10-23 23:08:30,012 INFO o.a.j.r.Summariser: summary =   8035 in 00:00:55 =  145.0/s Avg:     4 Min:     1 Max:   138 Err:  1048 (13.04%)
+2026-10-23 23:08:34,683 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-1
+2026-10-23 23:08:34,750 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-2
+2026-10-23 23:08:34,816 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-3
+2026-10-23 23:08:34,882 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-4
+2026-10-23 23:08:34,951 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-5
+2026-10-23 23:08:35,018 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-6
+2026-10-23 23:08:35,084 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-7
+2026-10-23 23:08:35,153 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-8
+2026-10-23 23:08:35,218 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-9
+2026-10-23 23:08:35,284 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-10
+2026-10-23 23:08:35,352 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-11
+2026-10-23 23:08:35,421 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-12
+2026-10-23 23:08:35,488 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-13
+2026-10-23 23:08:35,554 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-14
+2026-10-23 23:08:35,621 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-15
+2026-10-23 23:08:35,687 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-16
+2026-10-23 23:08:35,755 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-17
+2026-10-23 23:08:35,822 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-18
+2026-10-23 23:08:35,889 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-19
+2026-10-23 23:08:35,957 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-20
+2026-10-23 23:08:36,023 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-21
+2026-10-23 23:08:36,092 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-22
+2026-10-23 23:08:36,156 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-23
+2026-10-23 23:08:36,223 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-24
+2026-10-23 23:08:36,293 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-25
+2026-10-23 23:08:36,357 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-26
+2026-10-23 23:08:36,425 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-27
+2026-10-23 23:08:36,492 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-28
+2026-10-23 23:08:36,559 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-29
+2026-10-23 23:08:36,627 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-30
+2026-10-23 23:08:36,692 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-31
+2026-10-23 23:08:36,760 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-32
+2026-10-23 23:08:36,826 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-33
+2026-10-23 23:08:36,892 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-34
+2026-10-23 23:08:36,960 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-35
+2026-10-23 23:08:37,028 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-36
+2026-10-23 23:08:37,097 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-37
+2026-10-23 23:08:37,162 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-38
+2026-10-23 23:08:37,229 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-39
+2026-10-23 23:08:37,310 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-40
+2026-10-23 23:08:37,362 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-41
+2026-10-23 23:08:37,430 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-42
+2026-10-23 23:08:37,496 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-43
+2026-10-23 23:08:37,564 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-44
+2026-10-23 23:08:37,631 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-45
+2026-10-23 23:08:37,700 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-46
+2026-10-23 23:08:37,766 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-47
+2026-10-23 23:08:37,832 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-48
+2026-10-23 23:08:37,899 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-49
+2026-10-23 23:08:37,967 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-50
+2026-10-23 23:08:38,032 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-51
+2026-10-23 23:08:38,101 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-52
+2026-10-23 23:08:38,167 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-53
+2026-10-23 23:08:38,233 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-54
+2026-10-23 23:08:38,300 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-55
+2026-10-23 23:08:38,368 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-56
+2026-10-23 23:08:38,433 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-57
+2026-10-23 23:08:38,502 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-58
+2026-10-23 23:08:38,567 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-59
+2026-10-23 23:08:38,636 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-60
+2026-10-23 23:08:38,702 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-61
+2026-10-23 23:08:38,770 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-62
+2026-10-23 23:08:38,839 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-63
+2026-10-23 23:08:38,906 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-64
+2026-10-23 23:08:38,972 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-65
+2026-10-23 23:08:39,038 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-66
+2026-10-23 23:08:39,105 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-67
+2026-10-23 23:08:39,171 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-68
+2026-10-23 23:08:39,238 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-69
+2026-10-23 23:08:39,306 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-70
+2026-10-23 23:08:39,373 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-71
+2026-10-23 23:08:39,440 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-72
+2026-10-23 23:08:39,507 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-73
+2026-10-23 23:08:39,574 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-74
+2026-10-23 23:08:39,641 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-75
+2026-10-23 23:08:39,707 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-76
+2026-10-23 23:08:39,775 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-77
+2026-10-23 23:08:39,843 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-78
+2026-10-23 23:08:39,909 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-79
+2026-10-23 23:08:39,976 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-80
+2026-10-23 23:08:40,043 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-81
+2026-10-23 23:08:40,109 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-82
+2026-10-23 23:08:40,176 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-83
+2026-10-23 23:08:40,243 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-84
+2026-10-23 23:08:40,310 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-85
+2026-10-23 23:08:40,377 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-86
+2026-10-23 23:08:40,443 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-87
+2026-10-23 23:08:40,512 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-88
+2026-10-23 23:08:40,579 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-89
+2026-10-23 23:08:40,644 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-90
+2026-10-23 23:08:40,723 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-91
+2026-10-23 23:08:40,781 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-92
+2026-10-23 23:08:40,846 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-93
+2026-10-23 23:08:40,913 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-94
+2026-10-23 23:08:40,983 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-95
+2026-10-23 23:08:41,049 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-96
+2026-10-23 23:08:41,115 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-97
+2026-10-23 23:08:41,183 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-98
+2026-10-23 23:08:41,248 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-99
+2026-10-23 23:08:41,316 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-100
+2026-10-23 23:08:41,383 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-101
+2026-10-23 23:08:41,449 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-102
+2026-10-23 23:08:41,516 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-103
+2026-10-23 23:08:41,583 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-104
+2026-10-23 23:08:41,649 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-105
+2026-10-23 23:08:41,716 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-106
+2026-10-23 23:08:41,783 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-107
+2026-10-23 23:08:41,851 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-108
+2026-10-23 23:08:41,919 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-109
+2026-10-23 23:08:41,986 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-110
+2026-10-23 23:08:42,054 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-111
+2026-10-23 23:08:42,121 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-112
+2026-10-23 23:08:42,188 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-113
+2026-10-23 23:08:42,253 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-114
+2026-10-23 23:08:42,328 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-115
+2026-10-23 23:08:42,391 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-116
+2026-10-23 23:08:42,453 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-117
+2026-10-23 23:08:42,522 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-118
+2026-10-23 23:08:42,591 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-119
+2026-10-23 23:08:42,657 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-120
+2026-10-23 23:08:42,723 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-121
+2026-10-23 23:08:42,790 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-122
+2026-10-23 23:08:42,856 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-123
+2026-10-23 23:08:42,925 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-124
+2026-10-23 23:08:42,991 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-125
+2026-10-23 23:08:43,058 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-126
+2026-10-23 23:08:43,128 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-127
+2026-10-23 23:08:43,193 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-128
+2026-10-23 23:08:43,259 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-129
+2026-10-23 23:08:43,326 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-130
+2026-10-23 23:08:43,393 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-131
+2026-10-23 23:08:43,459 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-132
+2026-10-23 23:08:43,526 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-133
+2026-10-23 23:08:43,593 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-134
+2026-10-23 23:08:43,660 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-135
+2026-10-23 23:08:43,728 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-136
+2026-10-23 23:08:43,795 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-137
+2026-10-23 23:08:43,861 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-138
+2026-10-23 23:08:43,930 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-139
+2026-10-23 23:08:43,996 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-140
+2026-10-23 23:08:44,063 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-141
+2026-10-23 23:08:44,131 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-142
+2026-10-23 23:08:44,197 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-143
+2026-10-23 23:08:44,266 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-144
+2026-10-23 23:08:44,332 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-145
+2026-10-23 23:08:44,397 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-146
+2026-10-23 23:08:44,464 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-147
+2026-10-23 23:08:44,532 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-148
+2026-10-23 23:08:44,598 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-149
+2026-10-23 23:08:44,668 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-150
+2026-10-23 23:08:44,733 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-151
+2026-10-23 23:08:44,799 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-152
+2026-10-23 23:08:44,868 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-153
+2026-10-23 23:08:44,932 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-154
+2026-10-23 23:08:45,002 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-155
+2026-10-23 23:08:45,067 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-156
+2026-10-23 23:08:45,135 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-157
+2026-10-23 23:08:45,201 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-158
+2026-10-23 23:08:45,269 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-159
+2026-10-23 23:08:45,336 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-160
+2026-10-23 23:08:45,402 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-161
+2026-10-23 23:08:45,470 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-162
+2026-10-23 23:08:45,535 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-163
+2026-10-23 23:08:45,603 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-164
+2026-10-23 23:08:45,669 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-165
+2026-10-23 23:08:45,737 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-166
+2026-10-23 23:08:45,804 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-167
+2026-10-23 23:08:45,871 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-168
+2026-10-23 23:08:45,938 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-169
+2026-10-23 23:08:46,006 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-170
+2026-10-23 23:08:46,073 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-171
+2026-10-23 23:08:46,138 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-172
+2026-10-23 23:08:46,206 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-173
+2026-10-23 23:08:46,273 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-174
+2026-10-23 23:08:46,340 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-175
+2026-10-23 23:08:46,407 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-176
+2026-10-23 23:08:46,474 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-177
+2026-10-23 23:08:46,541 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-178
+2026-10-23 23:08:46,609 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-179
+2026-10-23 23:08:46,677 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-180
+2026-10-23 23:08:46,743 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-181
+2026-10-23 23:08:46,810 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-182
+2026-10-23 23:08:46,877 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-183
+2026-10-23 23:08:46,944 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-184
+2026-10-23 23:08:47,011 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-185
+2026-10-23 23:08:47,079 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-186
+2026-10-23 23:08:47,146 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-187
+2026-10-23 23:08:47,213 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-188
+2026-10-23 23:08:47,281 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-189
+2026-10-23 23:08:47,347 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-190
+2026-10-23 23:08:47,413 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-191
+2026-10-23 23:08:47,480 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-192
+2026-10-23 23:08:47,549 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-193
+2026-10-23 23:08:47,616 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-194
+2026-10-23 23:08:47,681 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-195
+2026-10-23 23:08:47,749 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-196
+2026-10-23 23:08:47,814 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-197
+2026-10-23 23:08:47,885 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-198
+2026-10-23 23:08:47,949 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-199
+2026-10-23 23:08:48,015 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-200
+2026-10-23 23:08:48,082 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-201
+2026-10-23 23:08:48,148 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-202
+2026-10-23 23:08:48,217 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-203
+2026-10-23 23:08:48,286 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-204
+2026-10-23 23:08:48,351 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-205
+2026-10-23 23:08:48,417 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-206
+2026-10-23 23:08:48,484 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-207
+2026-10-23 23:08:48,554 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-208
+2026-10-23 23:08:48,618 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-209
+2026-10-23 23:08:48,686 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-210
+2026-10-23 23:08:48,753 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-211
+2026-10-23 23:08:48,820 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-212
+2026-10-23 23:08:48,885 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-213
+2026-10-23 23:08:48,956 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-214
+2026-10-23 23:08:49,022 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-215
+2026-10-23 23:08:49,087 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-216
+2026-10-23 23:08:49,156 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-217
+2026-10-23 23:08:49,222 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-218
+2026-10-23 23:08:49,288 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-219
+2026-10-23 23:08:49,356 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-220
+2026-10-23 23:08:49,423 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-221
+2026-10-23 23:08:49,491 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-222
+2026-10-23 23:08:49,559 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-223
+2026-10-23 23:08:49,624 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-224
+2026-10-23 23:08:49,693 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-225
+2026-10-23 23:08:49,758 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-226
+2026-10-23 23:08:49,824 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-227
+2026-10-23 23:08:49,891 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-228
+2026-10-23 23:08:49,963 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-229
+2026-10-23 23:08:50,025 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-230
+2026-10-23 23:08:50,095 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-231
+2026-10-23 23:08:50,162 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-232
+2026-10-23 23:08:50,229 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-233
+2026-10-23 23:08:50,295 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-234
+2026-10-23 23:08:50,361 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-235
+2026-10-23 23:08:50,428 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-236
+2026-10-23 23:08:50,496 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-237
+2026-10-23 23:08:50,564 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-238
+2026-10-23 23:08:50,631 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-239
+2026-10-23 23:08:50,696 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-240
+2026-10-23 23:08:50,762 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-241
+2026-10-23 23:08:50,831 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-242
+2026-10-23 23:08:50,898 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-243
+2026-10-23 23:08:50,965 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-244
+2026-10-23 23:08:51,031 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-245
+2026-10-23 23:08:51,097 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-246
+2026-10-23 23:08:51,165 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-247
+2026-10-23 23:08:51,232 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-248
+2026-10-23 23:08:51,298 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-249
+2026-10-23 23:08:51,366 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-250
+2026-10-23 23:08:51,433 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-251
+2026-10-23 23:08:51,501 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-252
+2026-10-23 23:08:51,567 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-253
+2026-10-23 23:08:51,634 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-254
+2026-10-23 23:08:51,703 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-255
+2026-10-23 23:08:51,767 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-256
+2026-10-23 23:08:51,833 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-257
+2026-10-23 23:08:51,903 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-258
+2026-10-23 23:08:51,971 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-259
+2026-10-23 23:08:52,037 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-260
+2026-10-23 23:08:52,104 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-261
+2026-10-23 23:08:52,170 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-262
+2026-10-23 23:08:52,237 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-263
+2026-10-23 23:08:52,303 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-264
+2026-10-23 23:08:52,370 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-265
+2026-10-23 23:08:52,436 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-266
+2026-10-23 23:08:52,504 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-267
+2026-10-23 23:08:52,573 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-268
+2026-10-23 23:08:52,639 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-269
+2026-10-23 23:08:52,706 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-270
+2026-10-23 23:08:52,772 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-271
+2026-10-23 23:08:52,841 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-272
+2026-10-23 23:08:52,906 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-273
+2026-10-23 23:08:52,973 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-274
+2026-10-23 23:08:53,039 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-275
+2026-10-23 23:08:53,108 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-276
+2026-10-23 23:08:53,176 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-277
+2026-10-23 23:08:53,240 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-278
+2026-10-23 23:08:53,307 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-279
+2026-10-23 23:08:53,374 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-280
+2026-10-23 23:08:53,441 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-281
+2026-10-23 23:08:53,508 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-282
+2026-10-23 23:08:53,575 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-283
+2026-10-23 23:08:53,645 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-284
+2026-10-23 23:08:53,712 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-285
+2026-10-23 23:08:53,779 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-286
+2026-10-23 23:08:53,845 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-287
+2026-10-23 23:08:53,912 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-288
+2026-10-23 23:08:53,979 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-289
+2026-10-23 23:08:54,045 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-290
+2026-10-23 23:08:54,111 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-291
+2026-10-23 23:08:54,178 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-292
+2026-10-23 23:08:54,248 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-293
+2026-10-23 23:08:54,312 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-294
+2026-10-23 23:08:54,382 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-295
+2026-10-23 23:08:54,449 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-296
+2026-10-23 23:08:54,514 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-297
+2026-10-23 23:08:54,581 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-298
+2026-10-23 23:08:54,648 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-299
+2026-10-23 23:08:54,717 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-300
+2026-10-23 23:08:54,783 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-301
+2026-10-23 23:08:54,850 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-302
+2026-10-23 23:08:54,917 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-303
+2026-10-23 23:08:54,983 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-304
+2026-10-23 23:08:55,051 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-305
+2026-10-23 23:08:55,118 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-306
+2026-10-23 23:08:55,185 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-307
+2026-10-23 23:08:55,253 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-308
+2026-10-23 23:08:55,319 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-309
+2026-10-23 23:08:55,386 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-310
+2026-10-23 23:08:55,452 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-311
+2026-10-23 23:08:55,520 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-312
+2026-10-23 23:08:55,587 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-313
+2026-10-23 23:08:55,653 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-314
+2026-10-23 23:08:55,720 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-315
+2026-10-23 23:08:55,788 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-316
+2026-10-23 23:08:55,854 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-317
+2026-10-23 23:08:55,925 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-318
+2026-10-23 23:08:55,988 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-319
+2026-10-23 23:08:56,056 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-320
+2026-10-23 23:08:56,121 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-321
+2026-10-23 23:08:56,189 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-322
+2026-10-23 23:08:56,255 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-323
+2026-10-23 23:08:56,324 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-324
+2026-10-23 23:08:56,398 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-325
+2026-10-23 23:08:56,458 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-326
+2026-10-23 23:08:56,524 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-327
+2026-10-23 23:08:56,593 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-328
+2026-10-23 23:08:56,659 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-329
+2026-10-23 23:08:56,727 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-330
+2026-10-23 23:08:56,791 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-331
+2026-10-23 23:08:56,865 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-332
+2026-10-23 23:08:56,928 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-333
+2026-10-23 23:08:57,007 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-334
+2026-10-23 23:08:57,060 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-335
+2026-10-23 23:08:57,127 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-336
+2026-10-23 23:08:57,198 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-337
+2026-10-23 23:08:57,262 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-338
+2026-10-23 23:08:57,368 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-339
+2026-10-23 23:08:57,395 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-340
+2026-10-23 23:08:57,464 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-341
+2026-10-23 23:08:57,532 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-342
+2026-10-23 23:08:57,595 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-343
+2026-10-23 23:08:57,665 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-344
+2026-10-23 23:08:57,731 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-345
+2026-10-23 23:08:57,812 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-346
+2026-10-23 23:08:57,869 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-347
+2026-10-23 23:08:57,932 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-348
+2026-10-23 23:08:57,999 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-349
+2026-10-23 23:08:58,112 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-350
+2026-10-23 23:08:58,138 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-351
+2026-10-23 23:08:58,204 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-352
+2026-10-23 23:08:58,271 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-353
+2026-10-23 23:08:58,340 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-354
+2026-10-23 23:08:58,402 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-355
+2026-10-23 23:08:58,473 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-356
+2026-10-23 23:08:58,540 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-357
+2026-10-23 23:08:58,606 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-358
+2026-10-23 23:08:58,673 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-359
+2026-10-23 23:08:58,740 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-360
+2026-10-23 23:08:58,808 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-361
+2026-10-23 23:08:58,875 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-362
+2026-10-23 23:08:58,963 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-363
+2026-10-23 23:08:59,003 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-364
+2026-10-23 23:08:59,076 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-365
+2026-10-23 23:08:59,143 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-366
+2026-10-23 23:08:59,257 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-367
+2026-10-23 23:08:59,278 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-368
+2026-10-23 23:08:59,344 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-369
+2026-10-23 23:08:59,411 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-370
+2026-10-23 23:08:59,478 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-371
+2026-10-23 23:08:59,541 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-372
+2026-10-23 23:08:59,610 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-373
+2026-10-23 23:08:59,678 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-374
+2026-10-23 23:08:59,746 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-375
+2026-10-23 23:08:59,824 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-376
+2026-10-23 23:08:59,879 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-377
+2026-10-23 23:08:59,941 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-378
+2026-10-23 23:09:00,003 INFO o.a.j.r.Summariser: summary +  19655 in 00:00:30 =  655.3/s Avg:    13 Min:     0 Max:   145 Err:  5739 (29.20%) Active: 428 Started: 428 Finished: 0
+2026-10-23 23:09:00,004 INFO o.a.j.r.Summariser: summary =  27690 in 00:01:25 =  324.3/s Avg:    10 Min:     0 Max:   145 Err:  6787 (24.51%)
+2026-10-23 23:09:00,008 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-379
+2026-10-23 23:09:00,098 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-380
+2026-10-23 23:09:00,142 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-381
+2026-10-23 23:09:00,210 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-382
+2026-10-23 23:09:00,279 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-383
+2026-10-23 23:09:00,343 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-384
+2026-10-23 23:09:00,412 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-385
+2026-10-23 23:09:00,479 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-386
+2026-10-23 23:09:00,604 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-387
+2026-10-23 23:09:00,612 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-388
+2026-10-23 23:09:00,679 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-389
+2026-10-23 23:09:00,747 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-390
+2026-10-23 23:09:00,819 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-391
+2026-10-23 23:09:00,880 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-392
+2026-10-23 23:09:00,948 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-393
+2026-10-23 23:09:01,025 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-394
+2026-10-23 23:09:01,079 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-395
+2026-10-23 23:09:01,156 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-396
+2026-10-23 23:09:01,216 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-397
+2026-10-23 23:09:01,284 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-398
+2026-10-23 23:09:01,402 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-399
+2026-10-23 23:09:01,455 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-400
+2026-10-23 23:09:01,491 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-401
+2026-10-23 23:09:01,550 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-402
+2026-10-23 23:09:01,617 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-403
+2026-10-23 23:09:01,684 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-404
+2026-10-23 23:09:01,751 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-405
+2026-10-23 23:09:01,848 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-406
+2026-10-23 23:09:01,922 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-407
+2026-10-23 23:09:01,952 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-408
+2026-10-23 23:09:02,020 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-409
+2026-10-23 23:09:02,084 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-410
+2026-10-23 23:09:02,152 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-411
+2026-10-23 23:09:02,219 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-412
+2026-10-23 23:09:02,304 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-413
+2026-10-23 23:09:02,377 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-414
+2026-10-23 23:09:02,421 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-415
+2026-10-23 23:09:02,488 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-416
+2026-10-23 23:09:02,554 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-417
+2026-10-23 23:09:02,622 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-418
+2026-10-23 23:09:02,689 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-419
+2026-10-23 23:09:02,822 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-421
+2026-10-23 23:09:02,830 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-420
+2026-10-23 23:09:02,891 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-422
+2026-10-23 23:09:02,958 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-423
+2026-10-23 23:09:03,024 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-424
+2026-10-23 23:09:03,092 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-425
+2026-10-23 23:09:03,159 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-426
+2026-10-23 23:09:03,247 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-427
+2026-10-23 23:09:03,375 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-429
+2026-10-23 23:09:03,376 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-428
+2026-10-23 23:09:03,426 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-430
+2026-10-23 23:09:03,493 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-431
+2026-10-23 23:09:03,560 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-432
+2026-10-23 23:09:03,627 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-433
+2026-10-23 23:09:03,801 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-434
+2026-10-23 23:09:03,801 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-435
+2026-10-23 23:09:03,828 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-436
+2026-10-23 23:09:03,895 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-437
+2026-10-23 23:09:03,962 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-438
+2026-10-23 23:09:04,029 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-439
+2026-10-23 23:09:04,095 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-440
+2026-10-23 23:09:04,172 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-441
+2026-10-23 23:09:04,232 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-442
+2026-10-23 23:09:04,352 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-443
+2026-10-23 23:09:04,365 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-444
+2026-10-23 23:09:04,432 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-445
+2026-10-23 23:09:04,500 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-446
+2026-10-23 23:09:04,565 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-447
+2026-10-23 23:09:04,633 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-448
+2026-10-23 23:09:04,706 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-449
+2026-10-23 23:09:04,842 INFO o.a.j.t.JMeterThread: Thread started: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-450
+2026-10-23 23:09:30,025 INFO o.a.j.r.Summariser: summary +  30909 in 00:00:30 = 1029.5/s Avg:   153 Min:     1 Max:   212 Err: 30901 (99.97%) Active: 500 Started: 500 Finished: 0
+2026-10-23 23:09:30,026 INFO o.a.j.r.Summariser: summary =  58599 in 00:01:55 =  507.7/s Avg:    85 Min:     0 Max:   212 Err: 37688 (64.32%)
+2026-10-23 23:10:00,026 INFO o.a.j.r.Summariser: summary +  30858 in 00:00:30 = 1028.6/s Avg:   157 Min:     1 Max:   243 Err: 29341 (95.08%) Active: 500 Started: 500 Finished: 0
+2026-10-23 23:10:00,026 INFO o.a.j.r.Summariser: summary =  89457 in 00:02:25 =  615.2/s Avg:   110 Min:     0 Max:   243 Err: 67029 (74.93%)
+2026-10-23 23:10:30,012 INFO o.a.j.r.Summariser: summary +  29786 in 00:00:30 =  993.3/s Avg:   166 Min:     1 Max:   257 Err: 26922 (90.38%) Active: 500 Started: 500 Finished: 0
+2026-10-23 23:10:30,015 INFO o.a.j.r.Summariser: summary = 119243 in 00:02:55 =  679.8/s Avg:   124 Min:     0 Max:   257 Err: 93951 (78.79%)
+2026-10-23 23:11:00,103 INFO o.a.j.r.Summariser: summary +  33236 in 00:00:30 = 1104.6/s Avg:   133 Min:     1 Max:   563 Err: 22880 (68.84%) Active: 500 Started: 500 Finished: 0
+2026-10-23 23:11:00,103 INFO o.a.j.r.Summariser: summary = 152479 in 00:03:25 =  742.0/s Avg:   126 Min:     0 Max:   563 Err: 116831 (76.62%)
+2026-10-23 23:11:04,449 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-27
+2026-10-23 23:11:04,449 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-7
+2026-10-23 23:11:04,450 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-42
+2026-10-23 23:11:04,450 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-54
+2026-10-23 23:11:04,450 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-57
+2026-10-23 23:11:04,451 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-60
+2026-10-23 23:11:04,451 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-40
+2026-10-23 23:11:04,451 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-28
+2026-10-23 23:11:04,452 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-72
+2026-10-23 23:11:04,452 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-75
+2026-10-23 23:11:04,453 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-11
+2026-10-23 23:11:04,453 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-79
+2026-10-23 23:11:04,453 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-61
+2026-10-23 23:11:04,454 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-23
+2026-10-23 23:11:04,454 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-55
+2026-10-23 23:11:04,454 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-71
+2026-10-23 23:11:04,455 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-41
+2026-10-23 23:11:04,455 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-25
+2026-10-23 23:11:04,455 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-13
+2026-10-23 23:11:04,455 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-6
+2026-10-23 23:11:04,455 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-12
+2026-10-23 23:11:04,455 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-43
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-73
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-34
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-39
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-32
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-1
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-18
+2026-10-23 23:11:04,456 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-16
+2026-10-23 23:11:04,457 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-3
+2026-10-23 23:11:04,457 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-83
+2026-10-23 23:11:04,457 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-64
+2026-10-23 23:11:04,457 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-5
+2026-10-23 23:11:04,457 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-30
+2026-10-23 23:11:04,458 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-80
+2026-10-23 23:11:04,458 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-68
+2026-10-23 23:11:04,458 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-62
+2026-10-23 23:11:04,458 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-37
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-81
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-63
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-4
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-46
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-2
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-49
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-33
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-20
+2026-10-23 23:11:04,459 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-48
+2026-10-23 23:11:04,460 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-82
+2026-10-23 23:11:04,460 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-10
+2026-10-23 23:11:04,460 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-19
+2026-10-23 23:11:04,460 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-21
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-66
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-44
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-22
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-9
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-38
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-70
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-88
+2026-10-23 23:11:04,461 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-24
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-74
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-76
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-85
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-92
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-26
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-59
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-56
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-8
+2026-10-23 23:11:04,462 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-67
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-31
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-78
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-35
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-53
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-15
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-14
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-50
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-65
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-47
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-77
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-17
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-36
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-45
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-51
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-87
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-52
+2026-10-23 23:11:04,463 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-29
+2026-10-23 23:11:04,561 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-110
+2026-10-23 23:11:04,577 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-58
+2026-10-23 23:11:04,640 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-69
+2026-10-23 23:11:04,719 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-250
+2026-10-23 23:11:04,797 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-184
+2026-10-23 23:11:04,871 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-277
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-345
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-144
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-279
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-446
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-173
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-144
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-192
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-192
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-206
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-173
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-206
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-384
+2026-10-23 23:11:04,898 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-385
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-283
+2026-10-23 23:11:04,900 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-439
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-313
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-230
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-330
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-421
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-394
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-344
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-232
+2026-10-23 23:11:04,904 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-450
+2026-10-23 23:11:04,906 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-430
+2026-10-23 23:11:04,907 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-440
+2026-10-23 23:11:04,907 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-247
+2026-10-23 23:11:04,907 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-164
+2026-10-23 23:11:04,907 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-164
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-276
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-371
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-98
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-98
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-340
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-355
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-117
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-117
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-246
+2026-10-23 23:11:04,908 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-431
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-414
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-416
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-333
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-342
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-151
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-326
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-151
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-426
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-216
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-216
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-166
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-166
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-233
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-233
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-124
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-124
+2026-10-23 23:11:04,909 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-407
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-168
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-155
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-390
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-168
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-155
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-268
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-297
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-234
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-282
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-234
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-362
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-204
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-406
+2026-10-23 23:11:04,911 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-204
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-263
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-278
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-185
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-199
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-185
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-199
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-360
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-183
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-183
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-437
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-438
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-331
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-328
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-309
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-425
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-357
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-214
+2026-10-23 23:11:04,912 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-327
+2026-10-23 23:11:04,913 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-393
+2026-10-23 23:11:04,913 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-214
+2026-10-23 23:11:04,913 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-89
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-424
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-89
+2026-10-23 23:11:04,913 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-248
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-245
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-249
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-86
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-444
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-391
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-86
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-105
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-105
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-235
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-235
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-128
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-128
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-303
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-405
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-229
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-229
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-140
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-201
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-201
+2026-10-23 23:11:04,914 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-140
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-410
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-299
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-102
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-102
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-200
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-311
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-118
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-380
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-203
+2026-10-23 23:11:04,915 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-200
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-118
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-203
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-341
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-150
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-150
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-120
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-373
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-120
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-156
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-156
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-103
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-103
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-172
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-147
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-172
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-147
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-121
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-113
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-443
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-113
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-121
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-427
+2026-10-23 23:11:04,916 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-396
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-170
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-170
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-127
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-127
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-298
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-281
+2026-10-23 23:11:04,917 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-399
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-251
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-251
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-389
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-375
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-329
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-409
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-361
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-379
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-376
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-178
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-187
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-378
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-178
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-187
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-291
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-257
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-315
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-400
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-422
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-287
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-108
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-108
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-314
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-343
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-412
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-294
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-262
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-133
+2026-10-23 23:11:04,918 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-441
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-133
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-353
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-382
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-191
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-395
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-386
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-351
+2026-10-23 23:11:04,919 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-191
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-209
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-290
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-94
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-115
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-207
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-242
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-115
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-285
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-420
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-274
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-318
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-244
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-209
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-286
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-94
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-227
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-125
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-222
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-448
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-222
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-244
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-226
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-141
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-238
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-339
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-207
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-302
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-130
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-224
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-116
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-435
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-130
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-242
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-224
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-99
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-258
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-413
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-308
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-228
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-237
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-237
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-195
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-145
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-180
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-109
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-141
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-109
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-226
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-366
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-418
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-238
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-227
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-372
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-212
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-239
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-401
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-179
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-100
+2026-10-23 23:11:04,920 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-125
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-179
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-429
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-211
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-321
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-95
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-449
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-212
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-260
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-317
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-95
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-223
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-402
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-387
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-225
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-195
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-145
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-445
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-180
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-417
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-305
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-194
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-404
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-142
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-367
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-196
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-116
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-254
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-99
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-254
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-301
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-161
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-270
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-176
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-143
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-403
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-176
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-322
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-146
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-397
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-177
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-161
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-174
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-259
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-388
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-174
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-432
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-356
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-348
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-159
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-196
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-363
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-142
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-411
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-228
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-194
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-221
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-337
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-221
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-434
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-304
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-433
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-319
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-165
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-136
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-165
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-225
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-334
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-374
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-243
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-210
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-91
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-243
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-365
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-223
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-181
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-266
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-325
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-275
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-408
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-447
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-284
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-423
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-239
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-132
+2026-10-23 23:11:04,921 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-100
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-132
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-428
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-211
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-205
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-205
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-383
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-436
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-307
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-364
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-442
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-292
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-169
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-419
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-181
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-198
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-300
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-264
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-320
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-261
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-210
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-171
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-349
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-392
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-160
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-377
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-415
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-123
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-369
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-316
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-131
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-240
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-154
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-136
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-381
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-159
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-217
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-256
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-217
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-114
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-335
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-114
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-252
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-182
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-398
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-177
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-146
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-101
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-368
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-255
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-338
+2026-10-23 23:11:04,922 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-143
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-101
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-182
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-139
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-154
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-256
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-139
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-131
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-84
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-240
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-271
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-123
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-162
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-157
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-111
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-160
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-157
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-175
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-111
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-91
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-171
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-198
+2026-10-23 23:11:04,924 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-169
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-347
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-202
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-370
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-202
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-190
+2026-10-23 23:11:04,923 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-193
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-104
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-236
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-104
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-162
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-358
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-84
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-213
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-252
+2026-10-23 23:11:04,925 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-255
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-213
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-197
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-218
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-197
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-310
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-218
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-167
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-175
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-236
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-231
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-193
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-231
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-152
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-190
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-135
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-152
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-167
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-215
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-265
+2026-10-23 23:11:04,926 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-134
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-346
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-215
+2026-10-23 23:11:04,927 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-90
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-134
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-135
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-90
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-137
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-137
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-220
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-296
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-220
+2026-10-23 23:11:04,928 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-295
+2026-10-23 23:11:04,929 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-138
+2026-10-23 23:11:04,929 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-138
+2026-10-23 23:11:04,929 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-153
+2026-10-23 23:11:04,929 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-153
+2026-10-23 23:11:04,929 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-293
+2026-10-23 23:11:04,929 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-122
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-352
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-122
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-267
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-148
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-189
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-312
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-189
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-186
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-148
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-186
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-188
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-332
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-163
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-188
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-163
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-323
+2026-10-23 23:11:04,930 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-273
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-112
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-241
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-126
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-241
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-354
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-96
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-112
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-324
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-350
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-126
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-306
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-96
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-269
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-93
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-289
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-129
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-93
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-253
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-129
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-288
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-272
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-253
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-208
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-107
+2026-10-23 23:11:04,931 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-149
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-208
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-106
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-107
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-219
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-158
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-336
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-359
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-219
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-158
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-97
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-106
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-149
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-280
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-119
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-119
+2026-10-23 23:11:04,932 INFO o.a.j.t.JMeterThread: Thread finished: 2. Spike Surge (450 Threads - Peak at 500 VUs) 2-97
+2026-10-23 23:11:30,003 INFO o.a.j.r.Summariser: summary +   8815 in 00:00:30 =  294.8/s Avg:    99 Min:     1 Max:   215 Err:  8759 (99.36%) Active: 50 Started: 500 Finished: 450
+2026-10-23 23:11:30,003 INFO o.a.j.r.Summariser: summary = 161294 in 00:03:55 =  685.2/s Avg:   124 Min:     0 Max:   563 Err: 125590 (77.86%)
+2026-10-23 23:11:34,358 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-25
+2026-10-23 23:11:34,358 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-27
+2026-10-23 23:11:34,358 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-2
+2026-10-23 23:11:34,362 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-14
+2026-10-23 23:11:34,379 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-8
+2026-10-23 23:11:34,379 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-4
+2026-10-23 23:11:34,379 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-43
+2026-10-23 23:11:34,379 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-9
+2026-10-23 23:11:34,395 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-11
+2026-10-23 23:11:34,396 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-50
+2026-10-23 23:11:34,412 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-6
+2026-10-23 23:11:34,414 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-17
+2026-10-23 23:11:34,415 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-26
+2026-10-23 23:11:34,414 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-47
+2026-10-23 23:11:34,415 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-31
+2026-10-23 23:11:34,432 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-36
+2026-10-23 23:11:34,433 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-28
+2026-10-23 23:11:34,437 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-46
+2026-10-23 23:11:34,433 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-19
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-48
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-41
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-13
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-37
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-33
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-20
+2026-10-23 23:11:34,452 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-10
+2026-10-23 23:11:34,471 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-35
+2026-10-23 23:11:34,471 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-16
+2026-10-23 23:11:34,471 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-49
+2026-10-23 23:11:34,472 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-30
+2026-10-23 23:11:34,488 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-18
+2026-10-23 23:11:34,503 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-15
+2026-10-23 23:11:34,503 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-3
+2026-10-23 23:11:34,504 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-21
+2026-10-23 23:11:34,504 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-22
+2026-10-23 23:11:34,503 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-1
+2026-10-23 23:11:34,523 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-12
+2026-10-23 23:11:34,536 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-44
+2026-10-23 23:11:34,552 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-7
+2026-10-23 23:11:34,569 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-32
+2026-10-23 23:11:34,585 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-34
+2026-10-23 23:11:34,602 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-5
+2026-10-23 23:11:34,603 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-23
+2026-10-23 23:11:34,617 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-39
+2026-10-23 23:11:34,617 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-29
+2026-10-23 23:11:34,635 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-24
+2026-10-23 23:11:34,669 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 1. Base Load (50 Threads - 240s) 1-40
+2026-10-23 23:11:34,669 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-40
+2026-10-23 23:11:34,669 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-42
+2026-10-23 23:11:34,683 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 1. Base Load (50 Threads - 240s) 1-45
+2026-10-23 23:11:34,683 INFO o.a.j.t.JMeterThread: Stopping because end time detected by thread: 1. Base Load (50 Threads - 240s) 1-38
+2026-10-23 23:11:34,683 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-45
+2026-10-23 23:11:34,683 INFO o.a.j.t.JMeterThread: Thread finished: 1. Base Load (50 Threads - 240s) 1-38
+2026-10-23 23:11:34,683 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-10-23 23:11:34,683 INFO o.a.j.s.FileServer: Close: users.csv
+2026-10-23 23:11:34,683 INFO o.a.j.r.Summariser: summary +    718 in 00:00:05 =  153.3/s Avg:    14 Min:     2 Max:    35 Err:   718 (100.00%) Active: 0 Started: 500 Finished: 500
+2026-10-23 23:11:34,683 INFO o.a.j.r.Summariser: summary = 162012 in 00:04:00 =  674.8/s Avg:   124 Min:     0 Max:   563 Err: 126308 (77.96%)
+2026-10-23 23:11:34,686 INFO o.a.j.JMeter: Generating Dashboard
+2026-10-23 23:11:34,686 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2026-10-23 23:11:34,710 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2026-10-23 23:11:38,925 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2026-10-23 23:11:38,925 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2026-10-23 23:11:38,927 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2026-10-23 23:11:38,927 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2026-10-23 23:11:38,938 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2026-10-23 23:11:38,938 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2026-10-23 23:11:38,938 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2026-10-23 23:11:38,938 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2026-10-23 23:11:41,100 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2026-10-23 23:11:41,112 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2026-10-23 23:11:41,112 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2026-10-23 23:11:41,114 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2026-10-23 23:11:43,305 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2026-10-23 23:11:43,309 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 1134084 samples
+2026-10-23 23:11:43,309 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2026-10-23 23:11:43,310 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2026-10-23 23:11:43,310 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2026-10-23 23:11:43,310 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2026-10-23 23:11:43,310 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2026-10-23 23:11:43,310 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2026-10-23 23:11:43,314 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 2430180 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 486036 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 162012 samples
+2026-10-23 23:11:43,315 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 162012 samples produced in 8s 571 ms on channel 0
+2026-10-23 23:11:43,315 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2026-10-23 23:11:43,410 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
+2026-10-23 23:11:43,410 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2026-10-23 23:11:43,410 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2026-10-23 23:11:43,410 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2026-10-23 23:11:43,410 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard\statistics.json
+2026-10-23 23:11:43,471 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2026-10-23 23:11:43,476 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard
+2026-10-23 23:11:43,761 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard, creating folder structure
+2026-10-23 23:11:43,771 INFO o.a.j.r.d.TemplateVisitor: Copying folder from 'D:\JMeter\apache-jmeter-5.6.3\apache-jmeter-5.6.3\bin\report-template' to 'D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard', got message: D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard, found non empty folder with following content [D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\jmeter-eshop\results\spike_dashboard\statistics.json], will be ignored
+2026-10-23 23:11:44,288 INFO o.a.j.JMeter: Dashboard generated

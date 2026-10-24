@@ -30,6 +30,8 @@ Mỗi artifact do AI sinh có một mục bên dưới, gồm: (1) prompt + côn
 | A07 | Performance Testing / Spike Test Script / Milestone M3 | Antigravity Assistant | VALID |
 | A08 | Performance Testing / 1-Page SLO Report / Milestone M5 | Antigravity Assistant | VALID |
 | A09 | Performance Testing / Endurance Test Script / Milestone M3 | Antigravity Assistant | VALID |
+| A10 | Performance Testing / JMeter Smoke Test (.jmx) | Antigravity Assistant | VALID |
+| A11 | Performance Testing / JMeter Baseline Load Test (.jmx) | Antigravity Assistant | VALID |
 
 ### Artifact A01 - Performance Testing / k6 Baseline Script / Milestone M4
 
@@ -1892,14 +1894,57 @@ export default function (data) {
 File k6-eshop/endurance_test.js đã được tạo hoàn chỉnh và sẵn sàng thực thi.
 ````
 
+### Artifact A10 - Performance Testing / JMeter Smoke Test (.jmx)
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 00:50 23/10/2026
+
+```text
+Tạo kịch bản JMeter Smoke Test (smoke_test.jmx) kiểm tra 7 API chính của EShop SUT (http://localhost:3000): POST /api/login (extract token), GET /api/products, GET /api/products/:id, POST /api/cart, POST /api/apply-coupon (SAVE10), POST /api/checkout (extract orderId), GET /api/orders/my-orders. Áp dụng CSV Data Set Config (users.csv), JSON Extractor, JSON Assertion, Response Assertion 200 cho 1 VU.
+```
+
+**(2) Output AI**
+
+```text
+Sinh file jmeter-eshop/smoke_test.jmx tuân thủ chuẩn JMeter 5.6.3 Test Plan schema, tích hợp HTTP Header Manager (Bearer token), CSV Data Set Config cho Data-driven, JSON PostProcessor trích xuất dynamic values.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Kịch bản đáp ứng đúng 100% đặc tả 7 API endpoints, thực hiện đầy đủ 3 cơ chế: Data-driven, Checkpoints/Assertions, và luồng tuần tự hoàn chỉnh từ Authentication đến Checkout.
+
+**(5) Bản sinh viên sửa:** Không cần sửa (dùng nguyên bản sinh).
+
+---
+
+### Artifact A11 - Performance Testing / JMeter Baseline Load Test (.jmx)
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 00:52 23/10/2026
+
+```text
+Tạo kịch bản JMeter Baseline Load Test (baseline_load.jmx) với 50 Threads, Ramp-up 30s, thời gian chạy 5 phút (300s). Phân bổ tải thực tế (Realistic Workload Model) bằng Throughput Controller theo tỉ lệ: 70% Browse & Search, 25% Product Detail, 5% Checkout. Cấu hình OnceOnlyController cho bước Login và ConstantTimer (300ms think time).
+```
+
+**(2) Output AI**
+
+```text
+Sinh file jmeter-eshop/baseline_load.jmx với Throughput Controller (Percent Executions: 70%, 25%, 5%), OnceOnlyController để đăng nhập một lần, HTTP Header Manager Bearer Token, và timer mô phỏng hành vi người dùng thật.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Mô hình tải tuân thủ đúng nguyên lý phễu chuyển đổi E-Commerce và tránh nghẽn khóa đơn tiến trình của SQLite database.
+
+**(5) Bản sinh viên sửa:** Không cần sửa (dùng nguyên bản sinh).
+=======
+
 ## 4. Tổng kết độ chính xác AI
 
 | Chỉ số | Số lượng | Tỉ lệ |
 |---|---|---|
-| Tổng artifact AI sinh đã audit | 9 | 100% |
-| VALID (đúng, dùng nguyên) | 8 | 89% |
+| Tổng artifact AI sinh đã audit | 11 | 100% |
+| VALID (đúng, dùng nguyên) | 10 | 91% |
 | INVALID (sai; loại bỏ) | 0 | 0% |
-| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 11% |
+| INCOMPLETE (chấp nhận sau khi sửa) | 1 | 9% |
 
 ## 5. Kết luận - Khi nào nên / không nên dùng AI?
 
