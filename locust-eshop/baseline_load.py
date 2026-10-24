@@ -10,4 +10,5 @@ class BaselineLoadUser(EShopUser):
 
 class BaselineLoadShape(LoadTestShape):
     def tick(self):
+        # (VU mục tiêu, tốc độ tạo VU/giây); None kết thúc bài thử.
         return (50, 50) if self.get_run_time() < 300 else None

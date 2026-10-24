@@ -20,7 +20,7 @@ class SmokeTestUser(EShopUser):
         raise StopUser()
 
 
-# Replace inherited weighted tasks: Smoke must execute only the ordered flow.
+# Chỉ chạy luồng tuần tự, thay các tác vụ ngẫu nhiên kế thừa.
 SmokeTestUser.tasks = [SmokeTestUser.smoke_flow]
 
 
