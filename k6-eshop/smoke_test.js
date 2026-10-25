@@ -55,7 +55,6 @@ export function setup() {
   const res = http.get(`${BASE_URL}/api/products?search=`, {
     tags: { endpoint: 'setup' },
   });
-  
   let products = [
     { id: 1, name: 'iPhone 15 Pro Max', price: 30000000 },
     { id: 2, name: 'Samsung Galaxy S24 Ultra', price: 28000000 },
