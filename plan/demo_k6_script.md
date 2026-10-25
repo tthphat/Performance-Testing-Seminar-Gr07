@@ -198,8 +198,24 @@ Toàn bộ quá trình thực nghiệm của nhóm không tách rời thành cá
      * k6 chỉ đóng vai trò là bên gửi tải từ bên ngoài (Black-box load generator) nên chỉ đo được thời gian phản hồi và tỷ lệ lỗi mạng. Các yêu cầu thu thập CPU Usage (< 80%), Memory Usage (< 300 MB) và DB Query Time của máy chủ EShop trong Proposal không thể lấy trực tiếp từ k6 mà bắt buộc phải kết hợp thêm công cụ giám sát hệ thống độc lập trên máy chủ.
 * **3 Chế độ Thất bại (Failure Modes) theo chuẩn Trigger - Symptom - Detection - Mitigation:**
   1. **Failure Mode 1 (Coordinated Omission trong Closed Model):** Server chậm khiến k6 tự động giảm tốc độ bắn request, báo cáo 0% lỗi che giấu sự sụt giảm thông lượng. *(Khắc phục: Giám sát Throughput hoặc dùng Open Model `constant-arrival-rate`)*.
+     * **Thao tác 1: Chạy Closed Model để thấy cạm bẫy Coordinated Omission:**
+       ```powershell
+       k6 run failure_mode1_demo.js
+       ```
+     * **Thao tác 2: Chạy Open Model để thấy lượng tải thực tế:**
+       ```powershell
+       k6 run -e MODE=open failure_mode1_demo.js
+       ```
   2. **Failure Mode 2 (Lỗi Silent HTTP 200):** Server trả mã 200 nhưng body chứa lỗi nghiệp vụ. *(Khắc phục: Viết Deep Assertions kiểm tra `orderId`)*.
   3. **Failure Mode 3 (Nghẽn cổng mạng máy phát tải):** Chạy 500 VUs local làm nghẽn socket TCP `TIME_WAIT` của Windows, gây hiểu lầm server bị chậm. *(Khắc phục: Tinh chỉnh registry socket hoặc tách máy test)*.
+     * **Thao tác 1: Chạy k6 tắt Keep-Alive:**
+       ```powershell
+       k6 run failure_mode3_demo.js
+       ```
+     * **Thao tác 2: Kiểm tra số lượng cổng TIME_WAIT bị kẹt:**
+       ```powershell
+       netstat -ano | findstr 3000 | findstr TIME_WAIT | measure-object -line
+       ```
 * 🏷️ **CHÚ THÍCH ĐÁP ỨNG RUBRIC:**
   * **[Yêu cầu Rubric]:** *Chỉ rõ những trường hợp công cụ có điểm yếu, không giải quyết tốt mục tiêu đặt ra & 3 Chế độ thất bại (bắt buộc theo Rubric T05).*
 
