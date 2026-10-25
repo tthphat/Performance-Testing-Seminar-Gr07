@@ -17,6 +17,8 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { SharedArray } from 'k6/data';
 import { Counter, Rate, Trend } from 'k6/metrics';
+import { htmlReport } from './bundle.js';
+import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js';
 
 // ---------------------------------------------------------------- CONFIG ---
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:3000';
@@ -276,4 +278,14 @@ export default function (data) {
 
   // Think time ngẫu nhiên 1 - 3 giây mô phỏng thời gian suy nghĩ của người dùng thật
   sleep(Math.random() * 2 + 1);
+}
+
+
+// ----------------------------------------------------------- HTML REPORT ---
+// Tự động xuất báo cáo HTML trực quan chuyên nghiệp qua k6-reporter (bundle.js)
+export function handleSummary(data) {
+  return {
+    'baseline_report.html': htmlReport(data),
+    stdout: textSummary(data, { indent: ' ', enableColors: true }),
+  };
 }
