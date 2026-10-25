@@ -26,3 +26,17 @@
 [2ad5fcb] 2026-10-24 15:57 | 23120319 | fix: resolve merge conflicts with main
 [a6eba7e] 2026-10-24 15:58 | Truong Thanh Phat | Merge pull request #4 from tthphat/JMeter
 [f43f030] 2026-10-24 15:59 | Truong Thanh Phat | Merge pull request #5 from tthphat/locust
+[2371375] 2026-10-24 20:13 | 23120319 | chore: add git commit log
+[3f165a6] 2026-10-25 01:12 | Jinn-645 | docs(audit): add Tuan AI audit appendix and reviewed log
+[9db6293] 2026-10-25 16:31 | 23120319 | chore(k6): add comment to prepare for demo vid
+[0b190a7] 2026-10-25 16:35 | 23120319 | chore(k6): add script to oversee CPU, RAM usage, and script for demo k6
+[03ba85d] 2026-10-25 17:06 | 23120327 | fix: recording
+[fd06652] 2026-10-25 17:08 | 23120327 | feat: add audit-log
+[6c58dfa] 2026-10-25 17:08 | 23120327 | delete: result folder
+[88d94dd] 2026-10-25 17:16 | 23120327 | fix: Jmeter
+[27f48ec] 2026-10-25 17:20 | Jinn-645 | docs(audit): consolidate student audits into shared appendix
+[0b66aa6] 2026-10-25 17:24 | 23120327 | delete: audit
+[c2f3ec0] 2026-10-25 17:25 | Th├íi Thi├¬n Ph├║ | Merge pull request #6 from tthphat/JMeter
+[59fa7fe] 2026-10-25 22:14 | 23120319 | feat(k6): add lib to generate HTML to provide UI for k6 result, and update SLO report
+[5c328fc] 2026-10-26 00:30 | 23120319 | feat(k6): add demo test script
+[8c8a5b8] 2026-10-26 00:31 | Truong Thanh Phat | Merge pull request #7 from tthphat/k6
