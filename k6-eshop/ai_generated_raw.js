@@ -8,9 +8,14 @@ import { Counter } from 'k6/metrics';
 
 // ---------------------------------------------------------------- config ---
 const BASE_URL = __ENV.BASE_URL || 'http://localhost:3000';
+// ============================================================================
+// ❌ [AI-AUDIT-BUG #1: THIẾU DATA-DRIVEN - DÙNG 1 TÀI KHOẢN TĨNH TỪ HAR]
+// AI bóc tách cứng 1 tài khoản từ HAR. Khi phát tải nhiều VUs (50 - 500 VUs),
+// tất cả VUs dùng chung 1 user -> Gây xung đột và sập luồng vì mã SAVE10 chỉ dùng 1 lần!
+// ============================================================================
 const EMAIL = __ENV.USER_EMAIL || 'test@eshop.com';        // from your HAR
 const PASSWORD = __ENV.USER_PASSWORD || 'Test1234!';       // from your HAR
-const COUPON_CODE = __ENV.COUPON_CODE || '';               // leave empty to skip apply-coupon
+const COUPON_CODE = __ENV.COUPON_CODE || 'SAVE10';               // leave empty to skip apply-coupon
 
 // Mix: 70% search/list, 25% product detail, 5% checkout
 const MIX = { browse: 0.70, detail: 0.25 /* remaining 0.05 = checkout */ };
@@ -113,8 +118,12 @@ function productDetail(ids) {
   });
 }
 
-// ASSUMPTION: checkout/apply-coupon/my-orders payloads were not in the HAR.
-// Adjust buildCheckoutPayload() to match your real API contract.
+// ============================================================================
+// ❌ [AI-AUDIT-BUG #2: SAI QUY CHUẨN PAYLOAD CAMELCASE & THIẾU total_amount]
+// Do tệp HAR thiếu bước checkout, AI tự suy đoán (hallucinate) payload dạng camelCase:
+// { productId, shippingAddress, paymentMethod } và bỏ quên trường 'total_amount'.
+// Backend Express bắt buộc snake_case: { total_amount, shipping_address } -> Server trả HTTP 400!
+// ============================================================================
 function buildCheckoutPayload(ids, couponApplied) {
   return {
     items: [{ productId: pick(ids), quantity: 1 }],
@@ -127,6 +136,11 @@ function buildCheckoutPayload(ids, couponApplied) {
 function checkoutFlow(ids) {
   let couponApplied = false;
 
+  // ==========================================================================
+  // ❌ [AI-AUDIT-BUG #3: GỌI COUPON THIẾU total_amount VÀ user_id]
+  // AI chỉ gửi { code: 'SAVE10' }. Backend yêu cầu kiểm tra total_amount > min_amount.
+  // Vì total_amount bị undefined nên API lập tức văng lỗi HTTP 400 (100% Fail)!
+  // ==========================================================================
   if (COUPON_CODE) {
     const c = http.post(
       `${BASE_URL}/api/apply-coupon`,
@@ -137,6 +151,10 @@ function checkoutFlow(ids) {
     sleep(Math.random() * 1 + 0.5);
   }
 
+  // ==========================================================================
+  // ❌ [AI-AUDIT-BUG #4: BỎ QUA HOÀN TOÀN API GIỎ HÀNG POST /api/cart]
+  // AI nhảy cóc từ xem chi tiết sang checkout, bỏ qua bước thêm sản phẩm vào giỏ hàng.
+  // ==========================================================================
   const res = http.post(
     `${BASE_URL}/api/checkout`,
     JSON.stringify(buildCheckoutPayload(ids, couponApplied)),

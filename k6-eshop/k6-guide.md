@@ -1,4 +1,4 @@
-﻿# SỔ TAY HƯỚNG DẪN THỰC THI KIỂM THỬ HIỆU NĂNG VỚI GRAFANA K6 (ESHOP SUT)
+# SỔ TAY HƯỚNG DẪN THỰC THI KIỂM THỬ HIỆU NĂNG VỚI GRAFANA K6 (ESHOP SUT)
 
 * **Môn học:** Software Testing (CS423 / CSC15003) – FIT@HCMUS
 * **Chủ đề:** T05 - Performance Testing (Nhóm 07)
@@ -7,7 +7,195 @@
 
 ---
 
-## 1. Các khái niệm cốt lõi trong Grafana k6
+## 📑 Mục lục
+
+- [1. Hướng dẫn cài đặt Grafana k6](#1-hướng-dẫn-cài-đặt-grafana-k6)
+  - [1.1. Cài đặt trên Windows](#11-cài-đặt-trên-windows)
+  - [1.2. Cài đặt trên Linux](#12-cài-đặt-trên-linux)
+  - [1.3. Cài đặt trên macOS](#13-cài-đặt-trên-macos)
+  - [1.4. Chạy k6 thông qua Docker Container](#14-chạy-k6-thông-qua-docker-container)
+  - [1.5. Kiểm tra cài đặt thành công (Verification)](#15-kiểm-tra-cài-đặt-thành-công-verification)
+- [2. Các khái niệm cốt lõi trong Grafana k6](#2-các-khái-niệm-cốt-lõi-trong-grafana-k6)
+- [3. Kịch bản 1: Smoke Test (`smoke_test.js`)](#3-kịch-bản-1-smoke-test-smoke_testjs)
+  - [3.1. Bản chất và Mục tiêu của Smoke Test](#31-bản-chất-và-mục-tiêu-của-smoke-test)
+  - [3.2. Chu trình 7 bước nghiệp vụ trong `smoke_test.js`](#32-chu-trình-7-bước-nghiệp-vụ-trong-smoke_testjs)
+  - [3.3. Hướng dẫn thực thi: Sự khác biệt giữa 2 lựa chọn chạy k6](#33-hướng-dẫn-thực-thi-sự-khác-biệt-giữa-2-lựa-chọn-chạy-k6)
+  - [3.4. Cách đọc và phân tích kết quả trên màn hình Terminal](#34-cách-đọc-và-phân-tích-kết-quả-trên-màn-hình-terminal)
+- [4. Cơ chế Data-Driven Testing với `users.csv`](#4-cơ-chế-data-driven-testing-với-userscsv)
+- [5. Kịch bản 2: Baseline Load Test (`baseline_load.js`)](#5-kịch-bản-2-baseline-load-test-baseline_loadjs)
+  - [5.1. Tại sao lại phân bổ tải theo tỷ lệ 70% - 25% - 5%?](#51-tại-sao-lại-phân-bổ-tải-theo-tỷ-lệ-70---25---5)
+  - [5.2. Các chỉ số P50, P95, P99 (Percentiles - Bách phân vị) là gì?](#52-các-chỉ-số-p50-p95-p99-percentiles---bách-phân-vị-là-gì)
+  - [5.3. Cách chạy Baseline Load Test và Xuất dữ liệu làm Báo cáo SLO](#53-cách-chạy-baseline-load-test-và-xuất-dữ-liệu-làm-báo-cáo-slo)
+- [6. Kịch bản 3: Spike Test (`spike_test.js`)](#6-kịch-bản-3-spike-test-spike_testjs)
+  - [6.1. Bản chất và Mục tiêu của Spike Test (Kiểm thử sốc tải)](#61-bản-chất-và-mục-tiêu-của-spike-test-kiểm-thử-sốc-tải)
+  - [6.2. Tại sao cần tới 500+ tài khoản trong `users.csv`?](#62-tại-sao-cần-tới-500-tài-khoản-trong-userscsv)
+  - [6.3. Hiện tượng Thắt cổ chai SQLite (Lock Contention)](#63-hiện-tượng-thắt-cổ-chai-sqlite-lock-contention)
+  - [6.4. Kết quả Thực nghiệm Thực tế đo được từ Spike Test (500 VUs)](#64-kết-quả-thực-nghiệm-thực-tế-đo-được-từ-spike-test-500-vus)
+- [7. Tổng kết: Báo cáo SLO và Vai trò của từng Kịch bản](#7-tổng-kết-báo-cáo-slo-và-vai-trò-của-từng-kịch-bản)
+  - [7.1. Báo cáo SLO là gì?](#71-báo-cáo-slo-là-gì)
+  - [7.2. Ma trận phối hợp giữa các kịch bản trong Báo cáo SLO](#72-ma-trận-phối-hợp-giữa-các-kịch-bản-trong-báo-cáo-slo)
+- [8. Kịch bản 4: Endurance Test (`endurance_test.js`)](#8-kịch-bản-4-endurance-test-endurance_testjs)
+  - [8.1. Bản chất và Mục tiêu của Endurance Test (Kiểm thử độ bền)](#81-bản-chất-và-mục-tiêu-của-endurance-test-kiểm-thử-độ-bền)
+  - [8.2. Hướng dẫn thực thi](#82-hướng-dẫn-thực-thi)
+- [9. Bảng So sánh Tổng hợp Bộ 4 Kịch bản Kiểm thử Tải EShop](#9-bảng-so-sánh-tổng-hợp-bộ-4-kịch-bản-kiểm-thử-tải-eshop)
+- [10. Quy trình Kiểm thử Kết hợp AI (AI-Augmented Performance Testing Workflow)](#10-quy-trình-kiểm-thử-kết-hợp-ai-ai-augmented-performance-testing-workflow)
+  - [10.1. Chi tiết 4 lỗi ngầm định (Silent Assumptions) phát hiện qua kiểm toán](#101-chi-tiết-4-lỗi-ngầm-định-silent-assumptions-phát-hiện-qua-kiểm-toán)
+- [11. Các Chế độ Thất bại của Công cụ k6 (Failure Modes - Bắt buộc theo Rubric)](#11-các-chế-độ-thất-bại-của-công-cụ-k6-failure-modes---bắt-buộc-theo-rubric)
+  - [Failure Mode 1: Hiện tượng VU Starvation / Coordinated Omission trong Closed Model (`ramping-vus`)](#failure-mode-1-hiện-tượng-vu-starvation--coordinated-omission-trong-closed-model-ramping-vus)
+  - [Failure Mode 2: Lỗi HTTP 200 giả tạo (Silent HTTP 200 / False Positives)](#failure-mode-2-lỗi-http-200-giả-tạo-silent-http-200--false-positives)
+  - [Failure Mode 3: Nghẽn tài nguyên máy phát tải (Load Generator Resource / Port Exhaustion)](#failure-mode-3-nghẽn-tài-nguyên-máy-phát-tải-load-generator-resource--port-exhaustion)
+- [12. Tại sao có 6 loại Performance Testing nhưng Đồ án lại chọn 4 dạng kịch bản?](#12-tại-sao-có-6-loại-performance-testing-nhưng-đồ-án-lại-chọn-4-dạng-kịch-bản)
+  - [12.1. Bản chất 6 loại Performance Testing trong công nghiệp](#121-bản-chất-6-loại-performance-testing-trong-công-nghiệp)
+  - [12.2. Lý do đồ án EShop chọn bộ 4 kịch bản (Smoke - Baseline - Spike - Endurance)](#122-lý-do-đồ-án-eshop-chọn-bộ-4-kịch-bản-smoke---baseline---spike---endurance)
+- [13. Phân tích Chuyên sâu: Tại sao cả 4 Quá trình Kiểm thử đều đạt 0.00% Lỗi HTTP?](#13-phân-tích-chuyên-sâu-tại-sao-cả-4-quá-trình-kiểm-thử-đều-đạt-000-lỗi-http)
+  - [13.1. Thực tế: Hệ thống từng thất bại nặng nề (Hơn 108,000 lỗi HTTP 401/400)](#131-thực-tế-hệ-thống-từng-thất-bại-nặng-nề-hơn-108000-lỗi-http-401400)
+  - [13.2. Ba yếu tố kỹ thuật giúp Server không bị sập (Crash) ở mức tải 500 VUs](#132-ba-yếu-tố-kỹ-thuật-giúp-server-không-bị-sập-crash-ở-mức-tải-500-vus)
+  - [13.3. Sự thật phía sau con số 0%: Điểm nghẽn tiềm ẩn bộc lộ ở phân vị P99 (Tail Latency)](#133-sự-thật-phía-sau-con-số-0-điểm-nghẽn-tiềm-ẩn-bộc-lộ-ở-phân-vị-p99-tail-latency)
+  - [13.4. Bài học cốt lõi cho Kỹ sư Hiệu năng (Performance Engineering Mindset)](#134-bài-học-cốt-lõi-cho-kỹ-sư-hiệu-năng-performance-engineering-mindset)
+
+---
+
+## 1. Hướng dẫn cài đặt Grafana k6
+
+Grafana k6 là công cụ mã nguồn mở viết bằng ngôn ngữ Go, biên dịch thành một file thực thi duy nhất (standalone binary) với hiệu năng cực cao và chiếm dụng ít tài nguyên. Bạn có thể cài đặt k6 trên Windows, Linux, macOS hoặc chạy qua Docker container.
+
+---
+
+### 1.1. Cài đặt trên Windows
+
+Có thể lựa chọn một trong các phương thức sau tùy thuộc vào công cụ quản lý gói của bạn:
+
+#### Cách 1: Sử dụng Windows Package Manager (`winget`) - *Khuyên dùng*
+Mở PowerShell hoặc CMD và chạy lệnh:
+```powershell
+winget install k6 --source winget
+```
+*(hoặc: `winget install Grafana.k6`)*
+
+#### Cách 2: Sử dụng Chocolatey
+```powershell
+choco install k6
+```
+
+#### Cách 3: Sử dụng Scoop
+```powershell
+scoop install k6
+```
+
+#### Cách 4: Sử dụng gói cài đặt đồ họa (MSI Installer) hoặc Binary
+1. Truy cập trang phát hành chính thức: [Grafana k6 Releases trên GitHub](https://github.com/grafana/k6/releases).
+2. Tải tệp `k6-vX.Y.Z-windows-amd64.msi` và tiến hành cài đặt theo hướng dẫn (Next $\rightarrow$ Install).
+3. Hoặc tải tệp nén `.zip`, giải nén file `k6.exe` và đưa đường dẫn thư mục vào biến môi trường `PATH`.
+
+---
+
+### 1.2. Cài đặt trên Linux
+
+Tùy theo bản phân phối Linux đang sử dụng, bạn có thể cài đặt thông qua kho lưu trữ chính thức:
+
+#### Debian / Ubuntu (qua APT Official Repository)
+```bash
+sudo gpg -k
+sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+sudo apt-get update
+sudo apt-get install k6
+```
+
+#### Fedora / CentOS / RHEL (qua DNF / YUM)
+```bash
+# Đối với Fedora / RHEL 8+:
+sudo dnf install https://dl.k6.io/rpm/repo.rpm
+sudo dnf install k6
+
+# Đối với CentOS 7 / YUM:
+sudo yum install https://dl.k6.io/rpm/repo.rpm
+sudo yum install k6
+```
+
+#### Arch Linux
+```bash
+sudo pacman -S k6
+```
+
+#### Cài đặt nhanh bằng Binary tarball (Mọi bản phân phối Linux)
+```bash
+curl -L https://github.com/grafana/k6/releases/download/v0.50.0/k6-v0.50.0-linux-amd64.tar.gz | tar -xz
+sudo mv k6-v0.50.0-linux-amd64/k6 /usr/local/bin/
+```
+
+---
+
+### 1.3. Cài đặt trên macOS
+
+#### Cách 1: Sử dụng Homebrew - *Khuyên dùng*
+```bash
+brew install k6
+```
+
+#### Cách 2: Sử dụng MacPorts
+```bash
+sudo port install k6
+```
+
+---
+
+### 1.4. Chạy k6 thông qua Docker Container
+
+Nếu bạn muốn môi trường hoàn toàn cô lập hoặc chạy trong quy trình CI/CD, có thể sử dụng Docker image chính thức từ Grafana (`grafana/k6`):
+
+#### Bước 1: Kéo Image k6 mới nhất
+```bash
+docker pull grafana/k6:latest
+```
+
+#### Bước 2: Chạy kiểm thử bằng cách Mount thư mục chứa script
+Mở terminal tại thư mục `k6-eshop` và thực thi:
+
+* **Trên Windows (PowerShell):**
+  ```powershell
+  docker run --rm -i -v ${PWD}:/scripts -w /scripts grafana/k6 run smoke_test.js
+  ```
+
+* **Trên Windows (CMD):**
+  ```cmd
+  docker run --rm -i -v "%cd%":/scripts -w /scripts grafana/k6 run smoke_test.js
+  ```
+
+* **Trên Linux / macOS (Bash / Zsh):**
+  ```bash
+  docker run --rm -i -v $PWD:/scripts -w /scripts grafana/k6 run smoke_test.js
+  ```
+
+#### ⚠️ Lưu ý kỹ thuật quan trọng khi kết nối tới SUT chạy trên máy trạm (localhost):
+* Bên trong Docker container, địa chỉ `localhost` đại diện cho chính container đó, không phải máy chủ vật lý đang chạy SUT EShop.
+* Do đó, để gọi đến backend EShop (`http://localhost:3000`), bạn cần truyền biến môi trường `BASE_URL` trỏ đến `host.docker.internal`:
+  * **Windows / macOS (Docker Desktop):**
+    ```powershell
+    docker run --rm -i -v ${PWD}:/scripts -w /scripts -e BASE_URL=http://host.docker.internal:3000 grafana/k6 run smoke_test.js
+    ```
+  * **Linux:** Thêm cờ mạng `--network="host"` hoặc `--add-host=host.docker.internal:host-gateway`:
+    ```bash
+    docker run --rm -i --network="host" -v $PWD:/scripts -w /scripts grafana/k6 run smoke_test.js
+    ```
+
+---
+
+### 1.5. Kiểm tra cài đặt thành công (Verification)
+
+Sau khi cài đặt xong, kiểm tra phiên bản k6 trên terminal:
+```bash
+k6 version
+```
+* **Kết quả mẫu:**
+  ```text
+  k6 v0.50.0 (commit/..., go1.22.x, windows/amd64)
+  ```
+Nếu hệ thống trả về thông tin phiên bản k6, bạn đã cài đặt thành công và sẵn sàng thực thi các kịch bản kiểm thử hiệu năng.
+
+---
+
+## 2. Các khái niệm cốt lõi trong Grafana k6
 
 Khi thực hiện kiểm thử hiệu năng với k6, bạn cần nắm vững 4 khái niệm nền tảng sau:
 
@@ -26,9 +214,9 @@ Khi thực hiện kiểm thử hiệu năng với k6, bạn cần nắm vững 4
 
 ---
 
-## 2. Kịch bản 1: Smoke Test (`smoke_test.js`)
+## 3. Kịch bản 1: Smoke Test (`smoke_test.js`)
 
-### 2.1. Bản chất và Mục tiêu của Smoke Test
+### 3.1. Bản chất và Mục tiêu của Smoke Test
 * **Trong kiểm thử hiệu năng:** Smoke Test được thực thi với **mức tải tối thiểu (1 Virtual User)** trước khi chạy bất kỳ bài test tải nặng nào (Baseline 50 VUs hay Spike 500 VUs).
 * **Mục tiêu chính:**
   1. Kiểm tra tính sẵn sàng (Health check) của Backend EShop.
@@ -37,7 +225,7 @@ Khi thực hiện kiểm thử hiệu năng với k6, bạn cần nắm vững 4
 
 ---
 
-### 2.2. Chu trình 7 bước nghiệp vụ trong `smoke_test.js`
+### 3.2. Chu trình 7 bước nghiệp vụ trong `smoke_test.js`
 
 File `smoke_test.js` mô phỏng 1 người dùng thực hiện tuần tự chuỗi 7 hành động:
 
@@ -53,7 +241,7 @@ File `smoke_test.js` mô phỏng 1 người dùng thực hiện tuần tự chu�
 
 ---
 
-### 2.3. Hướng dẫn thực thi: Sự khác biệt giữa 2 lựa chọn chạy k6
+### 3.3. Hướng dẫn thực thi: Sự khác biệt giữa 2 lựa chọn chạy k6
 
 Trước khi chạy, hãy mở terminal và di chuyển vào thư mục chứa script:
 ```bash
@@ -80,7 +268,7 @@ k6 run smoke_test.js
 
 ---
 
-### 2.4. Cách đọc và phân tích kết quả trên màn hình Terminal
+### 3.4. Cách đọc và phân tích kết quả trên màn hình Terminal
 
 Khi k6 hoàn tất, bảng tổng kết sẽ hiển thị các khối thông tin sau:
 
@@ -108,7 +296,7 @@ Khi k6 hoàn tất, bảng tổng kết sẽ hiển thị các khối thông tin
 
 ---
 
-## 3. Cơ chế Data-Driven Testing với `users.csv`
+## 4. Cơ chế Data-Driven Testing với `users.csv`
 
 * **Vấn đề thực tế:** Nếu tất cả các VU dùng chung 1 tài khoản (`test@eshop.com`), khi nhiều người cùng đặt hàng và áp mã giảm giá `SAVE10`, hệ thống sẽ báo lỗi `400 Đã đạt giới hạn sử dụng mã (max_uses_per_user = 1)` hoặc gây nghẽn khóa ghi SQLite.
 * **Giải pháp trong script:**
@@ -129,9 +317,9 @@ Khi k6 hoàn tất, bảng tổng kết sẽ hiển thị các khối thông tin
 
 ---
 
-## 4. Kịch bản 2: Baseline Load Test (`baseline_load.js`)
+## 5. Kịch bản 2: Baseline Load Test (`baseline_load.js`)
 
-### 4.1. Tại sao lại phân bổ tải theo tỷ lệ $70\% - 25\% - 5\%$?
+### 5.1. Tại sao lại phân bổ tải theo tỷ lệ $70\% - 25\% - 5\%$?
 
 Mô hình phân bổ này được gọi là **Mô hình phụ tải thực tế (Realistic Workload Model)**, dựa trên nguyên lý **Phễu chuyển đổi Thương mại Điện tử (E-Commerce Conversion Funnel)**:
 
@@ -156,7 +344,7 @@ Mô hình phân bổ này được gọi là **Mô hình phụ tải thực tế
 
 ---
 
-### 4.2. Các chỉ số $P50$, $P95$, $P99$ (Percentiles - Bách phân vị) là gì?
+### 5.2. Các chỉ số $P50$, $P95$, $P99$ (Percentiles - Bách phân vị) là gì?
 
 Trong kiểm thử hiệu năng chuyên nghiệp, người ta **không bao giờ dùng con số Trung bình (Average / Mean)** để đánh giá chất lượng dịch vụ, mà bắt buộc phải dùng **Percentiles (Bách phân vị)**.
 
@@ -198,7 +386,7 @@ Công cụ k6 sẽ gom toàn bộ thời gian phản hồi của mọi request t
 
 ---
 
-### 4.3. Cách chạy Baseline Load Test và Xuất dữ liệu làm Báo cáo SLO
+### 5.3. Cách chạy Baseline Load Test và Xuất dữ liệu làm Báo cáo SLO
 
 Để phục vụ cho việc lập **Báo cáo SLO 1 trang (Milestone M5)**, bạn chạy lệnh xuất dữ liệu ra file JSON:
 
@@ -219,9 +407,9 @@ Tiêu chuẩn đạt SLO:
 
 ---
 
-## 5. Kịch bản 3: Spike Test (`spike_test.js`)
+## 6. Kịch bản 3: Spike Test (`spike_test.js`)
 
-### 5.1. Bản chất và Mục tiêu của Spike Test (Kiểm thử sốc tải)
+### 6.1. Bản chất và Mục tiêu của Spike Test (Kiểm thử sốc tải)
 
 Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** là bài kiểm tra độ đàn hồi (**Resilience & Recovery**) của hệ thống khi có một lượng truy cập khổng lồ ùa vào đột ngột trong thời gian rất ngắn (ví dụ: khoảnh khắc mở bán Flash Sale lúc 0h ngày Black Friday, hoặc khi một sự kiện khuyến mãi lớn vừa được công bố).
 
@@ -233,7 +421,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-### 5.2. Tại sao cần tới 500+ tài khoản trong `users.csv`?
+### 6.2. Tại sao cần tới 500+ tài khoản trong `users.csv`?
 
 * **Vấn đề xung đột nghiệp vụ:** Mã giảm giá `SAVE10` trên EShop có ràng buộc nghiệp vụ: `max_uses_per_user = 1` (mỗi người chỉ được dùng 1 lần).
 * Nếu chỉ có 100 tài khoản mà chạy 500 VUs: trung bình 5 VUs sẽ dùng chung 1 tài khoản. Khi VU đầu tiên dùng mã thành công, 4 VU còn lại sẽ bị báo lỗi `HTTP 400: Đã đạt giới hạn sử dụng mã`. Lỗi này là do **trùng tài khoản**, không phải do **hệ thống bị sập**.
@@ -241,7 +429,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-### 5.3. Hiện tượng Thắt cổ chai SQLite (Lock Contention)
+### 6.3. Hiện tượng Thắt cổ chai SQLite (Lock Contention)
 
 * **Điểm yếu của SQLite:** SQLite là hệ CSDL dạng tệp đơn (single-file database). Khi có nhiều tiến trình cùng thực hiện câu lệnh ghi (`INSERT INTO orders` khi Checkout), SQLite phải áp dụng cơ chế khóa độc quyền (**Exclusive Lock**) trên toàn bộ tệp database.
 * **Cơ chế hoạt động dưới tải 500 VUs:**
@@ -250,7 +438,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-### 5.4. Kết quả Thực nghiệm Thực tế đo được từ Spike Test (500 VUs)
+### 6.4. Kết quả Thực nghiệm Thực tế đo được từ Spike Test (500 VUs)
 
 * **Tổng số requests xử lý:** **59,621 requests** (tăng gấp gần **8 lần** so với bài Baseline 50 VUs).
 * **Thông lượng đạt đỉnh (Peak Throughput):** **197.86 req/s** (gần 200 requests/giây).
@@ -260,9 +448,9 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-## 6. Tổng kết: Báo cáo SLO và Vai trò của từng Kịch bản
+## 7. Tổng kết: Báo cáo SLO và Vai trò của từng Kịch bản
 
-### 6.1. Báo cáo SLO là gì?
+### 7.1. Báo cáo SLO là gì?
 * **SLO (Service Level Objective):** Là bản cam kết định lượng về chất lượng dịch vụ của hệ thống EShop.
 * Báo cáo SLO 1 trang đối chiếu 5 chỉ số cam kết:
   1. $P95 < 500\text{ ms}$
@@ -271,7 +459,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
   4. CPU $< 80\%$
   5. RAM $< 300\text{ MB}$
 
-### 6.2. Ma trận phối hợp giữa các kịch bản trong Báo cáo SLO
+### 7.2. Ma trận phối hợp giữa các kịch bản trong Báo cáo SLO
 
 | Kịch bản kiểm thử | Mức tải | Thời gian | Vai trò cốt lõi trong Báo cáo SLO |
 | :--- | :---: | :---: | :--- |
@@ -282,16 +470,16 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-## 7. Kịch bản 4: Endurance Test (`endurance_test.js`)
+## 8. Kịch bản 4: Endurance Test (`endurance_test.js`)
 
-### 7.1. Bản chất và Mục tiêu của Endurance Test (Kiểm thử độ bền)
+### 8.1. Bản chất và Mục tiêu của Endurance Test (Kiểm thử độ bền)
 * **Khái niệm:** Còn được gọi là **Soak Testing**, là bài kiểm tra hệ thống dưới mức tải trung bình cao (50 VUs) duy trì liên tục trong thời gian dài (30 phút).
 * **Mục tiêu chính:**
   1. **Phát hiện rò rỉ bộ nhớ (Memory Leak):** Kiểm tra xem tiến trình Node.js và V8 Heap Engine có giải phóng bộ nhớ sau mỗi phiên làm việc hay không, hay RAM cứ phình to dần theo thời gian cho đến khi sập server (Out Of Memory - OOM).
   2. **Đo độ thoái hóa hiệu năng (Performance Degradation):** Đảm bảo sau 30 phút chạy liên tục, độ trễ phản hồi ($P95$) không bị suy giảm (không bị chậm dần đều do nghẽn GC hoặc CSDL bị phình to).
   3. **Phân bổ tải:** Tập trung vào các hành vi tra cứu dữ liệu liên tục ($90\%$ Tìm kiếm & $10\%$ Xem chi tiết) để kiểm tra độ bền vững của tầng truy vấn dữ liệu.
 
-### 7.2. Hướng dẫn thực thi:
+### 8.2. Hướng dẫn thực thi:
 * **Chạy nghiệm thu đầy đủ 30 phút:**
   ```bash
   k6 run --out json=endurance_results.json endurance_test.js
@@ -303,7 +491,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-## 8. Bảng So sánh Tổng hợp Bộ 4 Kịch bản Kiểm thử Tải EShop
+## 9. Bảng So sánh Tổng hợp Bộ 4 Kịch bản Kiểm thử Tải EShop
 
 | Tiêu chí | 1. Smoke Test | 2. Baseline Load Test | 3. Spike Test | 4. Endurance Test |
 | :--- | :--- | :--- | :--- | :--- |
@@ -317,7 +505,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-## 9. Quy trình Kiểm thử Kết hợp AI (AI-Augmented Performance Testing Workflow)
+## 10. Quy trình Kiểm thử Kết hợp AI (AI-Augmented Performance Testing Workflow)
 
 Đây là điểm nhấn quan trọng nhất trong vai trò **Technical & AI Lead** của Seminar Track. Quy trình kiểm thử kết hợp AI tuân thủ nghiêm ngặt 3 bước: **Prompting $\rightarrow$ Auditing $\rightarrow$ Refining**:
 
@@ -334,7 +522,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
                              ai_audited_refined.js (Bản chuẩn hóa) ──► Tách thành 4 kịch bản test
 ```
 
-### 9.1. Chi tiết 4 lỗi ngầm định (Silent Assumptions) phát hiện qua kiểm toán
+### 10.1. Chi tiết 4 lỗi ngầm định (Silent Assumptions) phát hiện qua kiểm toán
 1. **Lỗi sai cấu trúc Payload (Payload Contract Mismatch):** AI sinh dữ liệu `POST /api/checkout` dạng camelCase (`shippingAddress`, thiếu `total_amount`), trong khi backend EShop đọc dạng snake_case (`total_amount`, `shipping_address`). Hậu quả: CSDL lưu giá trị `NULL`.
 2. **Lỗi logic gọi API dẫn đến 100% thất bại (Flawed Business Logic):** AI gọi `POST /api/apply-coupon` chỉ truyền `{ code: 'SAVE10' }` mà thiếu trường `total_amount`. Backend so sánh `undefined > min_order_amount` $\rightarrow$ luôn trả về HTTP 400.
 3. **Thiếu tính năng Data-Driven (Hardcoded Single User):** AI dùng chung 1 tài khoản `test@eshop.com` cho toàn bộ VUs, gây tranh chấp phiên và vi phạm ràng buộc mã giảm giá `max_uses_per_user = 1`.
@@ -342,7 +530,7 @@ Khác với Baseline Load Test (duy trì tải đều đặn), **Spike Test** l�
 
 ---
 
-## 10. Các Chế độ Thất bại của Công cụ k6 (Failure Modes - Bắt buộc theo Rubric)
+## 11. Các Chế độ Thất bại của Công cụ k6 (Failure Modes - Bắt buộc theo Rubric)
 
 Khi sử dụng k6, kỹ sư hiệu năng cần cảnh giác với **3 tình huống công cụ báo kết quả gây hiểu lầm hoặc sai lệch thực tế**:
 
@@ -372,9 +560,9 @@ Khi sử dụng k6, kỹ sư hiệu năng cần cảnh giác với **3 tình hu�
 
 ---
 
-## 11. Tại sao có 6 loại Performance Testing nhưng Đồ án lại chọn 4 dạng kịch bản?
+## 12. Tại sao có 6 loại Performance Testing nhưng Đồ án lại chọn 4 dạng kịch bản?
 
-### 11.1. Bản chất 6 loại Performance Testing trong công nghiệp
+### 12.1. Bản chất 6 loại Performance Testing trong công nghiệp
 Mỗi loại kiểm thử hiệu năng nhằm giải quyết một **chiều kích Rủi ro (Specific Risk Dimension)** riêng biệt của doanh nghiệp:
 1. **Load Testing (Tải dự kiến):** Kiểm tra hệ thống vận hành ngày thường có đạt chuẩn cam kết SLO không ($P95 < 200\text{ms}$).
 2. **Stress Testing (Giới hạn chịu đựng):** Đẩy tải vượt ngưỡng để tìm điểm gãy (Breaking Point) và đánh giá cơ chế từ chối dịch vụ (Graceful Degradation vs Hard Crash).
@@ -383,7 +571,7 @@ Mỗi loại kiểm thử hiệu năng nhằm giải quyết một **chiều kí
 5. **Volume Testing (Khối lượng dữ liệu):** Đo tốc độ truy vấn khi cơ sở dữ liệu phình to (hàng triệu bản ghi).
 6. **Scalability Testing (Khả năng mở rộng):** Đánh giá hiệu quả khi tăng CPU/RAM hoặc nhân bản Node/Cluster server.
 
-### 11.2. Lý do đồ án EShop chọn bộ 4 kịch bản (Smoke - Baseline - Spike - Endurance)
+### 12.2. Lý do đồ án EShop chọn bộ 4 kịch bản (Smoke - Baseline - Spike - Endurance)
 1. **Spike Test 500 VUs kiêm nhiệm vai trò Stress Test:** Với EShop chạy SQLite, tải chuẩn ngày thường là 50 VUs. Khi tăng lên 500 VUs (gấp 10 lần tải chuẩn với 2,510 đơn hàng), đây đã chính là bài toán kiểm tra sức chịu đựng tối đa (Stress Test) của SQLite lock I/O và Node.js Event Loop.
 2. **Volume Testing thuộc phạm vi Database Benchmarking:** Kiểm thử Volume phụ thuộc vào kích thước dữ liệu bơm trong DB (hàng triệu records), trong khi đề tài Seminar tập trung chính vào công cụ k6 và mô phỏng hành vi truy cập người dùng (User Traffic Simulation).
 3. **Scalability Testing đòi hỏi hạ tầng đa Node (Cluster/Cloud):** Do SUT EShop đang chạy trên máy cục bộ (single node, SQLite file), không có Load Balancer (NGINX/K8s HPA) để kiểm chứng tỷ lệ scale tuyến tính.
@@ -391,11 +579,11 @@ Mỗi loại kiểm thử hiệu năng nhằm giải quyết một **chiều kí
 
 ---
 
-## 12. Phân tích Chuyên sâu: Tại sao cả 4 Quá trình Kiểm thử đều đạt 0.00% Lỗi HTTP?
+## 13. Phân tích Chuyên sâu: Tại sao cả 4 Quá trình Kiểm thử đều đạt 0.00% Lỗi HTTP?
 
 Một câu hỏi mang tính phản biện cốt tử trong thực tế kiểm thử hiệu năng: *"Khi một hệ thống chịu áp lực tải lớn (hơn 110,000 requests với 500 VUs dồn dập trên SQLite), liệu con số 0.00% lỗi HTTP có phải là 'ảo' hoặc công cụ kiểm thử bỏ sót lỗi hay không?"*
 
-### 12.1. Thực tế: Hệ thống từng thất bại nặng nề (Hơn 108,000 lỗi HTTP 401/400)
+### 13.1. Thực tế: Hệ thống từng thất bại nặng nề (Hơn 108,000 lỗi HTTP 401/400)
 Con số 0.00% lỗi hoàn toàn không phải ngẫu nhiên hay do hệ thống "bất tử". Ở các vòng thử nghiệm ban đầu, hệ thống đã từng sụp đổ hàng loạt:
 * **Lần chạy với script AI thô:** 100% lỗi HTTP 400 ở `/api/apply-coupon` (thiếu `total_amount`), 100% lỗi HTTP 400 ở `/api/checkout` (sai chuẩn `camelCase`), 100% lỗi HTTP 401 (thiếu bóc tách JWT Token).
 * **Lần chạy dùng chung tài khoản:** Bị lỗi 400 từ chối mã giảm giá hàng loạt do vi phạm quy tắc `max_uses_per_user = 1`.
@@ -403,12 +591,12 @@ Con số 0.00% lỗi hoàn toàn không phải ngẫu nhiên hay do hệ thống
 
 👉 **Kết luận:** Tỷ lệ lỗi 0.00% chỉ đạt được sau khi nhóm đã **kiểm toán toàn diện mã nguồn**, bóc tách token động và áp dụng **Data-driven cấp phát 601 tài khoản độc lập** qua `SharedArray`.
 
-### 12.2. Ba yếu tố kỹ thuật giúp Server không bị sập (Crash) ở mức tải 500 VUs
+### 13.2. Ba yếu tố kỹ thuật giúp Server không bị sập (Crash) ở mức tải 500 VUs
 1. **Mô hình Workload thực tế (95% Đọc - 5% Ghi):** Trong hơn 60,000 requests của bài Spike, hơn 57,000 requests là Tìm kiếm (`GET /api/products`) và Xem chi tiết. Thao tác Đọc trên SQLite sử dụng Shared Read Lock và được phục vụ tức thì từ bộ nhớ đệm RAM, không gây nghẽn máy chủ.
 2. **Lợi thế môi trường Localhost và ổ cứng SSD NVMe:** Toàn bộ quá trình test diễn ra nội bộ trên máy trạm với độ trễ mạng xấp xỉ 0ms (không có packet loss hay internet jitter). Ổ cứng SSD xử lý các câu lệnh INSERT chỉ trong vài mili-giây.
 3. **Cơ chế Hàng đợi Bất đồng bộ của Node.js:** Khi 500 VUs đồng loạt gửi yêu cầu đặt hàng, driver `sqlite3` trong Node.js tự động xếp các lệnh ghi vào hàng đợi trong bộ nhớ và tuần tự hóa xuống tệp `database.sqlite`. Thời gian chờ tối đa của đơn hàng lâu nhất chỉ là 70.5ms (còn rất xa ngưỡng timeout 5,000ms của SQLite), do đó không phát sinh lỗi khóa chết `SQLITE_BUSY`.
 
-### 12.3. Sự thật phía sau con số 0%: Điểm nghẽn tiềm ẩn bộc lộ ở phân vị P99 (Tail Latency)
+### 13.3. Sự thật phía sau con số 0%: Điểm nghẽn tiềm ẩn bộc lộ ở phân vị P99 (Tail Latency)
 Mặc dù tỷ lệ lỗi HTTP là 0%, nhưng hệ thống đã **bộc lộ dấu hiệu suy giảm hiệu năng rõ rệt ở tầng cơ sở dữ liệu**:
 * **So sánh độ trễ API Đọc vs API Ghi:**
   * Các API Đọc (`search`, `detail`): Giữ vững độ trễ siêu nhanh ($P95 \le 2.0\text{ms}$, $P99 \le 4.5\text{ms}$).
@@ -417,6 +605,6 @@ Mặc dù tỷ lệ lỗi HTTP là 0%, nhưng hệ thống đã **bộc lộ d�
   * Con số 0% lỗi hiện tại đang nằm ngay sát mép giới hạn chịu đựng của SQLite.
   * Nếu kịch bản được chuyển sang mô hình Flash Sale thực thụ (ví dụ 30% người mua hàng thay vì 5%), hoặc nâng quy mô tải lên 1,000 – 2,000 VUs, hàng đợi ghi của SQLite sẽ bị quá tải vượt mức 5 giây timeout, dẫn đến lỗi hàng loạt `SQLITE_BUSY: database is locked` và HTTP 500.
 
-### 12.4. Bài học cốt lõi cho Kỹ sư Hiệu năng (Performance Engineering Mindset)
+### 13.4. Bài học cốt lõi cho Kỹ sư Hiệu năng (Performance Engineering Mindset)
 * Không được phép thỏa hiệp hay chủ quan khi thấy kết quả báo cáo "xanh mướt 0% lỗi".
 * Một kỹ sư hiệu năng giỏi phải biết nhìn vào **phân vị đuôi trễ ($P95, P99, Max$)** và **bản chất I/O của cơ sở dữ liệu** để nhận diện trước điểm gãy của hệ thống trước khi sự cố xảy ra trên môi trường Production.
