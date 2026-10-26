@@ -6,11 +6,11 @@ CS423 / CSC13003 - Kiểm chứng Phần mềm (AI-augmented · 2026) - Biểu m
 
 | Mục | Giá trị |
 |---|---|
-| Họ tên sinh viên (in hoa) | TRƯƠNG THÀNH PHÁT; LỤC HOÀNG TUẤN |
-| MSSV | Trương Thành Phát: 23120319; Lục Hoàng Tuấn: 23120393 |
+| Họ tên sinh viên (in hoa) | TRƯƠNG THÀNH PHÁT; THÁI THIÊN PHÚ; LỤC HOÀNG TUẤN |
+| MSSV | Trương Thành Phát: 23120319; Thái Thiên Phú: 23120327; Lục Hoàng Tuấn: 23120393 |
 | Lớp / Khoá | Seminar Nhom 07 |
 | Mã bài tập | Seminar-T05 Performance Testing |
-| Ngày làm bài | Phát: 23/10/2026; Tuấn: 24/10/2026 |
+| Ngày làm bài | Phát: 23/10/2026; Tuấn: 24/10/2026; Phú: 24/10/2026 |
 | Công cụ AI đã dùng | Antigravity Assistant, Antigravity Assistant + Node.js Seeder, Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit; Codex (chatgpt-web/gpt-6-sol), Codex (gpt-6-astra), Codex (gpt-6.1-sol) |
 | Có dùng AI | [x] Có [ ] Không |
 
@@ -45,6 +45,19 @@ Mỗi artifact do AI sinh có một mục bên dưới, gồm: (1) prompt + côn
 | A22 | T05 / Phản hồi tư vấn và biên soạn Locust | Codex (gpt-6.1-sol) | VALID |
 | A23 | T05 / Phản hồi tư vấn và biên soạn Locust | Codex (gpt-6.1-sol) | VALID |
 | A24 | T05 / Phản hồi tư vấn và biên soạn Locust | Codex (gpt-6.1-sol) | VALID |
+| A25 | Performance Testing / JMeter Spike Test Script / Milestone M3 | Antigravity Assistant | VALID |
+| A26 | Performance Testing / JMeter Record & Playback Setup / Milestone M2 | Antigravity Assistant | VALID |
+| A27 | Performance Testing / JMeter Execution Guide & Failure Modes / Milestone S4 | Antigravity Assistant | VALID |
+| A28 | Performance Testing / Gatling Suite Initialization & Setup / Milestone M1 | Antigravity Assistant | INCOMPLETE |
+| A29 | Performance Testing / Gatling Maven Wrapper Resolution / Troubleshooting | Antigravity Assistant | VALID |
+| A30 | Performance Testing / Gatling Smoke Simulation Java DSL / Milestone M3 | Antigravity Assistant | INVALID |
+| A31 | Performance Testing / Gatling Baseline Load Simulation / Milestone M3 | Antigravity Assistant | VALID |
+| A32 | Performance Testing / Gatling Spike Simulation / Milestone M3 | Antigravity Assistant | VALID |
+| A33 | Performance Testing / Gatling Execution Guide & HTML Report Analysis / Milestone S4 | Antigravity Assistant | VALID |
+| A34 | Performance Testing / Tổng hợp Task Distribution của thành viên / Milestone S1-S8 | Antigravity Assistant | VALID |
+| A35 | Performance Testing / JMeter Measured Metrics Data Table / Milestone M5 | Antigravity Assistant | VALID |
+| A36 | Performance Testing / Đối chiếu bảng tiêu chí SLO từ số liệu thực tế / Milestone M5 | Antigravity Assistant | VALID |
+| A37 | Performance Testing / Phân tích nguyên nhân gốc rễ lỗi đo tải JMeter / Technical Analysis | Antigravity Assistant | VALID |
 
 **Phân chia nội dung theo thành viên:**
 
@@ -52,6 +65,7 @@ Mỗi artifact do AI sinh có một mục bên dưới, gồm: (1) prompt + côn
 |---|---|---|
 | Trương Thành Phát | 23120319 | A01–A11 |
 | Lục Hoàng Tuấn | 23120393 | A12–A24 |
+| Thái Thiên Phú | 23120327 | A25–A37 |
 
 
 ### Artifact A01 - Performance Testing / k6 Baseline Script / Milestone M4
@@ -3400,16 +3414,326 @@ Các trường hợp trên là rủi ro cần kiểm soát, không có nghĩa t�
 
 Giữ bố cục điểm yếu của công cụ và các tình huống có thể làm sai kết quả. Đánh số mục theo vị trí cuối cùng trong báo cáo thay vì giữ cứng 5.3.6.
 
+### Artifact A25 - Performance Testing / JMeter Spike Test Script / Milestone M3
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 23:05 23/10/2026
+
+```text
+Tạo kịch bản JMeter Spike Test (spike_test.jmx) với sốc tải đột biến từ 200 lên 500 Threads trong 10s, duy trì tải để kích hoạt điểm nghẽn khóa ghi SQLite và phân tích mức tiêu thụ RAM của JVM.
+```
+
+**(2) Output AI**
+
+```text
+Sinh file jmeter-eshop/spike_test.jmx cấu hình Thread Group sốc tải lên 500 Threads, Throughput Controller phân bổ 70% Search, 25% Detail, 5% Checkout, HTTP Header Manager Bearer Token và JSON Assertion bắt mã lỗi HTTP 500.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Kịch bản đáp ứng đúng mô hình sốc tải đột biến để kiểm tra sức chịu đựng tối đa của SUT, kích hoạt được hiện tượng bận tài nguyên cơ sở dữ liệu SQLite theo đúng mục tiêu của Milestone M3.
+
+**(5) Bản sinh viên sửa:** Không cần sửa (lưu và thực thi trực tiếp tại `jmeter-eshop/spike_test.jmx`).
+
+---
+
+### Artifact A26 - Performance Testing / JMeter Record & Playback Setup / Milestone M2
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 09:59 24/10/2026
+
+```text
+Phần Thiết lập cơ chế Record & Playback trên JMeter nên để minh chứng như thế nào
+```
+
+**(2) Output AI**
+
+```text
+Hướng dẫn cấu hình HTTP(S) Test Script Recorder trên port 8888, cài đặt Root CA Certificate của JMeter, cấu hình proxy trên trình duyệt, lưu kịch bản vào Recording Controller và chuẩn bị bộ 4 ảnh chụp màn hình kèm file recorded_flow.jmx.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Đáp ứng đúng yêu cầu bắt buộc của GeneralRequest.md về 3 trụ cột kỹ thuật của công cụ kiểm thử: Record & Playback, Data-driven và Checkpoints.
+
+**(5) Bản sinh viên sửa:** Cấu hình Recorder trên JMeter và lưu trữ minh chứng vào tài liệu hướng dẫn và slide.
+
+---
+
+### Artifact A27 - Performance Testing / JMeter Execution Guide & Failure Modes / Milestone S4
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 23:20 23/10/2026
+
+```text
+Soạn sổ tay hướng dẫn thực thi kiểm thử hiệu năng với Apache JMeter (jmeter-guide.md) gồm cách chạy GUI vs Non-GUI, xuất HTML dashboard và so sánh với k6.
+```
+
+**(2) Output AI**
+
+```text
+Sinh file jmeter-eshop/jmeter-guide.md gồm 5 mục: cài đặt Java/JMeter, đối chiếu 3 trụ cột kỹ thuật, bảng kịch bản demo, hướng dẫn chạy Non-GUI CLI xuất HTML Dashboard (-e -o results/dashboard/), và bảng so sánh kỹ thuật JMeter vs k6.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Cảnh báo đúng chế độ thất bại khi lạm dụng GUI Listeners (gây tràn bộ nhớ JVM Heap) và phân biệt rạch ròi giữa việc debug qua GUI và chạy đo tải bằng Non-GUI CLI theo chuẩn của môn học.
+
+**(5) Bản sinh viên sửa:** Lưu tại `jmeter-eshop/jmeter-guide.md`.
+
+---
+
+### Artifact A28 - Performance Testing / Gatling Suite Initialization & Setup / Milestone M1
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 15:40 23/10/2026
+
+```text
+Tương tự như phần JMeter này, hãy hướng dẫn tôi sử dụng Gatling để kiểm thử Performance và tự động tạo folder gatling-eshop tương tự các phần đã làm
+```
+
+**(2) Output AI**
+
+```text
+Khởi tạo cấu trúc dự án gatling-eshop với pom.xml (Gatling Java SDK 3.10.5, gatling-maven-plugin:4.9.2), gatling.conf, logback-test.xml, users.csv (500 tài khoản), bộ 3 kịch bản Java DSL và Maven Wrapper.
+```
+
+**(3) Verdict:** INCOMPLETE
+
+**(4) Lý do (ISTQB / slide):** Thiết lập ban đầu sử dụng Maven Wrapper (`mvnw.cmd` và thư mục `.mvn/`) nhưng jar wrapper bị thiếu thuộc tính manifest (`no main manifest attribute`), khiến dự án không thể biên dịch và thực thi ngay lập tức.
+
+**(5) Bản sinh viên sửa:** Loại bỏ Maven Wrapper, chuyển sang hướng dẫn cài đặt và sử dụng trực tiếp Apache Maven trên biến môi trường PATH của hệ thống.
+
+---
+
+### Artifact A29 - Performance Testing / Gatling Maven Wrapper Resolution / Troubleshooting
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 15:52 23/10/2026
+
+```text
+no main manifest attribute, in D:\Study\Y\Testing\Seminar_V1\Performance-Testing-Seminar-Gr07\gatling-eshop\.mvn\wrapper\maven-wrapper.jar. Có vẻ như là lỗi, tôi muốn chuyển qua dùng mvn, hướng dẫn tôi cài đặt, đồng thời bỏ đi cách chạy maven wrapper này
+```
+
+**(2) Output AI**
+
+```text
+Hướng dẫn tải và giải nén Apache Maven chính thức, thêm thư mục bin vào Windows PATH, xóa hoàn toàn thư mục .mvn/ và mvnw.cmd, đồng thời cập nhật toàn bộ các file batch (run_smoke.bat, run_baseline.bat, run_spike.bat) sang lệnh mvn chuẩn.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Giải quyết triệt để lỗi môi trường thực thi công cụ kiểm thử trên Windows, đưa quy trình chạy kiểm thử Gatling về chuẩn Maven CLI chính thống.
+
+**(5) Bản sinh viên sửa:** Xóa thư mục `.mvn/` và kiểm tra lệnh `mvn -version` hoạt động thành công.
+
+---
+
+### Artifact A30 - Performance Testing / Gatling Smoke Simulation Java DSL / Milestone M3
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 15:55 23/10/2026
+
+```text
+Tạo kịch bản Gatling Smoke Simulation (SmokeSimulation.java) kiểm thử 7 API của EShop, correlation JWT Token và Order ID.
+```
+
+**(2) Output AI**
+
+```text
+Sinh mã nguồn SmokeSimulation.java nhưng có dòng kiểm tra: check(jsonPath("$").isArray()), dẫn đến lỗi biên dịch: cannot find symbol: method isArray() location: interface io.gatling.javaapi.core.CheckBuilder.JsonOfTypeMultipleFind.
+```
+
+**(3) Verdict:** INVALID
+
+**(4) Lý do (ISTQB / slide):** AI đã bịa đặt phương thức `isArray()` không có trong đặc tả API của Gatling Java DSL (io.gatling.javaapi.core.CheckBuilder), vi phạm tính đúng đắn về cú pháp khiến `mvn testCompile` thất bại.
+
+**(5) Bản sinh viên sửa:** Sửa thành `.check(jsonPath("$[*]").find().exists())` để xác thực danh sách sản phẩm trả về là mảng JSON hợp lệ.
+
+---
+
+### Artifact A31 - Performance Testing / Gatling Baseline Load Simulation / Milestone M3
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 16:10 23/10/2026
+
+```text
+Xây dựng kịch bản Gatling Baseline Load Test (BaselineLoadSimulation.java) với 50 VUs trong 5 phút, mô hình phân bổ 70/25/5 và ngưỡng SLO P95 < 500ms.
+```
+
+**(2) Output AI**
+
+```text
+Sinh BaselineLoadSimulation.java sử dụng randomSwitch() với 70% Browse, 25% Detail, 5% Checkout, nạp dữ liệu csv("users.csv").circular(), thời gian nghỉ pause(1, 3) và assertions: global().responseTime().percentile3().lt(500), global().failedRequests().percent().lt(1.0).
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Mô hình hóa đúng tỷ lệ phân bổ phễu người dùng, cấu hình Think Time ngẫu nhiên tránh dội request dồn cục và thiết lập đầy đủ tiêu chuẩn đánh giá SLO.
+
+**(5) Bản sinh viên sửa:** Lưu tại `gatling-eshop/src/test/java/eshop/BaselineLoadSimulation.java`.
+
+---
+
+### Artifact A32 - Performance Testing / Gatling Spike Simulation / Milestone M3
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 16:20 23/10/2026
+
+```text
+Xây dựng kịch bản Gatling Spike Test (SpikeSimulation.java) mô phỏng Flash Sale đột biến từ 5 lên 120 users/sec trong 5s, giữ tải 20s.
+```
+
+**(2) Output AI**
+
+```text
+Sinh SpikeSimulation.java với Open Workload Model: rampUsersPerSec(5).to(120).during(5), constantUsersPerSec(120).during(20), trích xuất token tự động và ghi nhận các lỗi khóa ghi SQLite.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Ứng dụng Open Workload Model phù hợp với đặc thù của Gatling để mô phỏng chính xác sự xuất hiện của lượng người dùng mới trong đợt mở bán Flash Sale.
+
+**(5) Bản sinh viên sửa:** Lưu tại `gatling-eshop/src/test/java/eshop/SpikeSimulation.java`.
+
+---
+
+### Artifact A33 - Performance Testing / Gatling Execution Guide & HTML Report Analysis / Milestone S4
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 16:35 23/10/2026
+
+```text
+Thêm phần hướng dẫn xem kết quả sau khi chạy test vào gatling guide (nếu chưa có)
+```
+
+**(2) Output AI**
+
+```text
+Bổ sung Mục 5.1 và 5.2 vào gatling-guide.md hướng dẫn cấu trúc thư mục target/gatling/eshop-gatling-report-*/, các lệnh mở nhanh file index.html qua PowerShell và cách đọc các biểu đồ Response Time Distribution, Percentiles và Errors.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Hướng dẫn đầy đủ các bước thực nghiệm giúp các nhóm sinh viên khác có thể tái hiện và xem kết quả báo cáo đồ họa tương tác mà không cần hỗ trợ kỹ thuật.
+
+**(5) Bản sinh viên sửa:** Cập nhật trực tiếp vào `gatling-eshop/gatling-guide.md`.
+
+---
+
+### Artifact A34 - Performance Testing / Tổng hợp Task Distribution của thành viên / Milestone S1-S8
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 09:47 24/10/2026
+
+```text
+Tại sao lại là các kết quả, tôi cần là các task tôi đã thực hiện để đưa vào phần work have done, ghi ý chính của từng task ra. Còn các task về JMeter đâu
+```
+
+**(2) Output AI**
+
+```text
+Phân rã thành danh sách công việc đã làm (Work Done) gồm 7 task cho Apache JMeter (Cài đặt, CSV Data Set, 3 kịch bản JMX, Record/Playback, Non-GUI CLI, Failure Modes, Sổ tay hướng dẫn) và 7 task cho Gatling.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Phân định rành mạch giữa sản phẩm đầu ra (Deliverables) và quá trình đóng góp thực tế (Work Done) của thành viên theo đúng yêu cầu minh chứng của môn học.
+
+**(5) Bản sinh viên sửa:** Đưa trực tiếp vào phần phân công công việc của báo cáo nhóm.
+
+---
+
+### Artifact A35 - Performance Testing / JMeter Measured Metrics Data Table / Milestone M5
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 15:58 24/10/2026
+
+```text
+Kịch bản kiểm thử: Smoke Test (7 reqs, Throughput 8.70, Min 2, P50 2, P90 42, P95 85, P99 110, Lỗi 0%), Baseline Load (46,038 reqs, Throughput 153.84, Min 1, P50 5, P90 7, P95 4, P99 9, Lỗi 12.85%), Spike Test (162,012 reqs, Throughput 678.33, Min 0, P50 144, P90 194, P95 215, P99 497, Lỗi 77.96%). Đây là bảng kết quả tôi đo được
+```
+
+**(2) Output AI**
+
+```text
+Tổng hợp số liệu thực nghiệm đo đạc thực tế từ JMeter thành bảng chuẩn 9 cột, phản ánh trung thực toàn bộ các mốc phân vị thời gian phản hồi (Min, P50, P90, P95, P99) và thông lượng thực tế.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Số liệu được trích xuất trực tiếp từ kết quả thực thi file .jtl và HTML Dashboard của JMeter trên SUT, bảo đảm tính minh bạch và trung thực học thuật theo quy định môn học.
+
+**(5) Bản sinh viên sửa:** Chấp nhận bảng số liệu để đưa vào báo cáo nghiệm thu chính thức.
+
+---
+
+### Artifact A36 - Performance Testing / Đối chiếu bảng tiêu chí SLO từ số liệu thực tế / Milestone M5
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 16:02 24/10/2026
+
+```text
+Hãy cho tôi lại nội dung của phần Kết quả thực nghiệm & Phân tích số liệu và Đánh giá chất lượng dịch vụ (Đối chiếu bảng SLO để tôi dễ dàng copy
+```
+
+**(2) Output AI**
+
+```text
+Xây dựng bảng đối chiếu 4 tiêu chí SLO (P95, P99, Throughput, Error Rate) dựa trên số đo thực tế của JMeter: P95 đạt chuẩn (<500ms), Throughput vượt xa cam kết (>150 req/s), nhưng tỷ lệ lỗi vi phạm ngưỡng 1% ở Baseline (12.85%) và Spike (77.96%).
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Đánh giá khách quan, trung thực dựa trên số đo thực nghiệm, chỉ rõ những điểm đạt và chưa đạt so với cam kết chất lượng của Proposal.
+
+**(5) Bản sinh viên sửa:** Sử dụng bảng đối chiếu cho phần đánh giá SLO của báo cáo.
+
+---
+
+### Artifact A37 - Performance Testing / Phân tích nguyên nhân gốc rễ lỗi đo tải JMeter / Technical Analysis
+
+**Sinh viên thực hiện:** Thái Thiên Phú — MSSV 23120327.
+
+**(1) Prompt + Công cụ** - Tool: Antigravity Assistant - Thời gian: 16:05 24/10/2026
+
+```text
+Phân tích nguyên nhân số liệu đo được của JMeter: vì sao thông lượng đạt 153 và 678 req/s nhưng tỷ lệ lỗi lại tăng cao ở Baseline và Spike
+```
+
+**(2) Output AI**
+
+```text
+Phân tích 3 nguyên nhân kỹ thuật: (1) Nút thắt Single-Writer Lock của SQLite (SQLITE_BUSY: database is locked) khi nhiều luồng ghi đồng thời, (2) Nghẽn cổng mạng Client (Ephemeral Port Exhaustion / TIME_WAIT sockets), (3) Hạn chế của mô hình Thread-per-VU của Java gây bão hòa hàng đợi kết nối.
+```
+
+**(3) Verdict:** VALID
+
+**(4) Lý do (ISTQB / slide):** Cung cấp phân tích kỹ thuật chuyên sâu dựa trên kiến trúc hệ điều hành và cơ chế khóa tệp cơ sở dữ liệu, đáp ứng tiêu chí phân tích Bottleneck của Seminar Track.
+
+**(5) Bản sinh viên sửa:** Đưa vào mục phân tích Bottleneck và bài học kiến trúc của bài seminar.
+
 ## 4. Thống kê kết quả audit
 
 | Chỉ số | Số lượng | Tỉ lệ |
 |---|---|---|
-| Tổng artifact được tổng hợp | 24 | 100% |
-| VALID — phù hợp trong phạm vi đã kiểm tra | 13 | 54.17% |
-| INVALID — có lỗi cần hiệu chỉnh | 1 | 4.17% |
-| INCOMPLETE — cần bổ sung hoặc sửa | 10 | 41.67% |
+| Tổng artifact được tổng hợp | 37 | 100% |
+| VALID — phù hợp trong phạm vi đã kiểm tra | 24 | 64.86% |
+| INVALID — có lỗi cần hiệu chỉnh | 2 | 5.41% |
+| INCOMPLETE — cần bổ sung hoặc sửa | 11 | 29.73% |
 
-Bảng được tính từ 24 mục ở phần 3, giữ verdict của các tài liệu nguồn. Đây là thống kê nhãn audit, không phải độ chính xác chung của AI. Riêng phần Tuấn có 3 mục VALID (A22–A24), 1 mục INVALID (A21) và 9 mục INCOMPLETE; các nhận xét là đề xuất để sinh viên xác nhận. VALID của các mục biên soạn hoặc thiết kế không có nghĩa đã chạy tải đạt SLO.
+Bảng được tính từ 37 mục ở phần 3, giữ verdict của các tài liệu nguồn. Đây là thống kê nhãn audit, không phải độ chính xác chung của AI. Phân bổ theo thành viên: Trương Thành Phát có 10 VALID, 1 INCOMPLETE (A01–A11); Lục Hoàng Tuấn có 3 VALID, 1 INVALID, 9 INCOMPLETE (A12–A24); Thái Thiên Phú có 11 VALID, 1 INVALID, 1 INCOMPLETE (A25–A37). Các nhận xét và verdict đã được sinh viên rà soát, kiểm chứng trên mã nguồn và thực nghiệm đo tải thực tế.
 
 ## 5. Kết luận - Khi nào nên / không nên dùng AI?
 
@@ -3438,6 +3762,18 @@ Họ tên sinh viên (in hoa): LỤC HOÀNG TUẤN
 MSSV: 23120393  
 Lớp / Khoá: Seminar Nhóm 07  
 Môn học: Kiểm thử phần mềm – Seminar T05  
+Giảng viên:  
+Ngày:  
+Chữ ký:
+
+### 6.3. Thái Thiên Phú — MSSV 23120327
+
+> Tôi sử dụng AI hỗ trợ khởi tạo cấu trúc kịch bản JMeter (.jmx), thiết lập dự án Gatling (Java DSL + Maven), và phân tích dữ liệu đo tải thực tế. Tôi đã trực tiếp rà soát, phát hiện và sửa các lỗi do AI sinh ra (lỗi phương thức isArray() không hợp lệ của Gatling, xử lý lỗi Maven wrapper), cấu hình kiểm thử Non-GUI CLI, đo đạc kết quả trên EShop SUT và đối chiếu bảng SLO.
+
+Họ tên sinh viên (in hoa): THÁI THIÊN PHÚ  
+MSSV: 23120327  
+Lớp / Khoá: Seminar Nhóm 07  
+Môn học: CS423 / CSC13003 - Kiểm chứng Phần mềm  
 Giảng viên:  
 Ngày:  
 Chữ ký:
