@@ -3737,43 +3737,32 @@ Bảng được tính từ 37 mục ở phần 3, giữ verdict của các tài 
 
 ## 5. Kết luận - Khi nào nên / không nên dùng AI?
 
+Qua 37 artifact kiểm thử tải (k6, JMeter, Gatling, Locust), nhóm quan sát thấy: **AI rất mạnh** ở việc sinh nhanh khung kịch bản (scaffolding), đa dạng hóa cú pháp (XML JMeter, Java DSL Gatling, k6 JS) và giải thích sâu các cơ chế nghẽn hạ tầng (SQLite lock, TIME_WAIT socket). Tuy nhiên, **AI thường sai hoặc thiếu sót** khi tự suy diễn sai hợp đồng API (nhầm snake_case/camelCase), sinh phương thức không tồn tại (`isArray()` của Gatling), và bỏ qua rủi ro xung đột dữ liệu đồng thời (SQLite lock contention, cấp trùng coupon/user).
+
+**Khuyến nghị:** Chỉ dùng AI làm trợ lý dựng khung và tra cứu nhanh; bắt buộc kiểm thử viên phải rà soát mã nguồn SUT, chuẩn hóa dữ liệu cô lập (CSV, SharedArray) và kiểm chứng thực nghiệm đo tải thực tế trước khi nghiệm thu.
+
 
 ## 6. Mandatory Disclosure
 
+Các kịch bản kiểm thử tải, dataset và báo cáo thực nghiệm trong đề tài này được khởi tạo phiên bản đầu với sự hỗ trợ của các công cụ AI (Claude 3.7 Sonnet, Antigravity Assistant, Codex gpt-6). Toàn bộ thành viên Nhóm 07 đã rà soát, sửa đổi hợp đồng API, bổ sung kiểm soát tương tranh và tự hoàn thiện các kịch bản đo tải thực tế. AI Audit Report chi tiết đính kèm đầy đủ ở Phụ lục A. Chúng tôi cam đoan không sử dụng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
+
 ### 6.1. Trương Thành Phát — MSSV 23120319
 
-> Test case / script / báo cáo này được sinh phiên bản đầu bởi Antigravity Assistant, Antigravity Assistant + Node.js Seeder, Claude 3.7 Sonnet, Claude 3.7 Sonnet + Human Audit; tôi đã rà soát và chỉnh sửa [phần X], bổ sung [edge case Y, Z]; [phần W] do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
+> Các kịch bản kiểm thử tải k6 (baseline load, spike test, endurance test), kịch bản JMeter ban đầu và báo cáo SLO này được sinh phiên bản đầu bởi Claude 3.7 Sonnet và Antigravity Assistant; tôi đã rà soát và chỉnh sửa định dạng payload API theo chuẩn snake_case (`total_amount`, `shipping_address`, `user_id`), cơ chế xác thực Bearer token và tái sử dụng token per-VU; bổ sung cô lập dữ liệu người dùng qua SharedArray và `users.csv` để chống SQLite lock contention, think time ngẫu nhiên 1–2.5s, và xử lý xung đột áp mã giảm giá; bộ script seeder tạo dữ liệu người dùng Node.js, kịch bản hoàn chỉnh `baseline_load.js`, `spike_test.js`, `endurance_test.js` cùng phân tích đối chiếu tiêu chí SLO do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
 
-<!-- SINH VIÊN điền [phần X], [Y, Z], [phần W] bằng nội dung thật; ký tên: -->
-
-Họ tên sinh viên (in hoa): TRUONG THANH PHAT  
-MSSV: 23120319  
-Lớp / Khoá: Seminar Nhom 07  
-Môn học: CS423 / CSC13003 - Kiểm chứng Phần mềm  
-Giảng viên:  
-Ngày:  
-Chữ ký:
 
 ### 6.2. Lục Hoàng Tuấn — MSSV 23120393
 
-> Tôi sử dụng AI hỗ trợ [nội dung thực tế]. Tôi đã đối chiếu và hiệu chỉnh [file hoặc nội dung], bổ sung [minh chứng]. Phần do tôi tự thực hiện: [điền theo công việc thực tế].
-
-Họ tên sinh viên (in hoa): LỤC HOÀNG TUẤN  
-MSSV: 23120393  
-Lớp / Khoá: Seminar Nhóm 07  
-Môn học: Kiểm thử phần mềm – Seminar T05  
-Giảng viên:  
-Ngày:  
-Chữ ký:
+> Kịch bản kiểm thử tải Locust (`locustfile.py`, `common.py`) và tài liệu phân tích chế độ thất bại này được sinh phiên bản đầu bởi Codex (gpt-6-astra, gpt-6-sol, gpt-6.1-sol); tôi đã rà soát và chỉnh sửa luồng đăng nhập, quản lý token, cùng tỷ lệ phân bổ trọng số tác vụ (`@task`: 70% Browse, 25% Detail, 5% Checkout); bổ sung cơ chế Account Pool chống race condition giữa các worker và xử lý dừng user (`StopUser`) khi cạn kiệt tài khoản; phần kịch bản thực thi hoàn chỉnh, môi trường đo tải phân tán Locust và tài liệu phân tích rủi ro GIL CPU do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
 
 ### 6.3. Thái Thiên Phú — MSSV 23120327
 
-> Tôi sử dụng AI hỗ trợ khởi tạo cấu trúc kịch bản JMeter (.jmx), thiết lập dự án Gatling (Java DSL + Maven), và phân tích dữ liệu đo tải thực tế. Tôi đã trực tiếp rà soát, phát hiện và sửa các lỗi do AI sinh ra (lỗi phương thức isArray() không hợp lệ của Gatling, xử lý lỗi Maven wrapper), cấu hình kiểm thử Non-GUI CLI, đo đạc kết quả trên EShop SUT và đối chiếu bảng SLO.
+> Các kịch bản kiểm thử tải JMeter (`.jmx`), mã nguồn Gatling Java DSL (`.java`) và tài liệu hướng dẫn thực thi này được sinh phiên bản đầu bởi Antigravity Assistant; tôi đã rà soát và chỉnh sửa phương thức kiểm tra JSON không hợp lệ (`isArray()` trong Gatling), xử lý lỗi cấu hình Maven Wrapper (`mvnw`), và hiệu chỉnh HTTP Header Manager; bổ sung CSV Data Set Config trong JMeter để nạp dữ liệu độc lập, JSON Assertion bắt lỗi HTTP 500 do SQLite lock, cùng kịch bản Spike Test 500 luồng; toàn bộ quy trình đo tải Non-GUI CLI, trích xuất số liệu thực nghiệm từ file log và đối chiếu bảng tiêu chuẩn SLO do tôi tự viết. AI Audit Report chi tiết đính kèm ở Phụ lục A. Tôi cam đoan không dùng AI để sinh bất kỳ artifact nào thuộc danh mục bị cấm.
 
-Họ tên sinh viên (in hoa): THÁI THIÊN PHÚ  
-MSSV: 23120327  
-Lớp / Khoá: Seminar Nhóm 07  
-Môn học: CS423 / CSC13003 - Kiểm chứng Phần mềm  
-Giảng viên:  
-Ngày:  
-Chữ ký:
+**Họ tên sinh viên (in hoa)**: TRƯƠNG THÀNH PHÁT; THÁI THIÊN PHÚ; LỤC HOÀNG TUẤN   
+**MSSV**: 23120319; 23120327; 23120393   
+**Lớp / Khoá**: Kiểm thử phần mềm - CQ2023/3    
+**Môn học**: CS423 / CSC13003 - Kiểm chứng Phần mềm     
+**Giảng viên**: Trần Duy Hoàng; Trương Phước Lộc; Hồ Tuấn Thanh; Lâm Quang Vũ     
+**Ngày**: 26/10/2026    
+**Chữ ký**: phát; phú; tuấn  
