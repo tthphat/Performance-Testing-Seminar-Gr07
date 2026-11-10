@@ -96,6 +96,7 @@ jmeter-eshop/
 ├── baseline_load.jmx        # Kịch bản 2: Baseline Load Test (50 VUs, mô hình 70/25/5 trong 5 phút)
 ├── spike_test.jmx           # Kịch bản 3: Spike Test (Tăng vọt 200-500 VUs kích hoạt nghẽn SQLite)
 ├── endurance_test.jmx       # Kịch bản 4: Endurance & Soak Test (50 VUs liên tục 30 phút, phát hiện rò rỉ bộ nhớ)
+├── monitor_server.ps1       # Script giám sát CPU & RAM Server và tự động sinh HTML Dashboard
 ├── recording_template.jmx   # Template phục vụ Record & Playback bằng HTTP Test Script Recorder
 ├── users.csv                # Dữ liệu 500+ tài khoản (email, password, id) phục vụ Data-Driven
 ├── jmeter-guide.md          # Sổ tay hướng dẫn chi tiết (tài liệu này)
@@ -350,6 +351,18 @@ Chạy kiểm thử độ bền (duy trì 50 VUs liên tục trong 30 phút vớ
   jmeter -n -t endurance_test.jmx -JTHREADS=10 -JDURATION=60 -JRAMP_TIME=5 -l results_endurance/endurance.jtl -e -o results_endurance/dashboard/
   ```
 
+* **Phối hợp Giám sát CPU/RAM Server (Phát hiện Memory Leak) & Tự động sinh Dashboard HTML:**
+  Mở thêm một cửa sổ PowerShell riêng biệt và chạy script giám sát trước khi bấm test:
+  ```powershell
+  # Chạy giám sát tiến trình Backend (Port 3000)
+  .\monitor_server.ps1
+
+  # Hoặc tự động mở báo cáo HTML ngay khi kết thúc:
+  .\monitor_server.ps1 -AutoOpen
+  ```
+  > [!TIP]
+  > Khi test hoàn tất, bạn chỉ cần nhấn **`Ctrl + C`** trên cửa sổ giám sát, script sẽ **tự động tính toán độ dốc rò rỉ RAM (Delta Growth) và sinh file báo cáo đồ thị `hardware_report.html`** tương tác rất trực quan!
+
 ---
 
 ### 5.5. Lệnh dọn dẹp kết quả cũ trước khi chạy lại
@@ -368,6 +381,9 @@ Remove-Item -Recurse -Force results_spike -ErrorAction SilentlyContinue
 
 # Dọn dẹp kết quả Endurance Test
 Remove-Item -Recurse -Force results_endurance -ErrorAction SilentlyContinue
+
+# Dọn dẹp file log và báo cáo phần cứng cũ (nếu muốn)
+Remove-Item -Force hardware_metrics.csv, hardware_report.html -ErrorAction SilentlyContinue
 ```
 
 ---
@@ -386,8 +402,11 @@ Start-Process results_baseline/dashboard/index.html
 # Mở báo cáo Spike Test:
 Start-Process results_spike/dashboard/index.html
 
-# Mở báo cáo Endurance Test:
+# Mở báo cáo Endurance Test (Hiệu năng phía Client JMeter):
 Start-Process results_endurance/dashboard/index.html
+
+# Mở báo cáo Giám sát Phần cứng Server (CPU/RAM Memory Leak):
+Start-Process hardware_report.html
 ```
 
 #### Các biểu đồ cốt lõi cần chụp đưa vào Slide Seminar & Báo cáo:
