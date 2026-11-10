@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bao Cao Giam Sat Phan Cung - EShop Backend</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --border: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #a855f7;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            padding: 24px;
+            line-height: 1.5;
+        }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .header h1 { font-size: 24px; margin-bottom: 8px; color: var(--accent-blue); display: flex; align-items: center; gap: 10px; }
+        .header .meta { display: flex; flex-wrap: wrap; gap: 16px; color: var(--text-muted); font-size: 14px; }
+        .badge { background: #334155; padding: 4px 10px; border-radius: 6px; font-weight: 500; }
+        
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-2px); }
+        .card .title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 6px; }
+        .card .value { font-size: 26px; font-weight: 700; color: var(--text-main); }
+        .card .sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+        
+        .verdict-box {
+            background-color: var(--bg-card);
+            border-left: 6px solid #ef4444;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-top: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .verdict-box h3 { color: #ef4444; font-size: 18px; margin-bottom: 4px; }
+        .verdict-box p { color: var(--text-muted); font-size: 14px; }
+
+        .chart-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        @media (min-width: 900px) {
+            .chart-section { grid-template-columns: 1fr 1fr; }
+        }
+        .chart-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .chart-card h2 { font-size: 16px; margin-bottom: 16px; color: var(--text-main); display: flex; justify-content: space-between; }
+        .canvas-container { position: relative; height: 320px; width: 100%; }
+
+        footer { text-align: center; color: var(--text-muted); font-size: 13px; margin-top: 32px; padding: 16px 0; border-top: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>BAO CAO GIAM SAT TAI NGUYEN SERVER (ENDURANCE TEST)</h1>
+            <div class="meta">
+                <span class="badge">SUT: EShop Backend (Node.js)</span>
+                <span class="badge">PID: 29424 (node)</span>
+                <span class="badge">Port: 3000</span>
+                <span class="badge">CPU Cores: 12 Cores</span>
+                <span class="badge">Duration: ~3.7 phut (111 mau)</span>
+                <span class="badge">Exported: 2026-11-11 01:07:23</span>
+            </div>
+        </div>
+
+        <div class="verdict-box">
+            <h3>Ket luan kiem thu do ben: POTENTIAL LEAK (CANH BAO RO RI BO NHO)</h3>
+            <p>Muc RAM tang truong hon 50 MB (+67.33 MB) trong suot qua trinh test. Phat hien ro ri bo nho tai bien toan cuc hoac V8 Heap.</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="card">
+                <div class="title">RAM Khoi Diem</div>
+                <div class="value">47.48 <span style="font-size:16px;">MB</span></div>
+                <div class="sub">Muc RAM luc bat dau test</div>
+            </div>
+            <div class="card">
+                <div class="title">RAM Dinh (Peak)</div>
+                <div class="value" style="color:var(--accent-purple);">114.81 <span style="font-size:16px;">MB</span></div>
+                <div class="sub">Muc tieu thu bo nho cao nhat</div>
+            </div>
+            <div class="card">
+                <div class="title">Tang Truong RAM (Delta)</div>
+                <div class="value" style="color:#ef4444;">+8.31 <span style="font-size:16px;">MB</span></div>
+                <div class="sub">Do doc ro ri (Peak - Initial)</div>
+            </div>
+            <div class="card">
+                <div class="title">CPU Trung Binh</div>
+                <div class="value">0.61 <span style="font-size:16px;">%</span></div>
+                <div class="sub">Muc an tai binh quan</div>
+            </div>
+            <div class="card">
+                <div class="title">CPU Dinh (Peak)</div>
+                <div class="value" style="color:var(--accent-blue);">8.67 <span style="font-size:16px;">%</span></div>
+                <div class="sub">Tai dinh luc xu ly luong nang</div>
+            </div>
+        </div>
+
+        <div class="chart-section">
+            <div class="chart-card">
+                <h2>Tieu Thu RAM Theo Thoi Gian (MB) <span style="font-size:12px; color:var(--text-muted);">(Kiem tra ro ri V8 Heap)</span></h2>
+                <div class="canvas-container">
+                    <canvas id="ramChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <h2>Muc Tai CPU Theo Thoi Gian (%) <span style="font-size:12px; color:var(--text-muted);">(Kiem tra nghen CPU)</span></h2>
+                <div class="canvas-container">
+                    <canvas id="cpuChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            FIT@HCMUS - Software Testing (CS423 / CSC15003) - De tai T05 - Performance Testing (Nhom 07)
+        </footer>
+    </div>
+
+    <script>
+        const timestamps = ['01:03:40','01:03:42','01:03:44','01:03:46','01:03:48','01:03:50','01:03:52','01:03:54','01:03:56','01:03:58','01:04:00','01:04:02','01:04:04','01:04:06','01:04:08','01:04:10','01:04:12','01:04:14','01:04:16','01:04:18','01:04:20','01:04:22','01:04:24','01:04:26','01:04:28','01:04:30','01:04:32','01:04:34','01:04:36','01:04:38','01:04:40','01:04:42','01:04:44','01:04:46','01:04:48','01:04:50','01:04:52','01:04:54','01:04:56','01:04:58','01:05:01','01:05:03','01:05:05','01:05:07','01:05:09','01:05:11','01:05:13','01:05:15','01:05:17','01:05:19','01:05:21','01:05:23','01:05:25','01:05:27','01:05:29','01:05:31','01:05:33','01:05:35','01:05:37','01:05:39','01:05:41','01:05:43','01:05:45','01:05:47','01:05:49','01:05:51','01:05:53','01:05:55','01:05:57','01:05:59','01:06:01','01:06:03','01:06:05','01:06:07','01:06:09','01:06:11','01:06:13','01:06:15','01:06:17','01:06:19','01:06:21','01:06:23','01:06:25','01:06:27','01:06:29','01:06:31','01:06:33','01:06:35','01:06:37','01:06:39','01:06:41','01:06:43','01:06:45','01:06:48','01:06:50','01:06:52','01:06:54','01:06:56','01:06:58','01:07:00','01:07:02','01:07:04','01:07:06','01:07:08','01:07:10','01:07:12','01:07:14','01:07:16','01:07:18','01:07:20','01:07:22'];
+        const ramData = [47.48,47.48,47.48,51.4,58.52,70.14,86.25,87.02,96.43,100.64,109.72,109.02,113.35,113.84,114.76,114.81,114.81,114.81,114.81,53.58,53.58,53.82,53.82,53.82,53.82,53.94,53.94,55.2,55.39,55.47,55.47,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79,55.79];
+        const cpuData = [0.19,0,0,0.45,1.49,3.3,5.37,5.01,8.67,6.67,6.89,6.32,6.07,4.76,5.99,5.97,0.51,0,0,0.32,0,0,0,0,0,0,0,0.06,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+        // RAM Chart
+        new Chart(document.getElementById('ramChart'), {
+            type: 'line',
+            data: {
+                labels: timestamps,
+                datasets: [{
+                    label: 'RAM (Working Set MB)',
+                    data: ramData,
+                    borderColor: '#a855f7',
+                    backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: timestamps.length > 50 ? 0 : 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: '#94a3b8', maxTicksLimit: 12 },
+                        grid: { color: 'rgba(51, 65, 85, 0.3)' }
+                    },
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(51, 65, 85, 0.3)' },
+                        title: { display: true, text: 'Megabytes (MB)', color: '#94a3b8' }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: '#f8fafc' } }
+                }
+            }
+        });
+
+        // CPU Chart
+        new Chart(document.getElementById('cpuChart'), {
+            type: 'line',
+            data: {
+                labels: timestamps,
+                datasets: [{
+                    label: 'CPU Usage (%)',
+                    data: cpuData,
+                    borderColor: '#38bdf8',
+                    backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.2,
+                    pointRadius: timestamps.length > 50 ? 0 : 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: '#94a3b8', maxTicksLimit: 12 },
+                        grid: { color: 'rgba(51, 65, 85, 0.3)' }
+                    },
+                    y: {
+                        min: 0,
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: 'rgba(51, 65, 85, 0.3)' },
+                        title: { display: true, text: 'Tai CPU (%)', color: '#94a3b8' }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: '#f8fafc' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

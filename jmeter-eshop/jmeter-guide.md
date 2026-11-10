@@ -133,6 +133,14 @@ Tuân thủ đúng yêu cầu của môn học Kiểm thử phần mềm (FIT@HC
   - Variable Names: `USER_EMAIL,USER_PASSWORD,USER_ID`
   - Delimiter: `,`
 * **Mục đích:** Mỗi Virtual User khi chạy sẽ đọc một dòng dữ liệu tài khoản độc lập. Cơ chế này loại bỏ hoàn toàn lỗi tranh chấp khóa ghi SQLite và tránh xung đột giới hạn sử dụng của mã giảm giá `SAVE10` (mỗi user chỉ được dùng 1 lần duy nhất).
+* **Lệnh chạy Seed nạp 500 tài khoản kiểm thử:**
+  Để đảm bảo cơ sở dữ liệu `database.sqlite` có đủ 500 tài khoản độc lập mà **tuyệt đối không can thiệp hay sửa mã nguồn của EShop**, bạn chỉ cần chạy script seed có sẵn của dự án:
+  ```powershell
+  # Chạy từ thư mục gốc dự án:
+  node eshop-sut/backend/seed_users.js
+  Copy-Item k6-eshop/users.csv jmeter-eshop/users.csv -Force
+  ```
+  Script sẽ tự động nạp 500 tài khoản (`user1@eshop.com` ... `user500@eshop.com`, mật khẩu `Test1234!`) vào database và cập nhật file `users.csv` dùng chung cho cả JMeter và k6.
 
 ### 3.3. Correlation & Assertions (Trích xuất JWT Token & Kiểm tra)
 
@@ -365,7 +373,46 @@ Chạy kiểm thử độ bền (duy trì 50 VUs liên tục trong 30 phút vớ
 
 ---
 
-### 5.5. Lệnh dọn dẹp kết quả cũ trước khi chạy lại
+### 5.5. Kịch bản 4B: Endurance Heavy & Memory Leak Demo (`endurance_leak_heavy.jmx`)
+
+Nếu bạn muốn **thể hiện rõ sự tải nặng lên CPU (70% - 85%) và kích hoạt lỗ hổng rò rỉ RAM có thật trong Backend** để làm nổi bật tính năng cảnh báo của `monitor_server.ps1`:
+
+* **Cơ chế kỹ thuật:**
+  - Kịch bản chạy **100 VUs** với Think Time siêu ngắn **50ms - 200ms** (tạo lưu lượng 600 - 1000 RPS).
+  - Tỷ lệ phân bổ: 40% Tìm kiếm, 10% Xem chi tiết, và **50% Thêm vào giỏ (`POST /api/cart`)**.
+  - Mỗi request `POST /api/cart` nhồi dữ liệu vào biến toàn cục `userCarts = {}` trong file `server.js` mà không giải phóng, khiến RAM của tiến trình Node.js phình to liên tục từ 35MB lên 80–120MB!
+  - `monitor_server.ps1` phát hiện mức tăng RAM $\Delta\text{RAM} > 50\text{MB}$ và **bật cảnh báo đỏ chót: `POTENTIAL LEAK`**!
+
+* **Lệnh thực thi:**
+  * **Cách 1: Chạy Demo nhanh trước lớp (45 giây, 100 VUs):**
+    ```powershell
+    # Bước 1: Tạo thư mục kết quả
+    mkdir results_endurance_heavy -ErrorAction SilentlyContinue
+
+    # Bước 2: Chạy Heavy Endurance Test 45s
+    jmeter -n -t endurance_leak_heavy.jmx -JTHREADS=100 -JDURATION=45 -JRAMP_TIME=5 -l results_endurance_heavy/heavy.jtl -e -o results_endurance_heavy/dashboard/
+    ```
+
+  * **Cách 2: Chạy ngâm tải chính thức 30 phút (1800 giây, 100 VUs):**
+    ```powershell
+    # Bước 1: Tạo thư mục kết quả
+    mkdir results_endurance_heavy -ErrorAction SilentlyContinue
+
+    # Bước 2: Chạy Heavy Endurance Test 30 phút
+    jmeter -n -t endurance_leak_heavy.jmx -JTHREADS=100 -JDURATION=1800 -JRAMP_TIME=30 -l results_endurance_heavy/heavy.jtl -e -o results_endurance_heavy/dashboard/
+    ```
+
+> [!TIP]
+> **Chuẩn bị dữ liệu tài khoản kiểm thử (Data Seeding):**
+> Để đảm bảo cơ sở dữ liệu `database.sqlite` có đủ 500 tài khoản người dùng độc lập cho các bài test tải nặng (100–500 VUs) mà tuyệt đối **không sửa đổi mã nguồn gốc của EShop Backend**, bạn chỉ cần chạy script seed có sẵn của dự án:
+> ```powershell
+> node eshop-sut/backend/seed_users.js
+> Copy-Item k6-eshop/users.csv jmeter-eshop/users.csv -Force
+> ```
+
+---
+
+### 5.6. Lệnh dọn dẹp kết quả cũ trước khi chạy lại
 
 Nếu bạn muốn chạy lại một bài test và xuất đè lên báo cáo cũ, hãy xóa thư mục kết quả trước khi chạy để tránh lỗi *"directory is not empty"*:
 

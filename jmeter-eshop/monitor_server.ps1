@@ -52,6 +52,12 @@ function Export-HtmlReport {
         return
     }
 
+    # Loc bo cac mau khong hop le neu tien trinh tung bi tat giua chung
+    $validLines = $lines | Where-Object { [double]$_.RAM_MB -gt 0 -and [double]$_.CPU_Percent -ge 0 }
+    if ($validLines.Count -ge 2) {
+        $lines = $validLines
+    }
+
     # Thong ke so lieu
     $cpuValues = $lines | ForEach-Object { [double]$_.CPU_Percent }
     $ramValues = $lines | ForEach-Object { [double]$_.RAM_MB }
@@ -61,21 +67,25 @@ function Export-HtmlReport {
     $initRam = $ramValues[0]
     $peakRam = ($ramValues | Measure-Object -Maximum).Maximum
     $endRam = $ramValues[-1]
+    
+    $peakGrowth = [math]::Round($peakRam - $initRam, 2)
     $ramGrowth = [math]::Round($endRam - $initRam, 2)
+    $growthDelta = [math]::Max($ramGrowth, $peakGrowth)
+    $growthDisplay = if ($growthDelta -ge 0) { "+$growthDelta" } else { "$growthDelta" }
 
     # Danh gia ro ri bo nho (Memory Leak Analysis)
     $verdict = "STABLE (ON DINH)"
     $verdictColor = "#10b981"
     $verdictDesc = "Muc RAM khong co xu huong tang dot bien hoac doc dung. Khong phat hien ro ri bo nho nghiem trong."
     
-    if ($ramGrowth -gt 50) {
+    if ($growthDelta -gt 50) {
         $verdict = "POTENTIAL LEAK (CANH BAO RO RI BO NHO)"
         $verdictColor = "#ef4444"
-        $verdictDesc = "Muc RAM tang truong hon 50 MB (+$ramGrowth MB) trong suot qua trinh test. Can kiem tra Garbage Collection hoac Event Listener ro ri."
-    } elseif ($ramGrowth -gt 25) {
+        $verdictDesc = "Muc RAM tang truong hon 50 MB (+$growthDelta MB) trong suot qua trinh test. Phat hien ro ri bo nho tai bien toan cuc hoac V8 Heap."
+    } elseif ($growthDelta -gt 25) {
         $verdict = "MODERATE GROWTH (CAN LUU Y)"
         $verdictColor = "#f59e0b"
-        $verdictDesc = "RAM co su gia tang nhe (+$ramGrowth MB). Co the do bo dem SQLite hoac co che caching cua V8 Engine."
+        $verdictDesc = "RAM co su gia tang nhe (+$growthDelta MB). Co the do bo dem SQLite hoac co che caching cua V8 Engine."
     }
 
     # Chuan bi du lieu cho Chart.js
@@ -212,7 +222,7 @@ function Export-HtmlReport {
             </div>
             <div class="card">
                 <div class="title">Tang Truong RAM (Delta)</div>
-                <div class="value" style="color:$verdictColor;">+$ramGrowth <span style="font-size:16px;">MB</span></div>
+                <div class="value" style="color:$verdictColor;">$growthDisplay <span style="font-size:16px;">MB</span></div>
                 <div class="sub">Do doc ro ri (Peak - Initial)</div>
             </div>
             <div class="card">
@@ -394,11 +404,30 @@ try {
         Start-Sleep -Seconds $IntervalSeconds
         $proc.Refresh()
         
+        if ($proc.HasExited) {
+            $nowStr = (Get-Date).ToString("HH:mm:ss")
+            Write-Host "[$nowStr] [!] Tien trinh Backend (PID $pidPort) da dung! Dang tim PID moi tai Port $Port..." -ForegroundColor Yellow
+            $conn = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($conn -and $conn.OwningProcess -ne $pidPort) {
+                $pidPort = $conn.OwningProcess
+                $proc = Get-Process -Id $pidPort -ErrorAction SilentlyContinue
+                if ($proc) {
+                    $prevCpu = $proc.CPU
+                    $prevTime = Get-Date
+                    Write-Host "[$nowStr] [+] Da tu dong ket noi sang Backend moi (PID: $pidPort)!" -ForegroundColor Green
+                    continue
+                }
+            }
+            # Neu backend tam thoi tat, khong ghi mau 0MB vao CSV de tranh lam sai lech bao cao
+            continue
+        }
+
         $curCpu = $proc.CPU
         $curTime = Get-Date
         
         $timeDelta = ($curTime - $prevTime).TotalSeconds
         $cpuDelta = $curCpu - $prevCpu
+        if ($cpuDelta -lt 0) { $cpuDelta = 0 }
         
         $cpuUsage = 0
         if ($timeDelta -gt 0) {
@@ -426,5 +455,6 @@ try {
 }
 finally {
     Write-Host "`n[!] Da nhan tin hieu dung giam sat. Dang tong hop bao cao HTML..." -ForegroundColor Cyan
-    Export-HtmlReport -CsvPath $LogFile -OutputPath $HtmlReport -ProcessName $proc.ProcessName -ProcessId $pidPort -Cores $cores
+    $finalProcessName = if ($proc -and $proc.ProcessName) { $proc.ProcessName } else { "node" }
+    Export-HtmlReport -CsvPath $LogFile -OutputPath $HtmlReport -ProcessName $finalProcessName -ProcessId $pidPort -Cores $cores
 }
