@@ -6,3 +6,5 @@ k6-eshop/baseline_results_new.json
 k6-eshop/spike_results_new.json
 k6-eshop/endurance_results_new.json
 /phat
+jmeter-eshop/results_*/
+jmeter-eshop/*.jtl
